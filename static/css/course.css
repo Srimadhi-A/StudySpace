@@ -1,0 +1,244 @@
+body {
+    font-family: "Philosopher", serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+    color: #000000;
+    line-height: 1.6;
+}
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(113, 0, 38, 0.432);
+    /* Semi-transparent with blur effect */
+    backdrop-filter: blur(10px);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar:hover {
+    background: rgba(131, 18, 56, 0.9);
+    /* Darker on hover */
+}
+
+.navbar-brand {
+    font-family: "Jersey 15", serif;
+    font-size: 3rem;
+    font-weight: lighter;
+    color: white;
+    /* Default color */
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    /* Smooth transition */
+    opacity: 1;
+    /* Default opacity */
+}
+
+.navbar-brand:hover {
+    color: #fdfdfd;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: #ffffff 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.navbar-nav .nav-link {
+    transition: #831238 0.3s ease;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+/* Tab Styling */
+.nav-tabs {
+    border-bottom: none;
+    animation: fadeIn 1s ease-out;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.nav-tabs::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(0,0,0,0.1);
+    z-index: 0;
+}
+
+.nav-tabs .nav-link {
+    color: #6c757d;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border: none;
+    transition: all 0.4s ease;
+    position: relative;
+    background: transparent;
+    margin: 0 0.5rem;
+    border-radius: 50px;
+    
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    z-index: 1;
+}
+
+.nav-tabs .nav-link.active {
+    color: white;
+    background: linear-gradient(45deg, #831238, #ff6b6b);
+    box-shadow: 0 5px 15px rgba(131, 18, 56, 0.3);
+    border: none;
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+    color: #f8f2f4;
+    background: rgba(131, 18, 56, 0.1);
+}
+/* Responsive Navbar */
+.navbar-toggler {
+    border: none;
+    background: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+    /* Makes the toggler icon white */
+}
+
+.card-body h3 {
+        color: #831238;
+        margin: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-body p{
+    margin: 10px;
+    font-size: 14px;
+    color: black;
+    font-weight: bolder;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+/* serach bar */
+.search-container {
+    text-align: center;
+    margin: 120px 0px 20px;
+    position: relative;
+}
+
+.search-box {
+    position: relative;
+    display: inline-block;
+    width: 60%;
+    max-width: 500px;
+}
+
+#search-bar {
+    width: 100%;
+    padding: 12px 40px 12px 15px; /* Space for the icon */
+    font-size: 16px;
+    border: 2px solid #831238;
+    border-radius: 25px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: transparent; /* Transparent background */
+    color: #831238; /* Text color */
+}
+
+#search-bar::placeholder {
+    color: rgba(131, 18, 56, 0.6); /* Light placeholder */
+}
+
+#search-bar:focus {
+    border-color: #5e0d28;
+    box-shadow: 0 4px 8px rgba(131, 18, 56, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(131, 18, 56, 0.7); /* Transparent effect */
+    font-size: 18px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .search-box {
+        width: 80%;
+    }
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+footer {
+    /* background-color: #000000; */
+    color: #000000;
+    font-size: 0.9rem;
+    
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ccc;
+    text-decoration: underline;
+}

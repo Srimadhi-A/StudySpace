@@ -1,0 +1,89 @@
+/* Body Styling */
+body {
+    font-family: "Philosopher", serif;
+    background-color: rgba(113, 0, 38, 0.432);;
+    background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+    /* font-family: 'Arial', sans-serif; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    color: #831238;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    color: #831238;
+}
+
+/* Profile Image */
+img {
+    border: 4px solid #831238;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #831238;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #6d102e;
+}
+
+.btn-success {
+    background-color: #6d102e;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #5b0d26;
+}
+
+.btn-secondary {
+    background-color: #831238;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #6d102e;
+}
+
+/* Forms */
+.form-control {
+    border: 2px solid #831238;
+}
+
+.form-control:focus {
+    border-color: #6d102e;
+    box-shadow: 0 0 8px rgba(109, 16, 46, 0.8);
+}
+
+/* Alerts */
+.alert {
+    background-color: #fefcfc;
+    color: #831238;
+    border: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    img {
+        width: 150px;
+    }
+}

@@ -1,0 +1,311 @@
+/* General Styles */
+body {
+    font-family: 'Philosopher', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.brand-logo {
+    font-family: 'Jersey 15', sans-serif;
+    font-size: 1.8rem;
+    color: #831238;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(113, 0, 38, 0.432);
+    /* Semi-transparent with blur effect */
+    backdrop-filter: blur(10px);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar:hover {
+    background: rgba(131, 18, 56, 0.9);
+    /* Darker on hover */
+}
+
+.navbar-brand {
+    font-family: "Jersey 15", serif;
+    font-size: 3rem;
+    font-weight: lighter;
+    color: white;
+    /* Default color */
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    /* Smooth transition */
+    opacity: 1;
+    /* Default opacity */
+}
+
+.navbar-brand:hover {
+    color: #fdfdfd;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: #ffffff 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.navbar-nav .nav-link {
+    transition: #831238 0.3s ease;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+/* Responsive Navbar */
+.navbar-toggler {
+    border: none;
+    background: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+    /* Makes the toggler icon white */
+}
+
+/* Course Header */
+.course-header {
+    background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+    color: #831238;
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+}
+
+.course-header h1 {
+    font-weight: 700;
+}
+.progress-maroon {
+    background-color: #831238;
+}
+/* Sidebar Styles */
+.sidebar-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-card .card-header {
+    background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+    color: #831238;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.75rem 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(5px);
+}
+
+.list-group-item.active {
+    background-color: #831238;
+    border-color: #831238;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.resource-link {
+    display: block;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    color: #831238;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.resource-link:hover {
+    border-color: #831238;
+    box-shadow: 0 4px 12px rgba(131, 18, 56, 0.1);
+}
+
+.resource-link i {
+    margin-right: 10px;
+    color: #831238;
+}
+
+/* Module Card Styles */
+.module-card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.module-card .card-header {
+    background-color: #831238;
+    color: white;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 1rem 1.5rem;
+}
+
+.module-card h3 {
+    margin-bottom: 0;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.btn-outline-primary {
+    color: #831238;
+    border-color: #831238;
+}
+
+.btn-outline-primary:hover {
+    background-color: #831238;
+    color: white;
+}
+
+.btn-outline-success {
+    color: #831238;
+    border-color: #831238;
+}
+
+.btn-outline-success:hover {
+    background-color: #831238;
+    color: white;
+}
+
+.btn-success {
+    background-color: #831238;
+    border-color: #831238;
+}
+
+.btn-success:hover {
+    background-color: #5a0d27;
+    border-color: #5a0d27;
+}
+
+.module-description {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #831238;
+}
+
+.module-meta {
+    margin-bottom: 1rem;
+}
+
+.badge.bg-info {
+    background-color: #831238 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+/* Notes Section */
+.notes-section {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.notes-section h5 {
+    color: #831238;
+    margin-bottom: 0.5rem;
+}
+/* footer */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .video-container {
+        margin-bottom: 1.5rem;
+    }
+    
+    .sidebar-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Animation for completed items */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fa-check-circle.text-success {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Progress bar animation */
+.progress-bar {
+    transition: width 0.6s ease;
+}

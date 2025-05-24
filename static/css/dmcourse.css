@@ -1,0 +1,391 @@
+
+        body {
+            font-family: "Philosopher", sans-serif;
+            color: #1e293b;
+            background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+            line-height: 1.6;
+        }
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(113, 0, 38, 0.432);
+            /* Semi-transparent with blur effect */
+            backdrop-filter: blur(10px);
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar:hover {
+            background: rgba(131, 18, 56, 0.9);
+            /* Darker on hover */
+        }
+        
+        .navbar-brand {
+            font-family: "Jersey 15", serif;
+            font-size: 3rem;
+            font-weight: lighter;
+            color: white;
+            /* Default color */
+            transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+            /* Smooth transition */
+            opacity: 1;
+            /* Default opacity */
+        }
+        
+        .navbar-brand:hover {
+            color: #fdfdfd;
+            /* Hover color */
+            transform: scale(1.1);
+            /* Slight zoom effect */
+            opacity: 0.8;
+            /* Slightly fade effect */
+            text-decoration: none;
+        }
+        
+        .navbar-nav .nav-item {
+            margin-left: 20px;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: #ffffff 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+        
+        .navbar-nav .nav-link {
+            transition: #831238 0.3s ease;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #ffffff;
+            /* Hover color */
+            transform: scale(1.1);
+            /* Slight zoom effect */
+            opacity: 0.8;
+            /* Slightly fade effect */
+            text-decoration: none;
+        }
+        
+        /* Responsive Navbar */
+        .navbar-toggler {
+            border: none;
+            background: none;
+        }
+        
+        .navbar-toggler-icon {
+            filter: invert(1);
+            /* Makes the toggler icon white */
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, #831238, #5a0d27);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            margin-top: 6rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(131, 18, 56, 0.3);
+        }
+        .course-header p{
+            color: #ffffff;
+        }
+        .unit-container {
+            perspective: 1000px;
+        }
+        
+        .unit {
+            display: none;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            margin: 2rem auto;
+            max-width: 900px;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        
+        .unit.active {
+            display: block;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .unit.next {
+            transform: rotateY(10deg) translateZ(50px);
+            opacity: 0.9;
+        }
+        
+        .unit.prev {
+            transform: rotateY(-10deg) translateZ(50px);
+            opacity: 0.9;
+        }
+        
+        .concept-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #831238;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .concept-card h4 {
+            color: #831238;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #831238;
+            font-weight: 600;
+            margin: 2rem 0 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #831238;
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: #1e293b;
+            font-weight: 600;
+            margin: 1.8rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: #334155;
+            font-size: 1.05rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        
+        
+        pre {
+            background-color: #f8fafc;
+            border-left: 4px solid #831238;
+            padding: 1.2rem;
+            border-radius: 0 8px 8px 0;
+            overflow-x: auto;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.95rem;
+            margin: 1.8rem 0;
+            color: #334155;
+            box-shadow: inset 5px 0 15px rgba(0,0,0,0.05);
+        }
+        
+        code {
+            font-family: 'Source Code Pro', monospace;
+            background-color: #e2e8f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        
+        .btn {
+            background-color: #831238;
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(131, 18, 56, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #b14a6d7c;
+            color: black;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(131, 18, 56, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: #ff9f1c;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 159, 28, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e68a00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 159, 28, 0.4);
+        }
+        
+        .progress-container {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #831238, #d6869ad0);
+            transition: width 0.5s ease;
+        }
+        
+        .floating-nav {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        
+        .nav-dot {
+            display: block;
+            width: 12px;
+            height: 12px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background-color: #831238;
+            transform: scale(1.3);
+        }
+        
+        .nav-dot:hover {
+            background-color: #a46274;
+        }
+        
+        .theory-highlight {
+            background-color: rgba(255, 159, 28, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.02);
+        }
+        
+        .animated-diagram {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f7fa, #e4e8ed);
+            border-radius: 10px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .diagram-element {
+            position: absolute;
+            background: #831238;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .unit {
+                padding: 1.8rem;
+                margin: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .floating-nav {
+                display: none;
+            }
+            
+            .progress-container {
+                width: 90%;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }

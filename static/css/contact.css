@@ -1,0 +1,138 @@
+body {
+    font-family: "Philosopher", serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* navbar */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(113, 0, 38, 0.432);
+    /* Semi-transparent with blur effect */
+    backdrop-filter: blur(10px);
+    padding: 4px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar:hover {
+    background: rgba(131, 18, 56, 0.9);
+    /* Darker on hover */
+}
+
+.navbar-brand {
+    font-family: "Jersey 15", serif;
+    font-size: 3rem;
+    font-weight: lighter;
+    color: white;
+    /* Default color */
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    /* Smooth transition */
+    opacity: 1;
+    /* Default opacity */
+}
+
+.navbar-brand:hover {
+    color: #fdfdfd;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: #ffffff 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.navbar-nav .nav-link {
+    transition: #831238 0.3s ease;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+/* Responsive Navbar */
+.navbar-toggler {
+    border: none;
+    background: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+    /* Makes the toggler icon white */
+}
+
+.contact-section {
+    padding: 50px 0;
+}
+
+.contact-section h2 {
+    color: #831238;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #831238;
+    padding: 12px 15px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #831238;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* footer */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ccc;
+    text-decoration: underline;
+}

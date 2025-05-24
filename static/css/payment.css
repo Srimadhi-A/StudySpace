@@ -1,0 +1,42 @@
+body {
+    font-family: "Philosopher", serif;
+    background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+    color: #831238;
+}
+
+h2 {
+    color: #831238;
+    font-weight: bold;
+}
+
+.card {
+    border: 2px solid #831238;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body h4 {
+    color: #831238;
+    border-bottom: 2px solid #831238;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.form-control {
+    border: 1px solid #831238;
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: #831238;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #6a0f2a;
+}
+
+.btn-secondary {
+    border-radius: 10px;
+}
