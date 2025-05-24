@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation | StudySpace</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #831238; /* Burgundy */
+            --primary-light: #9a2d52;
+            --secondary: #5a8f3d; /* Muted green */
+            --light: #f8f5f6; /* Very light pink */
+            --dark: #2a0a15; /* Dark burgundy */
+            --glass: rgba(255, 248, 250, 0.95); /* Semi-transparent light pink */
+        }
+        
+        body {
+            font-family: 'Philosopher', sans-serif;
+            background: linear-gradient(-45deg, #831238, #9a2d52, #ce557d, #e68aa4);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            transform-style: preserve-3d;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.3s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            animation: borderGrow 1s 0.5s forwards;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+        
+        @keyframes borderGrow {
+            to { transform: scaleX(1); }
+        }
+        
+        h2 {
+            font-family: 'Jersey 15', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            opacity: 0;
+            animation: fadeIn 0.8s 0.5s forwards;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+            animation: underlineExpand 0.8s 0.8s forwards;
+            transform-origin: center;
+            transform: scaleX(0);
+        }
+        
+        @keyframes underlineExpand {
+            to { transform: translateX(-50%) scaleX(1); }
+        }
+        
+        h4 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.7s forwards;
+            color: var(--light);
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform-style: preserve-3d;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.9s forwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn:nth-child(1) { animation-delay: 0.9s; }
+        .btn:nth-child(2) { animation-delay: 1.0s; }
+        .btn:nth-child(3) { animation-delay: 1.1s; }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) translateZ(10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Confetti animation */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+        }
+        
+        /* Success checkmark animation */
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.5s 0.5s forwards, bounceIn 0.8s 0.5s forwards;
+        }
+        
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 4;
+            stroke-miterlimit: 10;
+            stroke: white;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke: white;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-miterlimit: 10;
+            fill: none;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 1.1s forwards;
+        }
+        
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .card {
+                padding: 30px 20px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card animate__animated">
+        <!-- Animated checkmark -->
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+        
+        <h2>Payment Successful!</h2>
+        <h4>You've successfully enrolled in {{ course_name }}</h4>
+        
+        <div class="btn-container">
+            <a href="{{ url_for('courses') }}" class="btn btn-primary">
+                <i class="fas fa-book-open"></i> Browse More Courses
+            </a>
+            
+            <button class="btn btn-primary" onclick="redirectToCourse('{{ course_name }}')">
+                <i class="fas fa-play-circle"></i> Start Learning
+            </button>
+            
+            <a href="{{ url_for('download_invoice', course_id=course_id) }}" class="btn btn-secondary">
+                <i class="fas fa-file-download"></i> Download Receipt
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript Function for Dynamic Redirection -->
+    <script>
+        function redirectToCourse(courseName) {
+            let courseRoutes = {
+                "Python": "/pycourse",
+                "Data Manipulation and Cleaning": "/dmcourse",
+                "Web Development": "/webcourse",
+                "Machine Learning": "/machinecourse",
+                "Cybersecurity Basics": "/cybercourse",
+                "Artificial Intelligence Basics": "/artificialcourse",
+                "Cloud Computing Basics": "/cloudcourse",
+                "C Programming": "/cprogramcourse",
+                "Data Science Essentials": "/dscourse",
+                "Deep Learning": "/dlcourse",
+                "Digital Marketing": "/digitalcourse",
+                "Data Structures": "/datastructurecourse",
+                "Physics Fundamentals": "/physicscourse",
+                "Chemistry": "/Chemistrycourse",
+                "Data Analysis": "/data_analysiscourse",
+                "Data Matrix": "/datamatrixcourse",
+            };
+            let redirectUrl = courseRoutes[courseName] || "/courses";
+            window.location.href = redirectUrl;
+        }
+
+        // Create confetti effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const colors = ['#831238', '#9a2d52', '#e68aa4', '#f8f5f6', '#5a8f3d'];
+            const card = document.querySelector('.card');
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = -10 + 'px';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.width = Math.random() * 8 + 4 + 'px';
+                confetti.style.height = Math.random() * 8 + 4 + 'px';
+                
+                card.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.style.opacity = '1';
+                    confetti.style.top = '100%';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.transition = `all ${Math.random() * 3 + 2}s linear`;
+                }, Math.random() * 1000);
+            }
+        });
+    </script>
+</body>
+</html>

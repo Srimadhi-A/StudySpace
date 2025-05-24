@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Challenges</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+  <!-- Font Awesome -->
+  <style>
+    body {
+      font-family: 'Philosopher', sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
+    #game-container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e0e0;
+    }
+    h1 {
+      color: #831238;
+      margin-bottom: 25px;
+      font-size: 2.2em;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    #challenge {
+      font-size: 18px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #831238;
+      text-align: left;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+    textarea {
+      width: 100%;
+      height: 180px;
+      margin-bottom: 20px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+      color: #333;
+      padding: 15px;
+      resize: vertical;
+      transition: all 0.3s ease;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #831238;
+      box-shadow: 0 0 0 3px rgba(131, 18, 56, 0.1);
+    }
+    button {
+      padding: 12px 30px;
+      background: #831238;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      letter-spacing: 0.5px;
+      margin: 0 5px;
+    }
+    button:hover {
+      background: #9a1a45;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    #output {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 8px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      background: #f8f9fa;
+      border: 1px solid #eee;
+      text-align: center;
+    }
+    #timer {
+      font-size: 18px;
+      margin: 15px 0;
+      color: #831238;
+      font-weight: bold;
+    }
+    .success {
+      color: #2e7d32;
+      background: #e8f5e9 !important;
+      border-color: #c8e6c9 !important;
+    }
+    .error {
+      color: #c62828;
+      background: #ffebee !important;
+      border-color: #ffcdd2 !important;
+    }
+    .progress {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+    }
+    #code-editor::placeholder {
+      color: #999;
+      opacity: 1;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    #home-btn {
+      background: #555;
+    }
+    #home-btn:hover {
+      background: #666;
+    }
+</style>
+</head>
+<body>
+  <div id="game-container">
+    <h1>JavaScript Coding Challenges</h1>
+    <p id="challenge">Write a function that adds two numbers and returns the result. Example: add(2, 3) should return 5.</p>
+    <p id="timer">Time: 0 seconds</p>
+    <textarea id="code-editor" placeholder="Write your JavaScript function here..."></textarea>
+    <br>
+    <div class="button-container">
+      <button onclick="runCode()">Run Code</button>
+      <button id="home-btn" onclick="goToHome()">Go to Home</button>
+    </div>
+    <div id="output"></div>
+    <div class="progress" id="progress">Challenge 1 of 6</div>
+  </div>
+
+  <script>
+    const challenges = [
+      {
+        problem: "Write a function that adds two numbers and returns the result. Example: add(2, 3) should return 5.",
+        solution: (fn) => fn(2, 3) === 5 && fn(0, 0) === 0 && fn(-1, 1) === 0
+      },
+      {
+        problem: "Write a function that returns the reverse of a string. Example: reverse('hello') should return 'olleh'.",
+        solution: (fn) => fn('hello') === 'olleh' && fn('12345') === '54321' && fn('') === ''
+      },
+      {
+        problem: "Write a function that checks if a number is even. Return true if even, false if odd. Example: isEven(4) should return true.",
+        solution: (fn) => fn(4) === true && fn(7) === false && fn(0) === true
+      },
+      {
+        problem: "Write a function that finds the maximum number in an array. Example: findMax([1, 5, 3, 9, 2]) should return 9.",
+        solution: (fn) => fn([1, 5, 3, 9, 2]) === 9 && fn([-1, -5, -3]) === -1 && fn([7]) === 7
+      },
+      {
+        problem: "Write a function that capitalizes the first letter of each word in a string. Example: capitalize('hello world') should return 'Hello World'.",
+        solution: (fn) => fn('hello world') === 'Hello World' && 
+                         fn('javascript is awesome') === 'Javascript Is Awesome' && 
+                         fn('') === ''
+      },
+      {
+        problem: "Write a function that checks if a string is a palindrome (reads the same forwards and backwards). Example: isPalindrome('racecar') should return true.",
+        solution: (fn) => fn('racecar') === true && 
+                         fn('hello') === false && 
+                         fn('A man a plan a canal Panama') === false &&  // should handle this case?
+                         fn('') === true
+      }
+    ];
+
+    let currentChallengeIndex = 0;
+    let timer = 0;
+    let timerInterval;
+
+    function loadChallenge() {
+      const challenge = challenges[currentChallengeIndex];
+      document.getElementById('challenge').textContent = challenge.problem;
+      document.getElementById('output').textContent = '';
+      document.getElementById('output').className = '';
+      document.getElementById('code-editor').value = '';
+      document.getElementById('progress').textContent = `Challenge ${currentChallengeIndex + 1} of ${challenges.length}`;
+      resetTimer();
+      startTimer();
+    }
+
+    function runCode() {
+      const userCode = document.getElementById('code-editor').value;
+      const outputDiv = document.getElementById('output');
+      const challenge = challenges[currentChallengeIndex];
+
+      try {
+        const userFunction = new Function('return ' + userCode)();
+        if (typeof userFunction === 'function' && challenge.solution(userFunction)) {
+          stopTimer();
+          outputDiv.textContent = `✅ Correct! Time taken: ${timer} seconds.`;
+          outputDiv.className = 'success';
+          
+          currentChallengeIndex++;
+          if (currentChallengeIndex < challenges.length) {
+            setTimeout(() => {
+              outputDiv.textContent = 'Loading next challenge...';
+              setTimeout(loadChallenge, 1000);
+            }, 1500);
+          } else {
+            outputDiv.textContent = `🎉 Congratulations! You've completed all ${challenges.length} challenges in ${timer} seconds.`;
+            document.getElementById('progress').textContent = 'All challenges completed!';
+          }
+        } else {
+          outputDiv.textContent = "❌ Incorrect solution. Try again.";
+          outputDiv.className = 'error';
+        }
+      } catch (error) {
+        outputDiv.textContent = `⚠️ Error: ${error.message}`;
+        outputDiv.className = 'error';
+      }
+    }
+
+    function goToHome() {
+      currentChallengeIndex = 0;
+      loadChallenge();
+      // Replace this with your actual home page URL
+    window.location.href = "{{url_for('home')}}";
+    }
+
+    function startTimer() {
+      timer = 0;
+      document.getElementById('timer').textContent = `Time: ${timer} seconds`;
+      timerInterval = setInterval(() => {
+        timer++;
+        document.getElementById('timer').textContent = `Time: ${timer} seconds`;
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+      stopTimer();
+      timer = 0;
+      document.getElementById('timer').textContent = `Time: ${timer} seconds`;
+    }
+
+    loadChallenge();
+  </script>
+</body>
+</html>

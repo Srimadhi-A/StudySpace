@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+          <!-- Font Awesome for icons -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/python.css') }}">
+</head>
+<body>
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <main>
+    <section class="course-info">
+      <h2>Introduction to Data Analysis</h2>
+      <p><strong>Instructor:</strong> Prof. Nisha Raj</p>
+      <p>Starts April 15</p>
+      <p>18,430 already enrolled</p>
+    </section>
+
+    <section class="course-details">
+      <div class="modules">
+        <h3>6 modules</h3>
+        <p>Learn how to manipulate and analyze data using various analysis techniques to derive actionable insights.</p>
+      </div>
+      <div class="rating">
+        <h3>4.9 ★</h3>
+        <p>(3,104 reviews)</p>
+      </div>
+      <div class="time">
+        <h3>12 hours to complete</h3>
+        <p>4 weeks at 3 hours per week</p>
+      </div>
+      <div class="flexible">
+        <h3>Flexible schedule</h3>
+        <p>Learn at your own pace</p>
+      </div>
+      <div class="feedback">
+        <h3>97%</h3>
+        <p>Most learners found this course effective</p>
+      </div>
+    </section>
+
+    <div class="container1">
+      <h2>Course Modules</h2>
+      <div class="module-section">
+        <div class="module">
+          <h3 onclick="toggleModule(this)">Module 1: Introduction to Data Analysis</h3>
+          <div class="module-content">
+            <ul>
+              <li>What is Data Analysis?</li>
+              <li>Types of Data Analysis</li>
+              <li>Data Collection and Cleaning</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module">
+          <h3 onclick="toggleModule(this)">Module 2: Descriptive Statistics</h3>
+          <div class="module-content">
+            <ul>
+              <li>Measures of Central Tendency (Mean, Median, Mode)</li>
+              <li>Measures of Dispersion (Variance, Standard Deviation)</li>
+              <li>Data Visualization Techniques</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module">
+          <h3 onclick="toggleModule(this)">Module 3: Inferential Statistics</h3>
+          <div class="module-content">
+            <ul>
+              <li>Hypothesis Testing</li>
+              <li>Confidence Intervals</li>
+              <li>Correlation and Regression Analysis</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module">
+          <h3 onclick="toggleModule(this)">Module 4: Data Mining Techniques</h3>
+          <div class="module-content">
+            <ul>
+              <li>Clustering Algorithms</li>
+              <li>Classification Techniques</li>
+              <li>Association Rule Mining</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module">
+          <h3 onclick="toggleModule(this)">Module 5: Predictive Analytics</h3>
+          <div class="module-content">
+            <ul>
+              <li>Linear and Logistic Regression</li>
+              <li>Time Series Analysis</li>
+              <li>Model Evaluation and Validation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module">
+          <h3 onclick="toggleModule(this)">Module 6: Data Analysis Applications</h3>
+          <div class="module-content">
+            <ul>
+              <li>Business Intelligence Applications</li>
+              <li>Data Analysis in Marketing</li>
+              <li>Real-world Case Studies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- What You Will Learn Section -->
+      <div class="learn-section">
+        <h3>What You Will Learn in Study Space</h3>
+        <ul>
+          <li>Understand the fundamentals of data analysis and its significance in decision-making.</li>
+          <li>Master descriptive and inferential statistics to analyze data accurately.</li>
+          <li>Apply data mining techniques to uncover hidden patterns and insights.</li>
+          <li>Use predictive analytics to forecast trends and make data-driven predictions.</li>
+        </ul>
+      </div>
+
+      {% if enrolled %}
+      <a href="{{ url_for('data_analysiscourse') }}" class="btn btn-success">
+        Start Learning
+      </a>
+      {% else %}
+      <form action="{{ url_for('enroll') }}" method="POST">
+        <input type="hidden" name="course_id" value="15">
+        <input type="hidden" name="course_name" value="Data Analysis">
+        <input type="hidden" name="course_cost" value="299">
+        <input type="hidden" name="course_duration" value="4 weeks">
+        <button type="submit" class="enroll-btn">Enroll Now</button>
+      </form>
+      {% endif %}
+    </div>
+  </main>
+
+  <script>
+    // Toggle module content visibility
+    function toggleModule(module) {
+      const content = module.nextElementSibling;
+      content.classList.toggle("open");
+      module.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>

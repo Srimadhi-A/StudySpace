@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- study space in navbar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <!--full font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i>
+                            Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i
+                                class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i>
+                            Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i
+                                class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i>
+                            MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i>
+                            Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Image Slider -->
+    <div id="imageCarousel" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/ss1.png') }}" class="d-block w-100 custom-carousel-img"
+                    alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/ss2.png') }}" class="d-block w-100 custom-carousel-img"
+                    alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/ss3.png') }}" class="d-block w-100 custom-carousel-img"
+                    alt="Image 3">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/ss4.png') }}" class="d-block w-100 custom-carousel-img"
+                    alt="Image 4">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/ss5.png') }}" class="d-block w-100 custom-carousel-img"
+                    alt="Image 5">
+            </div>
+        </div>
+    </div> <br>
+    <!-- Explore button -->
+    <center>
+        <a href="{{ url_for('courses') }}"><button class="centered-button animate-bounce">EXPLORE
+                COURSES</button></a><br>
+        <hr>
+    </center>
+    <!-- about -->
+    <h1 style="text-align: center;" id="about" class="fade-in-on-scroll">About Us</h1>
+    <div class="containerr slide-up-on-scroll">
+        <p>
+            Welcome to <strong>Study Space</strong>, your trusted companion in the journey of learning and personal
+            growth.
+            Our mission is to empower students, professionals, and lifelong learners with accessible, engaging, and
+            high-quality
+            educational resources.
+        </p>
+
+        <p>
+            At <strong>Study Space</strong>, we believe in the transformative power of education. Whether you're looking
+            to gain
+            new skills, excel in your career, or simply explore new interests, we’re here to guide you every step of the
+            way.
+        </p>
+        <h2 style="text-align: center;">Our Vision</h2>
+        <p>To create a world where education is accessible to everyone, regardless of their background or circumstances.
+        </p>
+        <h2 style="text-align: center;">Our Mission</h2>
+        <p>To provide a seamless and personalized e-learning experience by combining innovative technology with expertly
+            crafted content.</p>
+        <h2 style="text-align: center;">Why Choose Study Space?</h2>
+        <ul>
+            <li><strong>Expertly Designed Courses:</strong> Our platform offers carefully curated courses in fields like
+                nsdctavif programming, web development, and more.</li>
+            <li><strong>Interactive Learning:</strong> Engage with hands-on projects, real-world applications, and
+                interactive quizzes.</li>
+            <li><strong>Supportive Community:</strong> Join a vibrant learning community where you can connect,
+                collaborate, and grow with fellow learners.</li>
+            <li><strong>Flexible Learning:</strong> Learn at your own pace, anytime and anywhere.</li>
+        </ul>
+        <h2>Our Journey</h2>
+        <p>
+            What started as a passion for creating meaningful learning opportunities has grown into a thriving platform
+            that caters
+            to learners worldwide. With your support, we continue to innovate and expand, making education more
+            inclusive and impactful.
+        </p>
+        <h2>Join Us Today</h2>
+        <p>
+            Start your learning journey with <strong>Study Space</strong> and unlock your potential.
+            Together, let's shape a brighter future through education.
+        </p>
+    </div>
+    <!-- web development practice -->
+    <div class="container-box">
+        <div class="text-area">
+            <h1>Web Development Practice</h1>
+            <p>We have created a dedicated interactive section where students can practice HTML, CSS, and JavaScript.
+                This hands-on coding environment allows learners to experiment, improve their skills, and build a strong
+                foundation in web development.</p>
+            <div class="action-buttons">
+                <a href="{{url_for('htmldebugging')}}"> <button class="primary-btn">HTML and CSS</button></a>
+                <a href="{{url_for('jsdebugging')}}"> <button class="secondary-btn">JavaScript</button></a>
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='images/Webcode-Thumbnail.jpg') }}" alt="Placeholder Image">
+        </div>
+    </div>
+    <!-- logo slider -->
+    <!-- Slider Section -->
+    <section class="slider-container">
+        <p class="slider-title" style="background: linear-gradient(to right, #ff6f9f67, #e8e8e8);">We are accredited by
+        </p>
+        <div class="slider-track">
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/nsdc.avif') }}" alt="NSDC Logo">
+            </div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/google.jpg') }}"
+                    alt="Google Partner Logo"></div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/accenture.png') }}"
+                    alt="accenture Logo"></div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/ibm.jpeg') }}" alt="IBM Logo">
+            </div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/tcs.png') }}" alt="TCS Logo"></div>
+            <!-- Duplicate slides for seamless looping -->
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/nsdc.avif') }}" alt="NSDC Logo">
+            </div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/google.jpg') }}"
+                    alt="Google Partner Logo"></div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/accenture.png') }}"
+                    alt="accenture Logo"></div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/ibm.jpeg') }}" alt="IBM Logo">
+            </div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/tcs.png') }}" alt="TCS Logo"></div>
+            <!-- Duplicate slides for seamless looping -->
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/nsdc.avif') }}" alt="NSDC Logo">
+            </div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/google.jpg') }}"
+                    alt="Google Partner Logo"></div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/accenture.png') }}"
+                    alt="accenture Logo"></div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/ibm.jpeg') }}" alt="IBM Logo">
+            </div>
+            <div class="slider-item"><img src="{{ url_for('static', filename='images/tcs.png') }}" alt="TCS Logo"></div>
+        </div>
+    </section>
+    <!-- what study space offer -->
+    <div class="card-container slide-up-on-scroll">
+        <div class="card">
+            <h3>Self Based Course</h3>
+            <p>Learn flexibly with expert-designed video courses featuring interactive lessons or dive into in-depth
+                theory with structured readings, exercises, and discussions. Choose your style—visual or text-based—and
+                progress at your own pace with certification upon completion.</p>
+        </div>
+        <div class="card">
+            <h3>Learn Together, Play Together</h3>
+            <p>Our platform turns education into a shared adventure. Compete in knowledge games, collaborate on exciting
+                challenges, celebrate milestones, and grow with an active community of passionate learners worldwide.
+            </p>
+        </div>
+        <div class="card">
+            <h3>Learn Smarter with Interactive Quizzes</h3>
+            <p>Strengthen your understanding through dynamic quizzes that test and reinforce knowledge while you learn.
+                Compete with peers, unlock achievements, and watch your skills grow with every challenge you complete.
+            </p>
+        </div>
+    </div>
+    <!-- Tagline: Learn, Grow, Succeed -->
+    <div class="tagline fade-in-on-scroll">
+        <span>Learn</span>
+        <span>Grow</span>
+        <span>Succeed</span>
+    </div>
+    <!-- practice section -->
+    <p style="margin: 40px;" class="slide-up-on-scroll">Explore diverse platforms to refine your coding skills and
+        achieve consistent growth in
+        your knowledge. Whether you're just starting out or seeking to enhance your expertise, you can access a variety
+        of resources—from interactive lessons to real-world projects. These platforms offer personalized learning paths,
+        hands-on coding challenges, and expert guidance to ensure you’re mastering key concepts. </p>
+    <div class="feature-container my-5 slide-up-on-scroll">
+        <div class="row feature-cards-row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col feature-card-column">
+                <div class="feature-card h-100">
+                    <img src="{{ url_for('static', filename='images/leetCode.png') }}" class="card-img-top"
+                        alt="Feature 1">
+                    <div class="card-body feature-card-body">
+                        <h5 class="card-title feature-title">Leet Code</h5>
+                        <p class="card-text feature-description">You can enhance your programming skills by practicing a
+                            variety of languages such as nsdctavif, C, C++, Java, JavaScript, and more, on LeetCode. The
+                            platform offers a vast collection of coding challenges, all available for free, allowing you
+                            to sharpen your problem-solving abilities.</p>
+                        <a href="https://leetcode.com/" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col feature-card-column">
+                <div class="feature-card h-100">
+                    <img src="{{ url_for('static', filename='images/free code camp.jpeg') }}" class="card-img-top"
+                        alt="Feature 2">
+                    <div class="card-body feature-card-body">
+                        <h5 class="card-title feature-title">Free Code Camp</h5>
+                        <p class="card-text feature-description">FreeCodeCamp offers a comprehensive platform where you
+                            can practice and master web development. With structured courses, real-world projects, and
+                            an active community, it provides an ideal environment for enhancing your front-end and
+                            back-end development skills at no cost.</p>
+                        <a href="https://www.freecodecamp.org/" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col feature-card-column">
+                <div class="feature-card h-100">
+                    <img src="{{ url_for('static', filename='images/hackerrank.avif') }}" class="card-img-top"
+                        alt="Feature 3">
+                    <div class="card-body feature-card-body">
+                        <h5 class="card-title feature-title">HackerRank</h5>
+                        <p class="card-text feature-description">HackerRank is a leading platform where you can practice
+                            and improve your programming skills in languages such as nsdctavif, C, C++, Java,
+                            JavaScript,
+                            and more. Offering a variety of challenges and exercises, it enables learners to build
+                            proficiency in coding, data structures, .</p>
+                        <a href="https://www.hackerrank.com/" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- students  -->
+    <h1 style="margin: 40px; text-align: center;" class="fade-in-on-scroll">OUR STUDENTS WORK AT</h1>
+    <section class="accreditation-slider-container">
+        <div class="accreditation-slider-track">
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/flipkart.jpg') }}"
+                    alt="flipkart Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/amazon.jpeg') }}"
+                    alt="amazon Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/nsdc.avif') }}"
+                    alt="google Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/google.jpg') }}"
+                    alt="TCS Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/infosys.jpeg') }}"
+                    alt="Infosys Logo"></div>
+            <!-- Duplicate slides for seamless looping -->
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/zoho.jpeg') }}"
+                    alt="zoho Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/wipro.jpg') }}"
+                    alt="wipro Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/ibm.jpeg') }}"
+                    alt="IBM Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/cisco.jpg') }}"
+                    alt="Cisco Logo"></div>
+            <div class="accreditation-slider-item"><img src="{{ url_for('static', filename='images/accenture.png') }}"
+                    alt="accenture"></div>
+        </div>
+    </section>
+    <!-- trainers -->
+    <h1 class="fade-in-on-scroll" style="text-align: center;">ABOUT OUR TRAINERS</h1>
+    <div class="platform-container my-5 slide-up-on-scroll" style="margin: 40px;">
+        <div class="row platform-cards-row row-cols-1 row-cols-md-3 g-4">
+            <!-- Card 1 -->
+            <div class="col platform-card-column">
+                <div class="platform-card h-100">
+                    <div class="card-body platform-card-body">
+                        <h5 class="card-title platform-title">Expertise and Experience</h5><br>
+                        <p class="card-text platform-description">Expertise and Experience
+                            The trainers at Study Space are highly skilled professionals with extensive experience in
+                            their respective domains, ensuring quality education and guidance for learners.</p>
+                        <a href="#" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col platform-card-column">
+                <div class="platform-card h-100">
+
+                    <div class="card-body platform-card-body">
+                        <h5 class="card-title platform-title">Continuous Upgradation</h5><br>
+                        <p class="card-text platform-description">Trainers regularly update their knowledge and teaching
+                            methods to align with the latest trends and technologies, ensuring students receive
+                            cutting-edge education help them.</p>
+                        <a href="#" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col platform-card-column">
+                <div class="platform-card h-100">
+
+                    <div class="card-body platform-card-body">
+                        <h5 class="card-title platform-title">Industry-Relevant Insights</h5><br>
+                        <p class="card-text platform-description">With their hands-on experience in the industry,
+                            trainers offer valuable insights and practical knowledge, bridging the gap between academic
+                            learning and real-world application.</p>
+                        <a href="#" class="btn custom-btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rating -->
+    <section class="stats-section">
+        <h2 class="section-title fade-in-on-scroll" style="text-align: center;">We are proud of...</h2>
+        <div class="stats-row slide-up-on-scroll">
+            <div class="stat-box" data-percent="85">
+                <div class="fill"></div>
+                <h3 class="stat-number">3,539,702</h3>
+                <p class="stat-label">Learners</p>
+            </div>
+            <div class="stat-box" data-percent="40">
+                <div class="fill"></div>
+                <h3 class="stat-number">194</h3>
+                <p class="stat-label">Mentors</p>
+            </div>
+            <div class="stat-box" data-percent="95">
+                <div class="fill"></div>
+                <h3 class="stat-number">43,816,949</h3>
+                <p class="stat-label">Lines of Code Submission</p>
+            </div>
+            <div class="stat-box" data-percent="65">
+                <div class="fill"></div>
+                <h3 class="stat-number">1,673</h3>
+                <p class="stat-label">Videos</p>
+            </div>
+        </div>
+        <div class="stats-row slide-up-on-scroll">
+            <div class="circle-stat">
+                <div class="circle" data-percent="72">
+                    <div class="percent">72%</div>
+                </div>
+                <p class="circle-description">of Learners complete their courses within 3 months</p>
+            </div>
+            <div class="circle-stat">
+                <div class="circle" data-percent="78">
+                    <div class="percent">78%</div>
+                </div>
+                <p class="circle-description">of Learners could recollect the concepts faster</p>
+            </div>
+            <div class="circle-stat">
+                <div class="circle" data-percent="84">
+                    <div class="percent">84%</div>
+                </div>
+                <p class="circle-description">of Learners have better understanding over complex topics</p>
+            </div>
+        </div>
+    </section>
+    <!-- frequently asked question -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq">
+                <div class="faq-question">
+                    <h3> What is the purpose of this e-learning platform?</h3>
+                    <span class="toggle-btn">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>This platform offers a wide range of interactive courses, engaging quizzes, and valuable
+                        learning resources
+                        designed to help students enhance their skills and knowledge across various subjects. Whether
+                        you're looking
+                        to learn a new skill, deepen your understanding of a topic, or prepare for exams, this platform
+                        provides a
+                        comprehensive learning experience. The courses are structured to include videos, practical
+                        exercises, and
+                        assessments, ensuring that students can apply what they learn in real-world scenarios. With
+                        user-friendly
+                        navigation and a focus on personalized learning, the platform is suitable for learners of all
+                        levels, from
+                        beginners to advanced.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>How do I register for a course?</h3>
+                    <span class="toggle-btn">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can register by clicking on the "Explore Courses" tab, selecting the course you want to
+                        join, and
+                        clicking the
+                        "Enroll" button.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>Can I get a certificate after completing a course?</h3>
+                    <span class="toggle-btn">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p> Yes, upon successfully completing a course, you will be awarded a certificate of completion. To
+                        earn this
+                        certificate, you must go through all the required lessons, participate in any assigned
+                        activities or
+                        quizzes, and pass the final assessment with the minimum required score. The certificate serves
+                        as proof of
+                        your achievement and can be downloaded or shared digitally. You can showcase it on your
+                        professional
+                        profiles, such as LinkedIn, or include it in your resume to demonstrate your newly acquired
+                        skills and
+                        knowledge.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">
+                    <h3>Are the courses free or paid?</h3>
+                    <span class="toggle-btn">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p> The courses on this platform are completely free to access. You can enroll in any course without
+                        any cost,
+                        and all learning materials, quizzes, and resources provided within the course are also free of
+                        charge.
+                        However, some optional features, such as premium tools, advanced certifications, or additional
+                        mentorship
+                        services, might require a fee. These optional paid features are clearly marked, so you can
+                        decide whether to
+                        use them based on your preferences and goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="text-center py-3" style="background-color: #831238;">
+        <p>&copy; 2025 Study Space. All Rights Reserved. | Privacy Policy</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="//code.tidio.co/z4s6wpb2bwosba57a9sfnvoehz5zw6qs.js" async></script>
+</body>
+
+</html>

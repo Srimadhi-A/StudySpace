@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | StudySpace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- study space in navbar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <!--full font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="{{ url_for('static', filename='css/contact.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i>
+                            Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i
+                                class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i>
+                            Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i
+                                class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i>
+                            MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i>
+                            Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="text-center">Get in Touch</h2>
+            <div class="row g-4">
+                <!-- Contact Form -->
+                <div class="col-md-6">
+                    <h4>Send Us a Message</h4>
+                    <form id="contact-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" name="user_name"
+                                placeholder="Enter your full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="user_email"
+                                placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject"
+                                placeholder="Enter the subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5"
+                                placeholder="Enter your message" required></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="col-md-6">
+                    <h4>Contact Information</h4>
+                    <p><strong>Address:</strong> Study Space Company, Pondicherry, India</p>
+                    <p><strong>Email:</strong> studyspace796@gmail.com</p>
+                    <p><strong>Phone:</strong> +91 9876543210</p>
+                    <p><strong>Working Hours:</strong> Mon - Fri, 9:00 AM - 6:00 PM</p>
+                    <div class="map-container mt-4">
+                        <iframe width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen=""
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195046.17850441678!2d79.74439848736233!3d11.937280524436868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5361e4ff6632a5%3A0xa8f43cb60b4e72ae!2sPuducherry!5e0!3m2!1sen!2sin!4v1709909878654">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-3" style="background-color: #831238;">
+        <p>&copy; 2025 Study Space. All Rights Reserved. | Privacy Policy</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init('EAuYa5oHuhF3IHXa8'); // Replace with your actual public key
+
+        // Add event listener for form submission
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Change button text to indicate loading
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.textContent = 'Sending...';
+
+            // Send form data to EmailJS
+            emailjs.sendForm('service_094sw5u', 'template_5njgn6f', this)
+                .then(function (response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Message sent successfully!');
+                    document.getElementById('contact-form').reset();
+                    submitBtn.textContent = 'Send Message'; // Reset button text
+                }, function (error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to send message. Please try again.');
+                    submitBtn.textContent = 'Send Message'; // Reset button text
+                });
+        });
+        // navbar
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            toggleButton.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        });
+
+    </script>
+</body>
+
+</html>

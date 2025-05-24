@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C++ Programming
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- study space in navbar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+  <!-- full font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/python.css') }}">
+</head>
+<body>
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  <main>
+    <section class="course-info">
+      <h2>Learn C++ Programming: Basic to Advanced</h2>
+      <p><strong>Instructors:</strong> James Gibbons</p>
+      <p>Starts Jan 13</p>
+      <p>55,068 already enrolled</p>
+    </section>
+    <section class="course-details">
+      <div class="modules">
+        <h3>5 modules</h3>
+        <p>Gain insight into C++ programming and learn the fundamentals to advanced concepts.</p>
+      </div>
+      <div class="rating">
+        <h3>4.7 ★</h3>
+        <p>(3,105 reviews)</p>
+      </div>
+      <div class="time">
+        <h3>8 hours to complete</h3>
+        <p>3 weeks at 2 hours a week</p>
+      </div>
+      <div class="flexible">
+        <h3>Flexible schedule</h3>
+        <p>Learn at your own pace</p>
+      </div>
+      <div class="feedback">
+        <h3>98%</h3>
+        <p>Most learners liked this course</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="container1">
+    <h2>Course Modules</h2>
+    <div class="module-section">
+      <!-- Module 1 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 1: Introduction to C++ Programming</h3>
+        <div class="module-content">
+          <ul>
+            <li>What is C++?</li>
+            <li>Setting up the C++ programming environment</li>
+            <li>First C++ program</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 2: C++ Basics</h3>
+        <div class="module-content">
+          <ul>
+            <li>Variables and Data Types</li>
+            <li>Control Flow: If-Else and Loops</li>
+            <li>Functions and Header Files</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 3: Pointers and Memory Management in C++</h3>
+        <div class="module-content">
+          <ul>
+            <li>Introduction to Pointers</li>
+            <li>Memory Allocation and Deallocation</li>
+            <li>Pointer Arithmetic</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 4: Advanced C++ Topics</h3>
+        <div class="module-content">
+          <ul>
+            <li>Classes and Objects</li>
+            <li>Operator Overloading</li>
+            <li>Inheritance and Polymorphism</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 5: C++ Programming Project</h3>
+        <div class="module-content">
+          <ul>
+            <li>Building a Real-World C++ Project</li>
+            <li>Using C++ for System Programming</li>
+            <li>Creating a Simple API with C++</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- What You Will Learn Section -->
+    <div class="learn-section">
+      <h3>What You Will Learn in Study Space</h3>
+      <ul>
+        <li>Master the basics of C++ programming.</li>
+        <li>Understand memory management and pointers in C++.</li>
+        <li>Work with C++ classes, inheritance, and polymorphism.</li>
+        <li>Build real-world C++ projects to showcase your skills.</li>
+      </ul>
+    </div>
+    {% if enrolled %}
+    <a href="{{ url_for('cpluscourse') }}" class="btn btn-success">
+        Start Learning
+    </a>
+    {% else %}
+    <form action="{{ url_for('enroll') }}" method="POST">
+      <input type="hidden" name="course_id" value="8">
+      <input type="hidden" name="course_name" value="C++ Programming">
+      <input type="hidden" name="course_cost" value="699">
+      <input type="hidden" name="course_duration" value="3 weeks">
+
+      <button type="submit" class="enroll-btn">Enroll Now</button>
+    </form>
+    {% endif %}
+  </div>
+
+  <script>
+    // Toggle module content visibility
+    function toggleModule(module) {
+      const content = module.nextElementSibling;
+      content.classList.toggle("open");
+      module.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>

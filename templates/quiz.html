@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz</title>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher&display=swap" rel="stylesheet">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+</head>
+<body>
+  <h2 id="quizTitle"></h2>
+  <div class="container">
+    <form id="quizForm">
+      <div id="quizQuestions"></div>
+      <button type="button" id="submitBtn">Submit</button>
+    </form>
+  </div>
+  <!-- Popup and Overlay -->
+  <div id="overlay"></div>
+
+<div class="popup" id="popupBox">
+  <h3>Quiz Score</h3>
+  <p id="scoreText"></p>
+
+  <div id="popupButtons">
+    <button onclick="closePopup()">Close</button>
+    <button id="relearnBtn" style="display: none;" onclick="relearnCourse()">Re-Learn the Course</button>
+    <button id="certificateButton" style="display: none;">Get Certificate</button>
+  </div>
+</div>
+  <script>
+    const courseQuizzes = {
+      "Python Basics": [
+        { question: "What is the correct file extension for Python files?", options: ["a) .py", "b) .python", "c) .pty"], answer: "a" },
+        { question: "How do you create a variable in Python?", options: ["a) var x = 10", "b) x = 10", "c) 9x = 10"], answer: "b" },
+        { question: "Which keyword is used to define a function in Python?", options: ["a) def", "b) function", "c) fun"], answer: "a" },
+        { question: "What is the output of print(2 ** 3) in Python?", options: ["a) 5", "b) 8", "c) 6"], answer: "b" },
+        { question: "Which of the following data types is immutable in Python?", options: ["a) List", "b) Dictionary", "c) Tuple"], answer: "c" }
+      ],
+      "Web Development": [
+        { question: "Which language is used for structuring web pages?", options: ["a) HTML", "b) CSS", "c) JavaScript"], answer: "a" },
+        { question: "Which tag is used to create a hyperlink in HTML?", options: ["a) link", "b) a", "c) href"], answer: "b" },
+        { question: "What does CSS stand for?", options: ["a) Computer Style Sheets", "b) Cascading Style Sheets", "c) Creative Styling System"], answer: "b" },
+        { question: "Which property is used to change the text color in CSS?", options: ["a) color", "b) text-color", "c) font-color"], answer: "a" },
+        { question: "Which JavaScript keyword is used to declare a variable?", options: ["a) var", "b) let", "c) Both a and b"], answer: "c" }
+      ],
+      "Cybersecurity": [
+        { question: "What does 'phishing' refer to in cybersecurity?", options: ["a) Fishing in a lake", "b) Attempting to obtain sensitive information fraudulently", "c) Encrypting files for security"], answer: "b" },
+        { question: "Which one is a strong password?", options: ["a) password123", "b) qwerty", "c) T#7gK9!bP"], answer: "c" },
+        { question: "What is a firewall used for?", options: ["a) Cooling the computer", "b) Protecting against unauthorized access", "c) Formatting the system"], answer: "b" },
+        { question: "What is the full form of VPN?", options: ["a) Virtual Private Network", "b) Very Protected Network", "c) Verified Personal Node"], answer: "a" },
+        { question: "Which of the following is *NOT* a type of malware?", options: ["a) Worm", "b) Trojan", "c) Firewall"], answer: "c" }
+      ],
+      "Machine Learning": [
+        { question: "What is Machine Learning?", options: ["a) Manually coding tasks", "b) Teaching machines using data", "c) Using machines for hardware tasks"], answer: "b" },
+        { question: "Which library is commonly used in Python for Machine Learning?", options: ["a) NumPy", "b) Matplotlib", "c) Scikit-learn"], answer: "c" },
+        { question: "What is 'training data'?", options: ["a) Data used to test a model", "b) Data used to improve UI", "c) Data used to teach a model"], answer: "c" },
+        { question: "Which of the following is a type of Machine Learning?", options: ["a) Supervised Learning", "b) Unsupervised Learning", "c) Both a and b"], answer: "c" },
+        { question: "What is 'overfitting' in ML?", options: ["a) When model is too simple", "b) When model learns noise and performs poorly on new data", "c) When model has too little data"], answer: "b" }
+      ],
+      "Artificial Intelligence": [
+        { question: "What is Artificial Intelligence?", options: ["a) Human emotions", "b) Making machines intelligent", "c) Computer hardware"], answer: "b" },
+        { question: "Which of these is an application of AI?", options: ["a) Image Recognition", "b) Data Entry", "c) Typing Documents"], answer: "a" },
+        { question: "What does NLP stand for?", options: ["a) Neural Language Processing", "b) Natural Language Processing", "c) Natural Logic Processing"], answer: "b" },
+        { question: "Which algorithm is used in AI for decision making?", options: ["a) Bubble Sort", "b) Decision Tree", "c) Linear Search"], answer: "b" },
+        { question: "AI that mimics human brain is called?", options: ["a) Neural Networks", "b) CPU", "c) Algorithm"], answer: "a" }
+      ],
+      "Cloud Computing": [
+        { question: "What is Cloud Computing?", options: ["a) Computing using clouds", "b) Accessing services via internet", "c) Buying hardware"], answer: "b" },
+        { question: "Which is a Cloud service model?", options: ["a) IaaS", "b) BIOS", "c) HDD"], answer: "a" },
+        { question: "AWS, Azure, GCP are examples of?", options: ["a) Operating Systems", "b) Cloud Providers", "c) Software"], answer: "b" },
+        { question: "Which service is used to store data in the cloud?", options: ["a) EC2", "b) S3", "c) VPC"], answer: "b" },
+        { question: "What is scalability in Cloud?", options: ["a) Reducing storage", "b) Increasing resources as needed", "c) Deleting data"], answer: "b" }
+      ],
+      "C Programming": [
+        { question: "Who developed C language?", options: ["a) James Gosling", "b) Dennis Ritchie", "c) Bjarne Stroustrup"], answer: "b" },
+        { question: "Which of the following is a valid data type in C?", options: ["a) string", "b) integer", "c) float"], answer: "c" },
+        { question: "What is the correct syntax to print in C?", options: ["a) cout<<", "b) Console.WriteLine", "c) printf()"], answer: "c" },
+        { question: "What is the extension of C file?", options: ["a) .cpp", "b) .py", "c) .c"], answer: "c" },
+        { question: "Which keyword is used to declare a constant?", options: ["a) constant", "b) final", "c) const"], answer: "c" }
+      ],
+      "C++ Programming": [
+        { question: "Who is the creator of C++?", options: ["a) Dennis Ritchie", "b) Bjarne Stroustrup", "c) James Gosling"], answer: "b" },
+        { question: "Which feature is added in C++ over C?", options: ["a) Procedural Programming", "b) Object-Oriented Programming", "c) Scripting"], answer: "b" },
+        { question: "Which is a valid C++ class declaration?", options: ["a) class MyClass {}", "b) class: MyClass {}", "c) def class MyClass"], answer: "a" },
+        { question: "What does OOP stand for?", options: ["a) Object Oriented Programming", "b) Online Oriented Programming", "c) Open Order Processing"], answer: "a" },
+        { question: "Which keyword is used to create objects?", options: ["a) define", "b) new", "c) object"], answer: "b" }
+      ],
+      "DevOps": [
+        { question: "What does DevOps stand for?", options: ["a) Development and Options", "b) Development and Operations", "c) Device and Operations"], answer: "b" },
+        { question: "Which tool is used for Continuous Integration?", options: ["a) GitHub", "b) Jenkins", "c) Docker"], answer: "b" },
+        { question: "What is the use of Docker?", options: ["a) Hosting", "b) Virtualization", "c) Containerization"], answer: "c" },
+        { question: "Which DevOps tool is used for version control?", options: ["a) Git", "b) Jenkins", "c) Kubernetes"], answer: "a" },
+        { question: "Which of the following is a DevOps practice?", options: ["a) Manual Testing", "b) Continuous Deployment", "c) Waterfall Model"], answer: "b" }
+      ],
+      "Data Science": [
+        { question: "What is the goal of Data Science?", options: ["a) Clean data only", "b) Store data", "c) Extract insights from data"], answer: "c" },
+        { question: "Which language is commonly used in Data Science?", options: ["a) Python", "b) Java", "c) HTML"], answer: "a" },
+        { question: "What does CSV stand for?", options: ["a) Comma Separated Values", "b) Combined Source Value", "c) Computer Standard Value"], answer: "a" },
+        { question: "Which library is used for data visualization?", options: ["a) NumPy", "b) Pandas", "c) Matplotlib"], answer: "c" },
+        { question: "Which of the following is a supervised learning algorithm?", options: ["a) K-Means", "b) Decision Tree", "c) PCA"], answer: "b" }
+      ],
+      "Deep Learning": [
+        { question: "What is Deep Learning?", options: ["a) Shallow neural networks", "b) Learning with deep neural networks", "c) Manual learning"], answer: "b" },
+        { question: "Which library is widely used for Deep Learning?", options: ["a) Flask", "b) TensorFlow", "c) Pandas"], answer: "b" },
+        { question: "What is the basic unit of a neural network?", options: ["a) Neuron", "b) Cell", "c) NodeJS"], answer: "a" },
+        { question: "Which activation function is commonly used?", options: ["a) ReLU", "b) Linear", "c) Polynomial"], answer: "a" },
+        { question: "Which of the following is a type of neural network?", options: ["a) CNN", "b) SQL", "c) FTP"], answer: "a" }
+      ],
+      "Digital Marketing": [
+        { question: "What is SEO?", options: ["a) Search Engine Optimization", "b) Server Error Output", "c) Secure Email Option"], answer: "a" },
+        { question: "Which platform is used for PPC advertising?", options: ["a) Instagram", "b) Google Ads", "c) Wikipedia"], answer: "b" },
+        { question: "What does CTR stand for?", options: ["a) Click Through Rate", "b) Code Transfer Rate", "c) Click Time Ratio"], answer: "a" },
+        { question: "Which is a content marketing tool?", options: ["a) Canva", "b) Notepad", "c) Excel"], answer: "a" },
+        { question: "What is email marketing?", options: ["a) Selling emails", "b) Promoting via emails", "c) Hacking emails"], answer: "b" }
+      ],
+      "Data Structure": [
+        { question: "Which data structure uses LIFO?", options: ["a) Queue", "b) Stack", "c) Array"], answer: "b" },
+        { question: "Which data structure uses FIFO?", options: ["a) Stack", "b) Queue", "c) Graph"], answer: "b" },
+        { question: "What is a binary tree?", options: ["a) Tree with 2 leaves", "b) Tree with at most 2 children per node", "c) Tree with even nodes"], answer: "b" },
+        { question: "Which algorithm is used for sorting?", options: ["a) Binary Search", "b) Merge Sort", "c) DFS"], answer: "b" },
+        { question: "What is the time complexity of binary search?", options: ["a) O(n)", "b) O(n^2)", "c) O(log n)"], answer: "c" }
+      ],
+      "Data Matrix": [
+        { question: "What is a data matrix?", options: ["a) 1D array", "b) 2D representation of data", "c) HTML table"], answer: "b" },
+        { question: "Which library helps with matrix operations?", options: ["a) NumPy", "b) Flask", "c) Django"], answer: "a" },
+        { question: "Which operation is used to multiply two matrices?", options: ["a) Addition", "b) Dot product", "c) Append"], answer: "b" },
+        { question: "What shape will a 3x2 and 2x3 matrix multiplication result in?", options: ["a) 2x2", "b) 3x3", "c) 3x2"], answer: "b" },
+        { question: "What is the identity matrix?", options: ["a) All elements 1", "b) Diagonal elements 1, others 0", "c) All elements 0"], answer: "b" }
+      ],
+      "Data Analysis": [
+        { question: "What is the purpose of data analysis?", options: ["a) Store data", "b) Find patterns and insights", "c) Design websites"], answer: "b" },
+        { question: "Which tool is commonly used in data analysis?", options: ["a) Photoshop", "b) Excel", "c) VS Code"], answer: "b" },
+        { question: "Which Python library is best for analysis?", options: ["a) Pandas", "b) Flask", "c) NumPy"], answer: "a" },
+        { question: "What is a DataFrame?", options: ["a) Single value", "b) 2D table-like structure", "c) File format"], answer: "b" },
+        { question: "What is correlation in data?", options: ["a) Difference", "b) Connection between variables", "c) Sorting"], answer: "b" }
+      ],
+      "Chemistry": [
+        { question: "What is the chemical symbol for water?", options: ["a) O2", "b) CO2", "c) H2O"], answer: "c" },
+        { question: "What is the atomic number of Carbon?", options: ["a) 12", "b) 6", "c) 8"], answer: "b" },
+        { question: "What is pH of neutral solution?", options: ["a) 7", "b) 0", "c) 14"], answer: "a" },
+        { question: "Which gas is used in fire extinguishers?", options: ["a) CO2", "b) O2", "c) N2"], answer: "a" },
+        { question: "NaCl is the chemical name for?", options: ["a) Sugar", "b) Baking Soda", "c) Salt"], answer: "c" }
+      ],
+      "Data Manipulation": [
+        { question: "What is data manipulation?", options: ["a) Cleaning the screen", "b) Modifying data", "c) Creating folders"], answer: "b" },
+        { question: "Which function is used to change column names in pandas?", options: ["a) rename()", "b) change()", "c) alter()"], answer: "a" },
+        { question: "What does drop() do in pandas?", options: ["a) Add row", "b) Remove row/column", "c) Duplicate row"], answer: "b" },
+        { question: "Which library helps manipulate data?", options: ["a) Pandas", "b) Flask", "c) Matplotlib"], answer: "a" },
+        { question: "What is the output of df.head()?", options: ["a) Last 5 rows", "b) First 5 rows", "c) All rows"], answer: "b" }
+      ],
+      "Physics": [
+        { question: "What is the speed of light?", options: ["a) 3x10^8 m/s", "b) 1.5x10^3 m/s", "c) 9.8 m/s^2"], answer: "a" },
+        { question: "What is Newton’s second law?", options: ["a) F = ma", "b) V = IR", "c) E = mc^2"], answer: "a" },
+        { question: "What is the unit of Force?", options: ["a) Newton", "b) Joule", "c) Pascal"], answer: "a" },
+        { question: "Which energy is stored in moving objects?", options: ["a) Potential", "b) Kinetic", "c) Thermal"], answer: "b" },
+        { question: "What is Ohm’s Law?", options: ["a) V = IR", "b) P = IV", "c) E = mc^2"], answer: "a" }
+      ]
+    };
+    function getCourseFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("course") || "Python Basics"; // Default to Python
+    }
+    function loadQuiz() {
+      const course = getCourseFromURL();
+      document.getElementById("quizTitle").innerText = `Quiz: ${course}`;
+      const quizData = courseQuizzes[course];
+      const quizQuestionsDiv = document.getElementById("quizQuestions");
+      quizQuestionsDiv.innerHTML = ""; // Clear previous questions
+      quizData.forEach((q, index) => {
+        let questionHTML = `<div class=question>
+        <p>${index + 1}. ${q.question}</p>`;
+        q.options.forEach(opt => {
+          questionHTML += `<label><input type="radio" name="q${index}" value="${opt[0]}"> ${opt}</label>`;
+        });
+        questionHTML += `</div>`;
+        quizQuestionsDiv.innerHTML += questionHTML;
+      });
+    }
+    function checkAnswers() {
+      const course = getCourseFromURL();
+      const quizData = courseQuizzes[course];
+      let score = 0;
+      let totalQuestions = quizData.length;
+      quizData.forEach((q, index) => {
+        let selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selectedOption && selectedOption.value === q.answer) {
+          score++;
+        }
+      });
+      document.getElementById("scoreText").innerText = `You scored ${score} out of ${totalQuestions}`;
+      document.getElementById("popupBox").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+      // Show the "Re-Learn" button if score is below 4
+      let relearnBtn = document.getElementById("relearnBtn");
+      let certBtn = document.getElementById("certificateButton");
+      // Course URL mapping
+      let courseLinks = {
+        "Python Basics": "{{ url_for('python') }}",
+        "Web Development": "{{ url_for('web_development') }}",
+        "Machine Learning": "{{ url_for('machinelearning') }}",
+        "Cybersecurity": "{{ url_for('cybersecurity') }}",
+        "Artificial Intelligence": "{{ url_for('artificial') }}",
+        "Cloud Computing": "{{ url_for('cloudcomputing')}}",
+        "C Programming": "{{ url_for('cprogram') }}",
+        "C++ Programming": "{{ url_for('cplus') }}",
+        "DevOps": "{{ url_for('devops') }}",
+        "Data Science": "{{ url_for('datascience') }}",
+        "Deep Learning": "{{ url_for('deeplearning') }}",
+        "Digital Marketing": "{{ url_for('digitalmarketing') }}",
+        "Data Structure": "{{ url_for('datastructure') }}",
+        "Data Matrix": "{{ url_for('datamatrix') }}",
+        "Data Analysis": "{{ url_for('data_analysis') }}",
+        "Chemistry": "{{ url_for('Chemistry') }}",
+        "Data Manipulation": "{{ url_for('data_manipulation') }}",
+        "Physics": "{{ url_for('Physics') }}"
+      };
+      if (score < 4) {
+        relearnBtn.style.display = "block";
+        certBtn.style.display = "none"; // Hide certificate button
+        relearnBtn.onclick = function () {
+          if (courseLinks[course]) {
+            window.location.href = courseLinks[course];
+          } else {
+            window.location.href = "/courses/default.html";
+          }
+        };
+      } else {
+        // Show "Get Certificate" button
+        relearnBtn.style.display = "none"; // Hide relearn button
+        certBtn.style.display = "block";
+        certBtn.onclick = function () {
+          window.location.href = "{{ url_for('certificate') }}"; // Redirect to certificate page
+        };
+      }
+    }
+    function closePopup() {
+      document.getElementById("popupBox").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+    function relearnCourse() {
+      const course = getCourseFromURL();
+      window.location.href = `course.html?course=${encodeURIComponent(course)}`;
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      loadQuiz();
+      document.getElementById("submitBtn").addEventListener("click", checkAnswers);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+      <!-- Font Awesome for icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      /* background-color: #fcfcfc; */
+      background: linear-gradient(to right, #ff6f9f67, #e8e8e8);
+    }
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(113, 0, 38, 0.432);
+    /* Semi-transparent with blur effect */
+    backdrop-filter: blur(10px);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar:hover {
+    background: rgba(131, 18, 56, 0.9);
+    /* Darker on hover */
+}
+
+.navbar-brand {
+    font-family: "Jersey 15", serif;
+    font-size: 3rem;
+    font-weight: lighter;
+    color: white;
+    /* Default color */
+    transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    /* Smooth transition */
+    opacity: 1;
+    /* Default opacity */
+}
+
+.navbar-brand:hover {
+    color: #fdfdfd;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: #ffffff 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.navbar-nav .nav-link {
+    transition: #831238 0.3s ease;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
+    /* Hover color */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+    opacity: 0.8;
+    /* Slightly fade effect */
+    text-decoration: none;
+}
+
+/* Responsive Navbar */
+.navbar-toggler {
+    border: none;
+    background: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+    /* Makes the toggler icon white */
+}
+    .container {
+      max-width: 100% !important;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+   .container1{
+    padding-top: 3rem;
+   }
+    /* Updated Card Styles */
+    .card {
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(131, 18, 56, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: white;
+      position: relative;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(131, 18, 56, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(131, 18, 56, 0.25);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #831238, #9c1a45);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 2rem;
+      text-align: center;
+      background: white;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #831238;
+      font-weight: 700;
+      font-family: 'Philosopher', sans-serif;
+      position: relative;
+      display: inline-block;
+    }
+
+    .card-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: #831238;
+      border-radius: 3px;
+    }
+
+    .card-text {
+      color: #5a5a5a;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .card-button {
+      display: inline-block;
+      padding: 12px 32px;
+      background: linear-gradient(to right, #831238, #9c1a45);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(131, 18, 56, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(131, 18, 56, 0.4);
+      color: white;
+    }
+
+    .card-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .card-button:hover::before {
+      left: 100%;
+    }
+
+    .locked-button {
+      background: linear-gradient(to right, #adb5bd, #ced4da) !important;
+      box-shadow: none !important;
+      pointer-events: none;
+    }
+
+    #star-count {
+      font-size: 1.6rem;
+      color: #831238;
+      padding: 12px 24px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 25px 0;
+      background-color: rgba(131, 18, 56, 0.1);
+      border: 2px dashed #831238;
+      font-weight: 700;
+    }
+
+    .status {
+      color: #831238;
+      font-weight: 600;
+      margin-top: 12px;
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    .stars-container {
+      margin: 18px 19px;
+    }
+
+    .stars-container span {
+      color: #ffc107;
+      font-size: 1.4rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin: 0 2px;
+    }
+
+    /* Rest of your existing styles... */
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+      <a class="navbar-brand">Study Space</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i>
+                      Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i
+                          class="fas fa-info-circle"></i> About</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i>
+                      Courses</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i
+                          class="fas fa-envelope"></i> Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i>
+                      MindZone</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i>
+                      Profile</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+<!-- Game Cards -->
+<div class="container1">
+  <div class="container text-center mt-5">
+    <h4 id="star-count">Stars Earned: 0 ⭐</h4>
+  </div>
+  <div class="row g-4">
+    
+    {% for game in [
+      {'title': 'Cyber Security', 'desc': 'Defend against digital threats in this security challenge', 'image': 'cyber.jpg', 'url': 'cyber'},
+      {'title': 'Memory Card', 'desc': 'Match pairs and train your brain with this memory game', 'image': 'memory.jpg', 'url': 'memory'},
+      {'title': 'Word Scramble', 'desc': 'Unscramble letters to reveal hidden vocabulary', 'image': 'words.jpg', 'url': 'word'},
+      {'title': 'Tech Trivia Game', 'desc': 'Test your knowledge of technology and computing', 'image': 'tech.jpg', 'url': 'tech'},
+      {'title': 'Math Solver Race', 'desc': 'Race against time to solve math problems', 'image': 'math.jpg', 'url': 'maths'},
+      {'title': 'Fraction Frenzy Game', 'desc': 'Master fractions through interactive challenges', 'image': 'fraction.jpg', 'url': 'fraction'},
+      {'title': 'pH Adventure', 'desc': 'Explore the world of acids and bases', 'image': 'ph.jpg', 'url': 'chemistry'},
+      {'title': 'Grammar Ninja Game', 'desc': 'Slice through incorrect grammar with precision', 'image': 'grammar.jpg', 'url': 'grammar'},
+      {'title': 'Vocabulary Builder Game', 'desc': 'Expand your lexicon with fun challenges', 'image': 'vaco.jpg', 'url': 'vocubalary'}
+    ] %}
+   
+    <div class="col-md-4 col-sm-6 mb-4">
+     
+      <div class="card" data-game="{{ game.url }}">
+        <img src="{{ url_for('static', filename='images/' + game.image) }}" alt="card Image" class="card-img" />
+        <div class="card-content">
+          <h5 class="card-title">{{ game.title }}</h5>
+          <p class="card-text">{{ game.desc }}</p>
+          <div id="stars-{{ game.url }}" class="stars-container" style="display: none;"></div>
+          <a href="{{ url_for(game.url) }}" class="card-button play-btn">Start Challenge</a>
+          <div class="status"></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  const currentUsername = "{{ username }}";
+  const previousUser = localStorage.getItem("lastUser");
+
+  if (previousUser !== currentUsername) {
+    localStorage.removeItem("gameStars_" + previousUser);
+    localStorage.removeItem("gameCompleted_" + previousUser);
+    localStorage.removeItem("gameUnlocked_" + previousUser);
+    localStorage.setItem("lastUser", currentUsername);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const starKey = "gameStars_" + currentUsername;
+    const completeKey = "gameCompleted_" + currentUsername;
+    const unlockedKey = "gameUnlocked_" + currentUsername;
+
+    const allGames = ["cyber", "memory", "word", "tech", "maths", "fraction", "chemistry", "grammar", "vocubalary"];
+    
+    let stars = JSON.parse(localStorage.getItem(starKey)) || {};
+    let completed = JSON.parse(localStorage.getItem(completeKey)) || {};
+    let unlocked = JSON.parse(localStorage.getItem(unlockedKey)) || {};
+
+    if (!unlocked[allGames[0]]) {
+      unlocked[allGames[0]] = true;
+      localStorage.setItem(unlockedKey, JSON.stringify(unlocked));
+    }
+
+    allGames.forEach((game, index) => {
+      const card = document.querySelector(`.card[data-game="${game}"]`);
+      const playBtn = card.querySelector(".play-btn");
+      const starDiv = card.querySelector(`#stars-${game}`);
+      const statusDiv = card.querySelector(".status");
+
+      if (stars[game]) {
+        starDiv.innerHTML = '<span>⭐</span>'.repeat(stars[game]);
+        starDiv.style.display = "block";
+      }
+
+      if (completed[game]) {
+        statusDiv.textContent = "Challenge Completed";
+      }
+
+      if (!unlocked[game]) {
+        playBtn.classList.add("locked-button");
+        playBtn.textContent = "Locked Challenge";
+        playBtn.href = "#";
+      }
+
+      playBtn.addEventListener("click", function (e) {
+        if (!unlocked[game]) {
+          e.preventDefault();
+          return;
+        }
+
+        if (!completed[game]) {
+          completed[game] = true;
+          localStorage.setItem(completeKey, JSON.stringify(completed));
+
+          stars[game] = 1;
+          localStorage.setItem(starKey, JSON.stringify(stars));
+
+          if (index < allGames.length - 1) {
+            unlocked[allGames[index + 1]] = true;
+            localStorage.setItem(unlockedKey, JSON.stringify(unlocked));
+          }
+
+          location.reload();
+        }
+      });
+    });
+
+    const totalStars = Object.values(stars).reduce((sum, count) => sum + count, 0);
+    document.getElementById("star-count").innerText = `Stars Earned: ${totalStars} ⭐`;
+  });
+</script>
+
+<!-- Footer -->
+<footer class="text-center py-3" style="background-color: #831238;">
+  <p class="text-white mb-0">&copy; 2025 Study Space. All Rights Reserved. | Privacy Policy</a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

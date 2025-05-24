@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Scramble</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Main Styling */
+    body {
+      font-family: "Philosopher", sans-serif;
+      background-color: #fff9fb;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+      background-image: radial-gradient(circle at 10% 20%, rgba(248, 231, 238, 0.8) 0%, rgba(255, 255, 255, 0.9) 90%);
+    }
+
+    .game-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      border: 3px solid #831238;
+      display: inline-block;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(131, 18, 56, 0.15);
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-container::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: rgba(131, 18, 56, 0.05);
+      border-radius: 50%;
+    }
+
+    h1 {
+      color: #831238;
+      margin-bottom: 15px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #831238, #a31846);
+      border-radius: 2px;
+    }
+
+    .header {
+      font-size: 1.2rem;
+      color: #831238;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    /* Scrambled Word Display */
+    .scrambled-word {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 30px 0;
+      color: #831238;
+      letter-spacing: 3px;
+      padding: 20px;
+      background-color: rgba(131, 18, 56, 0.08);
+      border-radius: 12px;
+      border: 2px dashed rgba(131, 18, 56, 0.3);
+      box-shadow: inset 0 4px 8px rgba(131, 18, 56, 0.05);
+    }
+
+    /* Input Field */
+    .input-box {
+      padding: 15px;
+      font-size: 1.2rem;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 8px;
+      border: 2px solid #831238;
+      text-align: center;
+      margin: 20px auto;
+      color: #831238;
+      transition: all 0.3s;
+    }
+
+    .input-box:focus {
+      outline: none;
+      border-color: #a31846;
+      box-shadow: 0 0 0 3px rgba(131, 18, 56, 0.2);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, #831238, #a31846);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px 5px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      font-weight: bold;
+      box-shadow: 0 5px 10px rgba(131, 18, 56, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0));
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #9a1a45, #831238);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(131, 18, 56, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Message Display */
+    .message {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 25px 0;
+      min-height: 40px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.4s ease-out;
+      opacity: 0;
+    }
+
+    .message.show {
+      opacity: 1;
+    }
+
+    .correct {
+      color: #2e7d32;
+      background-color: rgba(46, 125, 50, 0.1);
+    }
+
+    .incorrect {
+      color: #c62828;
+      background-color: rgba(198, 40, 40, 0.1);
+    }
+
+    /* Button Container */
+    .btn-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: modalopen 0.4s;
+      border: 1px solid #e8c8d2;
+    }
+
+    @keyframes modalopen {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .star-icon {
+      font-size: 60px;
+      color: gold;
+      margin: 20px 0;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from {transform: scale(1);}
+      to {transform: scale(1.1);}
+    }
+
+    /* Responsive Design */
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .game-container {
+        padding: 20px;
+        width: 95%;
+      }
+      
+      .scrambled-word {
+        font-size: 1.8rem;
+        padding: 15px;
+      }
+      
+      .input-box {
+        width: 90%;
+        font-size: 1.1rem;
+      }
+      
+      .btn {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="game-container">
+  <h1>Word Scramble Game</h1>
+  <p class="header" id="round-info">Round 1 of 5</p>
+  
+  <div id="scrambled-word" class="scrambled-word"></div>
+  <input type="text" id="user-input" class="input-box" placeholder="Type your answer here" autocomplete="off">
+  <div id="message" class="message"></div>
+  
+  <div class="btn-container">
+    <button class="btn" onclick="checkAnswer()" id="submit-btn">Submit</button>
+    <button class="btn" id="finish-btn" style="display: none;">Finish Game</button>
+  </div>
+</div>
+
+<!-- Completion Modal -->
+<div id="completionModal" class="modal">
+  <div class="modal-content">
+    <div class="star-icon">🌟</div>
+    <h2>Game Completed!</h2>
+    <p>You've successfully completed all rounds!</p>
+    <button class="btn" onclick="completeGame()">Continue</button>
+  </div>
+</div>
+
+<script>
+  const username = "guest"; // Replace with dynamic username if needed
+  const gameName = "word_scramble";
+  const nextGameName = "tech_trivia";
+  
+  const starKey = "gameStars_" + username;
+  const completeKey = "gameCompleted_" + username;
+  const unlockedKey = "gameUnlocked_" + username;
+  
+  const allWords = ["algorithm", "compiler", "binary", "debugging", "encryption", "network", "server", "software", "hardware", "firewall"];
+  const gameWords = shuffle([...allWords]).slice(0, 5); // Select 5 random words
+
+  let currentIndex = 0;
+  let currentWord = gameWords[currentIndex];
+  let isCorrect = false;
+
+  document.getElementById("scrambled-word").textContent = scramble(currentWord);
+
+  function scramble(word) {
+    const arr = word.split('');
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr.join('');
+  }
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  function checkAnswer() {
+    const input = document.getElementById("user-input").value.trim().toLowerCase();
+    const message = document.getElementById("message");
+
+    if (input === currentWord.toLowerCase()) {
+      isCorrect = true;
+      message.textContent = "✓ Correct! Well done!";
+      message.className = "message correct show";
+
+      if (currentIndex < gameWords.length - 1) {
+        setTimeout(() => {
+          currentIndex++;
+          currentWord = gameWords[currentIndex];
+          updateGameUI();
+        }, 1000);
+      } else {
+        document.getElementById("submit-btn").style.display = "none";
+        document.getElementById("finish-btn").style.display = "inline-block";
+      }
+    } else {
+      isCorrect = false;
+      message.textContent = "✗ Try again!";
+      message.className = "message incorrect show";
+    }
+  }
+
+  document.getElementById("finish-btn").addEventListener("click", () => {
+    if (!isCorrect) {
+      showMessage("You must answer correctly before finishing.");
+      return;
+    }
+    document.getElementById("completionModal").style.display = "block";
+  });
+
+  function updateGameUI() {
+    isCorrect = false;
+    document.getElementById("user-input").value = "";
+    document.getElementById("scrambled-word").textContent = scramble(currentWord);
+    document.getElementById("message").className = "message";
+    document.getElementById("message").textContent = "";
+    document.getElementById("round-info").textContent = `Round ${currentIndex + 1} of ${gameWords.length}`;
+    document.getElementById("user-input").focus();
+  }
+
+  function completeGame() {
+    let stars = JSON.parse(localStorage.getItem(starKey)) || {};
+    stars[gameName] = true;
+    localStorage.setItem(starKey, JSON.stringify(stars));
+    
+    let completed = JSON.parse(localStorage.getItem(completeKey)) || {};
+    completed[gameName] = true;
+    localStorage.setItem(completeKey, JSON.stringify(completed));
+    
+    const nextGame = getNextGame(gameName);
+    let unlocked = JSON.parse(localStorage.getItem(unlockedKey)) || {};
+    if (nextGame) {
+      unlocked[nextGame] = true;
+      localStorage.setItem(unlockedKey, JSON.stringify(unlocked));
+    }
+    
+    window.location.href = "/game";
+  }
+
+  function getNextGame(currentGameId) {
+    const gameSequence = ["word_scramble", "tech_trivia", "math_solver", "memory_card"];
+    const currentIndex = gameSequence.indexOf(currentGameId);
+    if (currentIndex !== -1 && currentIndex < gameSequence.length - 1) {
+      return gameSequence[currentIndex + 1];
+    }
+    return null;
+  }
+
+  function showMessage(msg) {
+    const message = document.getElementById("message");
+    message.textContent = msg;
+    message.className = "message show";
+    message.style.color = "#831238";
+  }
+</script>
+</body>
+</html>

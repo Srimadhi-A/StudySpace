@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Data Structures</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Master the fundamental building blocks of efficient algorithms and program design</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Data Structures</h2>
+            <p class="lead">Explore the fundamental concepts of organizing and storing data efficiently</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Arrays</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Linked Lists</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Stacks</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Queues</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Trees</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Concepts</h4>
+                <p>Data structures are defined by several key characteristics:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Abstract Data Types (ADTs)</strong>: Interface vs. implementation</li>
+                    <li><strong class="theory-highlight">Time Complexity</strong>: Big-O notation for operations</li>
+                    <li><strong class="theory-highlight">Space Complexity</strong>: Memory requirements</li>
+                    <li><strong class="theory-highlight">Mutability</strong>: Ability to modify after creation</li>
+                    <li><strong class="theory-highlight">Persistence</strong>: Versioning capabilities</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>Basic Operations</h4>
+                <p>Common operations across data structures:</p>
+                <ol>
+                    <li><strong>Access</strong>: Retrieving an element</li>
+                    <li><strong>Search</strong>: Finding an element</li>
+                    <li><strong>Insertion</strong>: Adding new elements</li>
+                    <li><strong>Deletion</strong>: Removing elements</li>
+                    <li><strong>Traversal</strong>: Processing all elements</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Classification</h4>
+                <p>Main categories of data structures:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Linear</strong>: Arrays, Lists, Stacks, Queues</li>
+                    <li><strong class="theory-highlight">Hierarchical</strong>: Trees, Heaps</li>
+                    <li><strong class="theory-highlight">Graph</strong>: Networks of nodes</li>
+                    <li><strong class="theory-highlight">Hash-based</strong>: Dictionaries, Hash tables</li>
+                    <li><strong class="theory-highlight">Specialized</strong>: Tries, Bloom filters</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Linear Structures <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Linear Data Structures</h2>
+            <p class="lead">Study sequential data organization methods and their applications</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Performance Insight:</strong> Different linear structures optimize for different operation efficiencies.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Arrays</h4>
+                        <p>Contiguous memory allocation:</p>
+                        <ul>
+                            <li>Static vs dynamic arrays</li>
+                            <li>Random access capability</li>
+                            <li>Time complexity analysis</li>
+                            <li>Multi-dimensional arrays</li>
+                            <li>Applications in matrices</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">int arr[10]; // Static array</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Linked Lists</h4>
+                        <p>Node-based sequential access:</p>
+                        <ul>
+                            <li>Singly vs doubly linked</li>
+                            <li>Circular variations</li>
+                            <li>Insertion/deletion efficiency</li>
+                            <li>Memory overhead</li>
+                            <li>Applications in LRU caches</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">struct Node { int data; Node* next; };</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Stacks & Queues</h4>
+                <p>Restricted access linear structures:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Stacks (LIFO)</h5>
+                        <ul>
+                            <li>Push/pop operations</li>
+                            <li>Call stack implementation</li>
+                            <li>Applications in parsing</li>
+                            <li>Undo mechanisms</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Queues (FIFO)</h5>
+                        <ul>
+                            <li>Enqueue/dequeue</li>
+                            <li>Priority queues</li>
+                            <li>Circular buffers</li>
+                            <li>Task scheduling</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">stack.push(item); // LIFO operation</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Performance Comparison</h4>
+                <p>Operation complexities for linear structures:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Array</th>
+                            <th>Linked List</th>
+                            <th>Stack</th>
+                            <th>Queue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Access</td>
+                            <td>O(1)</td>
+                            <td>O(n)</td>
+                            <td>O(n)</td>
+                            <td>O(n)</td>
+                        </tr>
+                        <tr>
+                            <td>Insert</td>
+                            <td>O(n)</td>
+                            <td>O(1)</td>
+                            <td>O(1)</td>
+                            <td>O(1)</td>
+                        </tr>
+                        <tr>
+                            <td>Delete</td>
+                            <td>O(n)</td>
+                            <td>O(1)</td>
+                            <td>O(1)</td>
+                            <td>O(1)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Hierarchical Structures <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Hierarchical Data Structures</h2>
+            <p class="lead">Explore tree-based organizations for efficient searching and sorting</p>
+            
+            <div class="concept-card">
+                <h4>Binary Trees</h4>
+                <p>Fundamental tree structure:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Properties</h5>
+                        <ul>
+                            <li>Maximum 2 children per node</li>
+                            <li>Height vs depth</li>
+                            <li>Complete vs perfect</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Traversals</h5>
+                        <ul>
+                            <li>In-order (LNR)</li>
+                            <li>Pre-order (NLR)</li>
+                            <li>Post-order (LRN)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Expression trees</li>
+                            <li>Decision trees</li>
+                            <li>File systems</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">struct TreeNode { int val; TreeNode *left, *right; };</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Binary Search Trees</h4>
+                <p>Sorted hierarchical structure:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Properties</h5>
+                        <ul>
+                            <li>Left subtree ≤ Node ≤ Right subtree</li>
+                            <li>Average O(log n) operations</li>
+                            <li>Degeneration problem</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Operations</h5>
+                        <ul>
+                            <li>Search/Insert/Delete</li>
+                            <li>Balancing (AVL, Red-Black)</li>
+                            <li>Range queries</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Heaps</h4>
+                <p>Complete binary tree with heap property:</p>
+                <ul>
+                    <li>Min-heap vs max-heap</li>
+                    <li>Priority queue implementation</li>
+                    <li>Heapify operation</li>
+                    <li>Applications in Dijkstra's</li>
+                    <li>Heap sort algorithm</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">priority_queue<int> maxHeap;</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Advanced Trees</h4>
+                <p>Specialized tree structures:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Variants</h5>
+                        <ul>
+                            <li>Tries (Prefix trees)</li>
+                            <li>B-Trees (Database indexing)</li>
+                            <li>Segment Trees (Range queries)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Autocomplete systems</li>
+                            <li>Database engines</li>
+                            <li>Geometric algorithms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Hash-based Structures <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Hash-based Structures</h2>
+            <p class="lead">Study constant-time access data organizations</p>
+            
+            <div class="concept-card">
+                <h4>Hash Tables</h4>
+                <p>Key-value pair storage:</p>
+                <ul>
+                    <li>Hash functions design</li>
+                    <li>Collision resolution</li>
+                    <li>Load factor and rehashing</li>
+                    <li>Time complexity analysis</li>
+                    <li>Applications in caches</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">unordered_map<string, int> hashMap;</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Collision Handling</h4>
+                <p>Managing hash function clashes:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Methods</h5>
+                        <ul>
+                            <li>Separate chaining</li>
+                            <li>Open addressing</li>
+                            <li>Double hashing</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Tradeoffs</h5>
+                        <ul>
+                            <li>Memory vs speed</li>
+                            <li>Cache performance</li>
+                            <li>Clustering issues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Bloom Filters</h4>
+                <p>Probabilistic set membership:</p>
+                <ul>
+                    <li>Space-efficient design</li>
+                    <li>False positives tradeoff</li>
+                    <li>Applications in networking</li>
+                    <li>Counting variants</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Performance Analysis</h4>
+                <p>Average case vs worst case:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Average</th>
+                            <th>Worst</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Search</td>
+                            <td>O(1)</td>
+                            <td>O(n)</td>
+                        </tr>
+                        <tr>
+                            <td>Insert</td>
+                            <td>O(1)</td>
+                            <td>O(n)</td>
+                        </tr>
+                        <tr>
+                            <td>Delete</td>
+                            <td>O(1)</td>
+                            <td>O(n)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Graphs <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Graph Data Structures</h2>
+            <p class="lead">Study network representations and their algorithms</p>
+            
+            <div class="concept-card">
+                <h4>Graph Representations</h4>
+                <p>Different ways to store graphs:</p>
+                <ul>
+                    <li>Adjacency matrix</li>
+                    <li>Adjacency list</li>
+                    <li>Edge list</li>
+                    <li>Incidence matrix</li>
+                    <li>Space-time tradeoffs</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Graph Types</h4>
+                <p>Specialized graph categories:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Variations</h5>
+                        <ul>
+                            <li>Directed vs undirected</li>
+                            <li>Weighted vs unweighted</li>
+                            <li>Cyclic vs acyclic</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Special Graphs</h5>
+                        <ul>
+                            <li>Complete graphs</li>
+                            <li>Bipartite graphs</li>
+                            <li>Trees as graphs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Graph Algorithms</h4>
+                <p>Fundamental graph operations:</p>
+                <ul>
+                    <li>Depth-First Search (DFS)</li>
+                    <li>Breadth-First Search (BFS)</li>
+                    <li>Dijkstra's shortest path</li>
+                    <li>Minimum Spanning Tree</li>
+                    <li>Topological sorting</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">for (auto neighbor : adjList[current]) {...}</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Advanced Topics</h4>
+                <p>Cutting-edge developments:</p>
+                <ul>
+                    <li>Persistent data structures</li>
+                    <li>Concurrent structures</li>
+                    <li>Succinct representations</li>
+                    <li>Probabilistic structures</li>
+                    <li>Cache-oblivious structures</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Data Structures Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Data Structure";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

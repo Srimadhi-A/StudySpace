@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Computing Basics</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- study space in navbar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+  <!--full font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/python.css') }}">
+</head>
+<body>
+  <header>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+              <a class="navbar-brand">Study Space</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ms-auto">
+                      <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+    <section class="course-info">
+      <h2>Learn Cloud Computing Basics</h2>
+      <p><strong>Instructor:</strong> Prof. Sarah Thompson</p>
+      <p>Starts Apr 15</p>
+      <p>45,000 already enrolled</p>
+    </section>
+    <section class="course-details">
+      <div class="modules">
+        <h3>5 modules</h3>
+        <p>Learn cloud models, services, security, and deployment strategies.</p>
+      </div>
+      <div class="rating">
+        <h3>4.7 ★</h3>
+        <p>(3,800 reviews)</p>
+      </div>
+      <div class="time">
+        <h3>10 hours to complete</h3>
+        <p>4 weeks at 2.5 hours a week</p>
+      </div>
+      <div class="flexible">
+        <h3>Flexible schedule</h3>
+        <p>Learn at your own pace</p>
+      </div>
+      <div class="feedback">
+        <h3>94%</h3>
+        <p>Most learners liked this course</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="container1">
+    <h2>Course Modules</h2>
+    <div class="module-section">
+      <!-- Module 1 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 1: Introduction to Cloud Computing</h3>
+        <div class="module-content">
+          <ul>
+            <li>What is Cloud Computing?</li>
+            <li>Benefits and Challenges</li>
+            <li>Public, Private, and Hybrid Clouds</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 2: Cloud Service Models</h3>
+        <div class="module-content">
+          <ul>
+            <li>IaaS, PaaS, SaaS Explained</li>
+            <li>Use Cases and Examples</li>
+            <li>Service Selection Strategies</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 3: Deployment and Management</h3>
+        <div class="module-content">
+          <ul>
+            <li>Deploying Applications in the Cloud</li>
+            <li>Virtual Machines vs Containers</li>
+            <li>Popular Platforms: AWS, Azure, GCP</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 4: Cloud Security and Compliance</h3>
+        <div class="module-content">
+          <ul>
+            <li>Cloud Security Principles</li>
+            <li>Data Privacy & Encryption</li>
+            <li>Compliance Standards (GDPR, HIPAA)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 5: Trends and Future of Cloud</h3>
+        <div class="module-content">
+          <ul>
+            <li>Edge Computing & Serverless</li>
+            <li>Multi-Cloud Strategies</li>
+            <li>Emerging Technologies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- What You Will Learn Section -->
+    <div class="learn-section">
+      <h3>What You Will Learn in Study Space</h3>
+      <ul>
+        <li>Grasp essential cloud computing concepts and terminology.</li>
+        <li>Differentiate between IaaS, PaaS, and SaaS service models.</li>
+        <li>Deploy and manage applications on top cloud platforms.</li>
+        <li>Understand security, privacy, and compliance in the cloud.</li>
+        <li>Explore the future of cloud computing and industry trends.</li>
+      </ul>
+    </div>
+
+    {% if enrolled %}
+      <a href="{{ url_for('cloudcourse') }}" class="btn btn-success">
+        Start Learning
+      </a>
+    {% else %}
+      <form action="{{ url_for('enroll') }}" method="POST">
+        <input type="hidden" name="course_id" value="6">
+        <input type="hidden" name="course_name" value="Cloud Computing Basics">
+        <input type="hidden" name="course_cost" value="999">
+        <input type="hidden" name="course_duration" value="4 weeks">
+        <button type="submit" class="enroll-btn">Enroll Now</button>
+      </form>
+    {% endif %}
+
+    <!-- Enroll Message -->
+    <div id="enrollMessage" class="enroll-message">You have successfully enrolled!</div>
+  </div>
+
+  <script>
+    // Toggle module content visibility
+    function toggleModule(module) {
+      const content = module.nextElementSibling;
+      content.classList.toggle("open");
+      module.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>

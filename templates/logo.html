@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpace</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .logo-container {
+            opacity: 0;
+            transform: scale(0.5);
+            animation: fadeInScale 1.5s ease-out forwards;
+        }
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+     <script>
+        setTimeout(function() {
+            window.location.href = "/signup";
+        }, 5000); // Redirect after 5 seconds
+    </script>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="/static/images/sslogo.png" alt="logo" width="200">
+    </div>
+</body>
+</html>

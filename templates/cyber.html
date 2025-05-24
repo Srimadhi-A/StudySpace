@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cybersecurity Password Guessing Game</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #831238;
+      --primary-dark: #631026;
+      --primary-light: #a34252;
+      --accent-color: #f8c537;
+      --light-bg: #f9f3f5;
+      --success-color: #2ecc71;
+      --error-color: #e74c3c;
+    }
+    
+    body {
+      font-family: "Philosopher", sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: var(--light-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(circle at 10% 20%, rgba(255, 200, 200, 0.1) 0%, rgba(255, 255, 255, 0.9) 90%);
+    }
+    
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    .game-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(131, 18, 56, 0.15);
+      margin-top: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .game-container:hover {
+      box-shadow: 0 15px 35px rgba(131, 18, 56, 0.2);
+    }
+    
+    .game-description {
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .hint-container {
+      background-color: rgba(131, 18, 56, 0.1);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+    
+    input {
+      padding: 14px 20px;
+      font-size: 16px;
+      width: 100%;
+      border: 2px solid var(--primary-color);
+      border-radius: 8px;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(131, 18, 56, 0.2);
+    }
+    
+    button {
+      padding: 14px 28px;
+      font-size: 1rem;
+      margin-top: 15px;
+      background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 8px rgba(131, 18, 56, 0.3);
+    }
+    
+    button:hover {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(131, 18, 56, 0.4);
+    }
+    
+    button:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    #feedback {
+      margin-top: 20px;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 8px;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .success {
+      color: var(--success-color);
+      background-color: rgba(46, 204, 113, 0.1);
+      border: 1px solid var(--success-color);
+    }
+    
+    .failure {
+      color: var(--error-color);
+      background-color: rgba(231, 76, 60, 0.1);
+      border: 1px solid var(--error-color);
+    }
+    
+    .attempts-counter {
+      font-size: 1.2rem;
+      margin: 15px 0;
+      color: var(--primary-dark);
+      font-weight: bold;
+    }
+    
+    .attempts-counter span {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+    
+    #finish-game {
+      display: none;
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      position: relative;
+      animation: slideDown 0.4s ease;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .modal-content p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: var(--primary-dark);
+      line-height: 1.6;
+    }
+    
+    .modal-content button {
+      background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(131, 18, 56, 0.3);
+    }
+    
+    .modal-content button:hover {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(131, 18, 56, 0.4);
+    }
+    
+    .star-icon {
+      font-size: 3.5rem;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .game-container {
+        padding: 20px;
+      }
+      
+      input {
+        padding: 12px 15px;
+      }
+      
+      button {
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cybersecurity Password Guessing Game</h1>
+    
+    <div class="game-container">
+      <p class="game-description">Your mission is to crack the secret password using the hints provided.</p>
+      
+      <div class="hint-container">
+        <p>Initial Hint: <span id="initialHint"></span></p>
+      </div>
+
+      <input type="text" id="passwordGuess" maxlength="10" placeholder="Enter your guess..." />
+      
+      <button onclick="checkGuess()">
+        <i class="fas fa-lock-open"></i> Submit Guess
+      </button>
+
+      <div id="feedback"></div>
+      
+      <p class="attempts-counter">
+        Attempts Left: <span id="attempts">5</span>
+      </p>
+      
+      <div class="hint-container">
+        <p>Current Hint: <span id="hint"></span></p>
+      </div>
+
+      <button id="finish-game" onclick="completeGame()">
+        <i class="fas fa-trophy"></i> Finish Game
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="completionModal" class="modal">
+    <div class="modal-content">
+      <div class="star-icon">🌟</div>
+      <p>Congratulations! You've completed the Cybersecurity Challenge and earned 1 star!</p>
+      <button onclick="closeModalAndRedirect()">Continue</button>
+    </div>
+  </div>
+
+  <script>
+    const secretPassword = "cyber123";
+    let attemptsLeft = 5;
+
+    const username = "{{ username }}";  // Must be passed from Flask
+    const storageKey = `completedGames_${username}`;
+    const starKey = `gameStars_${username}`;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("initialHint").textContent = generateInitialHint();
+    });
+
+    function generateInitialHint() {
+      return secretPassword.slice(0, 3) + "_".repeat(secretPassword.length - 3);
+    }
+
+    function generateHint(userGuess) {
+      let hint = "";
+      for (let i = 0; i < secretPassword.length; i++) {
+        hint += userGuess[i] === secretPassword[i] ? userGuess[i] : "_";
+      }
+      return hint;
+    }
+
+    function checkGuess() {
+      const userGuess = document.getElementById("passwordGuess").value;
+      const feedback = document.getElementById("feedback");
+      const attempts = document.getElementById("attempts");
+      const hint = document.getElementById("hint");
+      const finishButton = document.getElementById("finish-game");
+      const guessInput = document.getElementById("passwordGuess");
+
+      if (userGuess === secretPassword) {
+        feedback.textContent = "Access Granted! You've successfully cracked the password!";
+        feedback.className = "success";
+        attempts.textContent = "0";
+        hint.textContent = secretPassword;
+        guessInput.disabled = true;
+        finishButton.style.display = "block";
+        
+        // Add celebration effect
+        document.querySelector('.game-container').classList.add('celebrate');
+      } else {
+        attemptsLeft--;
+        attempts.textContent = attemptsLeft;
+        hint.textContent = generateHint(userGuess);
+        feedback.textContent = "Access Denied! Incorrect password. Try again!";
+        feedback.className = "failure";
+        
+        // Shake animation for wrong guess
+        guessInput.classList.add('shake');
+        setTimeout(() => {
+          guessInput.classList.remove('shake');
+        }, 500);
+
+        if (attemptsLeft === 0) {
+          feedback.textContent = `Security Lockout! The correct password was "${secretPassword}".`;
+          feedback.className = "failure";
+          guessInput.disabled = true;
+          finishButton.style.display = "block";
+        }
+      }
+
+      guessInput.value = '';
+    }
+
+    function completeGame() {
+      let completedGames = JSON.parse(localStorage.getItem(storageKey)) || [];
+      let stars = JSON.parse(localStorage.getItem(starKey)) || {};
+
+      if (!completedGames.includes("cyber")) {
+        completedGames.push("cyber");
+        localStorage.setItem(storageKey, JSON.stringify(completedGames));
+      }
+
+      if (!stars["cyber"]) {
+        stars["cyber"] = true;
+        localStorage.setItem(starKey, JSON.stringify(stars));
+      }
+
+      // Show modal with animation
+      document.getElementById("completionModal").style.display = "block";
+    }
+
+    function closeModalAndRedirect() {
+      document.getElementById("completionModal").style.display = "none";
+      window.location.href = "/game";
+    }
+    
+    // Allow pressing Enter to submit guess
+    document.getElementById("passwordGuess").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        checkGuess();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpace | Sign Up</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+    
+</head>
+<body>
+    <div class="split-container">
+        <!-- Left Side - Image/Content -->
+        <div class="left-side">
+            <div class="education-content">
+                <h1>Join Our Learning Community</h1>
+                <p class="subtitle">Access premium educational resources, connect with mentors, and track your learning progress.</p>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Personalized Learning Paths</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Expert Instructors</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-book-open"></i>
+                        <span>Comprehensive Resources</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Progress Tracking</span>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    <blockquote>
+                        "Education is the most powerful weapon which you can use to change the world."
+                        <cite>- Nelson Mandela</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Signup Form -->
+        <div class="right-side">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Create Your Account</h2>
+                </div>
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+                <form action="{{ url_for('signup') }}" class="edu-form" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="username" name="username" required placeholder="Enter your username">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" required placeholder="Create a password">
+                            <button type="button" class="toggle-password"> <small id="password-strength" style="color: gray; font-weight: bold;"></small>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group terms">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                    
+                    <button type="submit" class="signup-btn">
+                        <span class="btn-text">Sign Up</span>
+                    </button>
+                </form>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <div class="login-link">
+                    Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle
+            const toggleBtn = document.querySelector('.toggle-password');
+            const passwordInput = document.getElementById('password');
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    
+                    icon.classList.toggle('fa-eye');
+                    icon.classList.toggle('fa-eye-slash');
+                });
+            }
+            
+            // Form submission effect
+            const form = document.querySelector('.edu-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const btn = this.querySelector('.signup-btn');
+                    if (btn) {
+                        btn.classList.add('loading');
+                        btn.querySelector('.btn-text').textContent = 'Creating Account...';
+                    }
+                });
+            }
+        });
+        const passwordStrengthText = document.getElementById('password-strength');
+
+passwordInput.addEventListener('input', function() {
+    const password = passwordInput.value;
+    let strength = '';
+
+    if (password.length === 0) {
+        strength = '';
+        passwordStrengthText.style.color = 'gray';
+    } else if (password.length < 8) {
+        strength = 'Too short';
+        passwordStrengthText.style.color = 'red';
+    } else {
+        const hasUpper = /[A-Z]/.test(password);
+        const hasLower = /[a-z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecial = /[!@#\$%\^\&*\)\(+=._-]/.test(password);
+
+        if (hasUpper && hasLower && hasNumber && hasSpecial) {
+            strength = 'Strong';
+            passwordStrengthText.style.color = 'green';
+        } else if ((hasUpper && hasLower && hasNumber) || 
+                   (hasLower && hasNumber && hasSpecial) ||
+                   (hasUpper && hasNumber && hasSpecial)) {
+            strength = 'Medium';
+            passwordStrengthText.style.color = 'orange';
+        } else {
+            strength = 'Weak';
+            passwordStrengthText.style.color = 'red';
+        }
+    }
+
+    passwordStrengthText.textContent = strength;
+});
+
+    </script>
+</body>
+</html>

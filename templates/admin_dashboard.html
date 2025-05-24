@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/admin_dashboard.css') }}" rel="stylesheet">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark p-3">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#">Admin Dashboard</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-light logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Tabs Navigation -->
+    <div class="container mt-4">
+        <ul class="nav nav-tabs" id="adminTabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#top_courses">Top Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#user_enrollments">User Enrollments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#payments">Payments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#revenue">Total Revenue</a>
+            </li>
+        </ul>
+
+        <!-- Tabs Content -->
+        <div class="tab-content mt-3">
+            
+            <!-- Top Courses -->
+            <div id="top_courses" class="tab-pane fade show active">
+                <div class="card p-3">
+                    <h3>Top Performing Courses</h3>
+                    <table class="table table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Enrollments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for course in top_courses %}
+                            <tr>
+                                <td>{{ course[0] }}</td> <!-- Course Name -->
+                                <td>{{ course[1] }}</td> <!-- Number of Enrollments -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- User Enrollments -->
+            <div id="user_enrollments" class="tab-pane fade">
+                <div class="card p-3">
+                    <h3>User Enrollments</h3>
+                    <table class="table table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Enrollment ID</th>
+                                <th>Username</th>
+                                <th>Course Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for enrollment in enrollments %}
+                            <tr>
+                                <td>{{ enrollment.id }}</td>
+                                <td>{{ enrollment.username }}</td>
+                                <td>{{ enrollment.course_name }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payments -->
+            <div id="payments" class="tab-pane fade">
+                <div class="card p-3">
+                    <h3>Payment Details</h3>
+                    <table class="table table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Course Name</th>
+                                <th>Course Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for enrollment in enrollments %}
+                            <tr>
+                                <td>{{ enrollment.username }}</td>
+                                <td>{{ enrollment.course_name }}</td>
+                                <td>{{ enrollment.course_cost }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Total Revenue -->
+            <div id="revenue" class="tab-pane fade">
+                <div class="card p-3 text-center">
+                    <h3>Total Revenue</h3>
+                    <h2 class="text-success">₹{{ total_revenue }}</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps: Basic to Advanced</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- study space in navbar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+  <!-- full font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/python.css') }}">
+</head>
+<body>
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+  <main>
+    <section class="course-info">
+      <h2>Learn DevOps: Basic to Advanced</h2>
+      <p><strong>Instructors:</strong> James Gibbons</p>
+      <p>Starts Jan 13</p>
+      <p>55,068 already enrolled</p>
+    </section>
+    <section class="course-details">
+      <div class="modules">
+        <h3>5 modules</h3>
+        <p>Gain insight into DevOps practices and tools to automate and streamline your software development lifecycle.</p>
+      </div>
+      <div class="rating">
+        <h3>4.7 ★</h3>
+        <p>(3,105 reviews)</p>
+      </div>
+      <div class="time">
+        <h3>8 hours to complete</h3>
+        <p>3 weeks at 2 hours a week</p>
+      </div>
+      <div class="flexible">
+        <h3>Flexible schedule</h3>
+        <p>Learn at your own pace</p>
+      </div>
+      <div class="feedback">
+        <h3>98%</h3>
+        <p>Most learners liked this course</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="container1">
+    <h2>Course Modules</h2>
+    <div class="module-section">
+      <!-- Module 1 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 1: Introduction to DevOps</h3>
+        <div class="module-content">
+          <ul>
+            <li>What is DevOps?</li>
+            <li>DevOps Lifecycle</li>
+            <li>DevOps vs Traditional Software Development</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 2: Continuous Integration and Continuous Deployment (CI/CD)</h3>
+        <div class="module-content">
+          <ul>
+            <li>Setting up CI/CD pipelines</li>
+            <li>Version Control with Git</li>
+            <li>Automating Builds and Deployments</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 3: Infrastructure as Code (IaC)</h3>
+        <div class="module-content">
+          <ul>
+            <li>Introduction to IaC</li>
+            <li>Working with Terraform</li>
+            <li>Provisioning Cloud Infrastructure</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 4: Monitoring and Logging in DevOps</h3>
+        <div class="module-content">
+          <ul>
+            <li>Setting up Monitoring with Prometheus</li>
+            <li>Using Grafana for Visualizing Metrics</li>
+            <li>Log Management with ELK Stack</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="module">
+        <h3 onclick="toggleModule(this)">Module 5: DevOps Project</h3>
+        <div class="module-content">
+          <ul>
+            <li>Building a Complete CI/CD Pipeline</li>
+            <li>Automating Infrastructure with Terraform</li>
+            <li>Deploying a Web Application with Docker</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- What You Will Learn Section -->
+    <div class="learn-section">
+      <h3>What You Will Learn in Study Space</h3>
+      <ul>
+        <li>Understand the fundamentals of DevOps culture and practices.</li>
+        <li>Set up CI/CD pipelines for automated builds and deployments.</li>
+        <li>Automate cloud infrastructure provisioning using Infrastructure as Code.</li>
+        <li>Monitor application performance and logs using industry-standard tools.</li>
+        <li>Build and deploy applications in a production-like environment.</li>
+      </ul>
+    </div>
+    {% if enrolled %}
+    <a href="{{ url_for('devopscourse') }}" class="btn btn-success">
+        Start Learning
+    </a>
+    {% else %}
+    <form action="{{ url_for('enroll') }}" method="POST">
+      <input type="hidden" name="course_id" value="9">
+      <input type="hidden" name="course_name" value="DevOps">
+      <input type="hidden" name="course_cost" value="799">
+      <input type="hidden" name="course_duration" value="3 weeks">
+
+      <button type="submit" class="enroll-btn">Enroll Now</button>
+    </form>
+    {% endif %}
+  </div>
+
+  <script>
+    // Toggle module content visibility
+    function toggleModule(module) {
+      const content = module.nextElementSibling;
+      content.classList.toggle("open");
+      module.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>

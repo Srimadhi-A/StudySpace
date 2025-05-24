@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <!-- Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Data Science</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Master the fundamental concepts and theoretical foundations of modern data science</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Data Science Theory</h2>
+            <p class="lead">Explore the theoretical foundations that underpin modern data science practices and methodologies.</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Mathematics</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Statistics</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Computer Science</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Domain Knowledge</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Algorithms</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Theoretical Concepts</h4>
+                <p>Data science is built upon several foundational theoretical disciplines:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Probability Theory</strong>: The mathematical framework for uncertainty quantification</li>
+                    <li><strong class="theory-highlight">Statistical Inference</strong>: Methods for drawing conclusions from data</li>
+                    <li><strong class="theory-highlight">Linear Algebra</strong>: The mathematics of vectors and matrices</li>
+                    <li><strong class="theory-highlight">Optimization</strong>: Techniques for finding optimal solutions</li>
+                    <li><strong class="theory-highlight">Computational Complexity</strong>: Understanding algorithm efficiency</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>The Data Science Process</h4>
+                <p>From a theoretical perspective, the data science workflow involves:</p>
+                <ol>
+                    <li><strong>Problem Formalization</strong>: Defining the problem in mathematical terms</li>
+                    <li><strong>Data Generation Process</strong>: Understanding how data is created</li>
+                    <li><strong>Model Specification</strong>: Choosing appropriate mathematical models</li>
+                    <li><strong>Estimation</strong>: Determining model parameters from data</li>
+                    <li><strong>Validation</strong>: Assessing model performance theoretically</li>
+                    <li><strong>Interpretation</strong>: Extracting meaningful insights</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Key Theoretical Challenges</h4>
+                <p>Understanding these challenges is crucial for robust data science:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Bias-Variance Tradeoff</strong>: The fundamental tension in model complexity</li>
+                    <li><strong class="theory-highlight">Curse of Dimensionality</strong>: Challenges in high-dimensional spaces</li>
+                    <li><strong class="theory-highlight">Overfitting</strong>: When models learn noise instead of signal</li>
+                    <li><strong class="theory-highlight">Causality vs Correlation</strong>: The distinction between association and causation</li>
+                    <li><strong class="theory-highlight">Algorithmic Fairness</strong>: Theoretical frameworks for unbiased models</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Theoretical Foundations <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Theoretical Foundations of Data Science</h2>
+            <p class="lead">Dive deeper into the mathematical and statistical theories that form the backbone of data science.</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Theoretical Insight:</strong> Understanding these foundations enables you to choose appropriate methods and interpret results correctly.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Probability Theory</h4>
+                        <p>The mathematical language of uncertainty:</p>
+                        <ul>
+                            <li>Random variables and distributions</li>
+                            <li>Bayes' Theorem and conditional probability</li>
+                            <li>Expectation and variance</li>
+                            <li>Law of Large Numbers</li>
+                            <li>Central Limit Theorem</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">P(A|B) = P(B|A)P(A)/P(B)</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Statistical Learning Theory</h4>
+                        <p>Framework for understanding machine learning:</p>
+                        <ul>
+                            <li>Empirical Risk Minimization</li>
+                            <li>VC dimension and model complexity</li>
+                            <li>PAC learning framework</li>
+                            <li>Regularization theory</li>
+                            <li>Generalization bounds</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">R(h) ≤ R_emp(h) + Φ(n, H, δ)</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Linear Algebra in Data Science</h4>
+                <p>Essential for understanding algorithms and data representations:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Vector Spaces</h5>
+                        <ul>
+                            <li>Basis and dimension</li>
+                            <li>Linear transformations</li>
+                            <li>Eigenvalues/vectors</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Matrix Operations</h5>
+                        <ul>
+                            <li>Matrix decompositions</li>
+                            <li>Singular Value Decomposition</li>
+                            <li>Positive definite matrices</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Principal Component Analysis</li>
+                            <li>Recommendation systems</li>
+                            <li>Neural networks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Optimization Theory</h4>
+                <p>Mathematical foundation for learning algorithms:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Convex Optimization</h5>
+                        <ul>
+                            <li>Convex sets and functions</li>
+                            <li>Gradient descent</li>
+                            <li>Lagrange multipliers</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Stochastic Optimization</h5>
+                        <ul>
+                            <li>Stochastic gradient descent</li>
+                            <li>Mini-batch methods</li>
+                            <li>Convergence analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">w_{t+1} = w_t - η∇L(w_t)</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Algorithmic Theory <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Algorithmic Theory in Data Science</h2>
+            <p class="lead">Explore the theoretical aspects of algorithms used in data processing and machine learning.</p>
+            
+            <div class="concept-card">
+                <h4>Computational Complexity</h4>
+                <p>Understanding the efficiency of algorithms:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Time Complexity</h5>
+                        <ul>
+                            <li>Big-O notation</li>
+                            <li>Polynomial vs exponential</li>
+                            <li>NP-completeness</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Space Complexity</h5>
+                        <ul>
+                            <li>Memory requirements</li>
+                            <li>Tradeoffs</li>
+                            <li>Streaming algorithms</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Practical Implications</h5>
+                        <ul>
+                            <li>Scalability</li>
+                            <li>Approximation algorithms</li>
+                            <li>Parallel computing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">O(n log n) - Sorting complexity</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Machine Learning Theory</h4>
+                <p>Theoretical foundations of learning algorithms:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Supervised Learning</h5>
+                        <ul>
+                            <li>Probably Approximately Correct (PAC) learning</li>
+                            <li>VC dimension</li>
+                            <li>Kernel methods</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Unsupervised Learning</h5>
+                        <ul>
+                            <li>Clustering theory</li>
+                            <li>Dimensionality reduction</li>
+                            <li>Manifold learning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Neural Network Theory</h4>
+                <p>Mathematical foundations of deep learning:</p>
+                <ul>
+                    <li>Universal approximation theorem</li>
+                    <li>Backpropagation theory</li>
+                    <li>Vanishing/exploding gradients</li>
+                    <li>Attention mechanisms</li>
+                    <li>Geometric deep learning</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">σ(Wx + b) - Neural network unit</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Algorithmic Fairness</h4>
+                <p>Theoretical frameworks for ethical AI:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Fairness Metrics</h5>
+                        <ul>
+                            <li>Demographic parity</li>
+                            <li>Equalized odds</li>
+                            <li>Individual fairness</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Approaches</h5>
+                        <ul>
+                            <li>Pre-processing methods</li>
+                            <li>In-processing constraints</li>
+                            <li>Post-processing adjustments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Advanced Topics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Advanced Theoretical Topics</h2>
+            <p class="lead">Explore cutting-edge theoretical developments in data science and machine learning.</p>
+            
+            <div class="concept-card">
+                <h4>Causal Inference</h4>
+                <p>Moving beyond correlation to causation:</p>
+                <ul>
+                    <li>Structural causal models</li>
+                    <li>Do-calculus</li>
+                    <li>Instrumental variables</li>
+                    <li>Counterfactual reasoning</li>
+                    <li>Potential outcomes framework</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">P(Y|do(X)) - Causal effect</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Bayesian Nonparametrics</h4>
+                <p>Flexible modeling approaches:</p>
+                <ul>
+                    <li>Dirichlet processes</li>
+                    <li>Gaussian processes</li>
+                    <li>Hierarchical models</li>
+                    <li>Chinese restaurant process</li>
+                    <li>Applications to clustering</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Reinforcement Learning Theory</h4>
+                <p>Mathematical foundations of sequential decision making:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Key Concepts</h5>
+                        <ul>
+                            <li>Markov Decision Processes</li>
+                            <li>Bellman equations</li>
+                            <li>Value iteration</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Advanced Topics</h5>
+                        <ul>
+                            <li>Policy gradients</li>
+                            <li>Q-learning convergence</li>
+                            <li>Multi-agent systems</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">V(s) = max_a [R(s,a) + γΣP(s'|s,a)V(s')]</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Information Theory in ML</h4>
+                <p>Quantifying information in learning systems:</p>
+                <ul>
+                    <li>Entropy and mutual information</li>
+                    <li>Information bottleneck</li>
+                    <li>Minimum description length</li>
+                    <li>Rate-distortion theory</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">H(X) = -Σp(x)log p(x)</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Final Module <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Putting Theory into Practice</h2>
+            <p class="lead">Bridging the gap between theoretical concepts and practical applications.</p>
+            
+            <div class="concept-card">
+                <h4>From Theory to Implementation</h4>
+                <p>Key considerations when applying theory:</p>
+                <ul>
+                    <li>Approximations of theoretical models</li>
+                    <li>Computational constraints</li>
+                    <li>Data quality issues</li>
+                    <li>Model interpretability</li>
+                    <li>Ethical implications</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Case Studies</h4>
+                <p>Examples where theory informed practice:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Recommendation Systems</h5>
+                        <ul>
+                            <li>Matrix factorization theory</li>
+                            <li>Collaborative filtering</li>
+                            <li>Cold start problem</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Computer Vision</h5>
+                        <ul>
+                            <li>Convolutional neural networks</li>
+                            <li>Invariance theory</li>
+                            <li>Geometric deep learning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Current Research Frontiers</h4>
+                <p>Emerging theoretical directions:</p>
+                <ul>
+                    <li>Federated learning theory</li>
+                    <li>Neural tangent kernel</li>
+                    <li>Geometric deep learning</li>
+                    <li>Quantum machine learning</li>
+                    <li>Neural ODEs</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Resources for Further Study</h4>
+                <p>Continue your theoretical journey:</p>
+                <ul>
+                    <li>Foundational textbooks</li>
+                    <li>Research papers and conferences</li>
+                    <li>Online courses</li>
+                    <li>Research blogs</li>
+                    <li>Open-source implementations</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Theory of Data Science Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Data Science";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math Solver Race</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Main Styling */
+    body {
+      font-family: "Philosopher", sans-serif;
+      text-align: center;
+      background-color: #fff9fb;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      background-image: radial-gradient(circle at 10% 20%, rgba(248, 231, 238, 0.8) 0%, rgba(255, 255, 255, 0.9) 90%);
+    }
+
+    h1 {
+      color: #831238;
+      margin: 20px 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #831238, #a31846);
+      border-radius: 2px;
+    }
+
+    /* Track Styling */
+    .track {
+      position: relative;
+      width: 90%;
+      height: 200px;
+      margin: 30px auto;
+      background-color: #f4c6cc;
+      border: 4px solid #831238;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(131, 18, 56, 0.2);
+      overflow: hidden;
+    }
+
+    .track::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    }
+
+    /* Car Styling */
+    .car {
+      position: absolute;
+      bottom: 30px;
+      left: 20px;
+      width: 60px;
+      height: 40px;
+      background: linear-gradient(135deg, #d32f2f, #b71c1c);
+      border-radius: 8px;
+      transition: left 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .car::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      height: 15px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 4px;
+    }
+
+    /* Math Question Styling */
+    .math-question {
+      font-size: 1.8rem;
+      margin: 25px 0;
+      color: #831238;
+      font-weight: bold;
+      padding: 15px;
+      background-color: rgba(131, 18, 56, 0.1);
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Input Styling */
+    input {
+      padding: 12px 15px;
+      font-size: 1.2rem;
+      margin: 15px 10px;
+      border: 2px solid #831238;
+      border-radius: 8px;
+      text-align: center;
+      color: #831238;
+      transition: all 0.3s;
+      width: 200px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #a31846;
+      box-shadow: 0 0 0 3px rgba(131, 18, 56, 0.2);
+    }
+
+    /* Button Styling */
+    button {
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: linear-gradient(135deg, #831238, #a31846);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      font-weight: bold;
+      box-shadow: 0 5px 10px rgba(131, 18, 56, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #9a1a45, #831238);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(131, 18, 56, 0.4);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    /* Info Display Styling */
+    .timer, .score, .question-count {
+      margin: 15px 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #831238;
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: rgba(131, 18, 56, 0.1);
+      border-radius: 50px;
+      margin: 10px;
+    }
+
+    /* Game Containers */
+    #game-container {
+      display: block;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(131, 18, 56, 0.15);
+      max-width: 600px;
+      margin: 20px auto;
+      border-top: 8px solid #831238;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #game-container::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: rgba(131, 18, 56, 0.05);
+      border-radius: 50%;
+    }
+
+    #result-container {
+      display: none;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(131, 18, 56, 0.15);
+      max-width: 500px;
+      margin: 20px auto;
+      border-top: 8px solid #831238;
+    }
+
+    #result-container h2 {
+      color: #831238;
+      margin-bottom: 20px;
+    }
+
+    #final-score {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .math-question {
+        font-size: 1.5rem;
+      }
+      
+      input {
+        width: 80%;
+        font-size: 1.1rem;
+      }
+      
+      button {
+        width: 80%;
+        margin: 10px auto;
+      }
+      
+      .timer, .score, .question-count {
+        display: block;
+        margin: 10px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Math Solver Race</h1>
+
+  <div id="game-container">
+    <div class="track">
+      <div class="car" id="car"></div>
+    </div>
+    <div class="math-question" id="question">Solve: 5 + 3</div>
+    <input type="number" id="answer" placeholder="Your answer" autocomplete="off">
+    <button onclick="checkAnswer()">Submit</button>
+    <div class="question-count">Question: <span id="questionCount">1</span>/10</div>
+    <div class="timer">Time left: <span id="timer">60</span> seconds</div>
+    <div class="score">Score: <span id="score">0</span></div>
+  </div>
+
+  <div id="result-container">
+    <h2>Game Completed!</h2>
+    <p id="final-score">Your final score: 0</p>
+    <button id="gameButton" onclick="goToGamePage()">Go to Game Page</button>
+  </div>
+
+  <script>
+    const car = document.getElementById("car");
+    const question = document.getElementById("question");
+    const answerInput = document.getElementById("answer");
+    const timerDisplay = document.getElementById("timer");
+    const scoreDisplay = document.getElementById("score");
+    const questionCountDisplay = document.getElementById("questionCount");
+    const gameContainer = document.getElementById("game-container");
+    const resultContainer = document.getElementById("result-container");
+    const finalScoreDisplay = document.getElementById("final-score");
+
+    let score = 0;
+    let timeLeft = 60;
+    let currentAnswer;
+    let timerInterval;
+    let questionCount = 0;
+    const maxQuestions = 10;
+    const trackWidth = document.querySelector(".track").offsetWidth - 60;
+
+    function generateQuestion() {
+      const num1 = Math.floor(Math.random() * 10) + 1;
+      const num2 = Math.floor(Math.random() * 10) + 1;
+      const operators = ["+", "-", "*"];
+      const operator = operators[Math.floor(Math.random() * operators.length)];
+      currentAnswer = eval(`${num1} ${operator} ${num2}`);
+      question.textContent = `Solve: ${num1} ${operator} ${num2}`;
+      questionCountDisplay.textContent = questionCount + 1;
+      answerInput.focus();
+    }
+
+    function checkAnswer() {
+      const playerAnswer = parseInt(answerInput.value);
+      if (playerAnswer === currentAnswer) {
+        score++;
+        moveCar();
+        scoreDisplay.textContent = score;
+      }
+
+      questionCount++;
+      if (questionCount >= maxQuestions) {
+        endGame();
+      } else {
+        generateQuestion();
+      }
+
+      answerInput.value = "";
+    }
+
+    function moveCar() {
+      const currentLeft = parseInt(getComputedStyle(car).left) || 0;
+      const newLeft = currentLeft + (trackWidth / maxQuestions);
+      car.style.left = `${Math.min(newLeft, trackWidth)}px`;
+      
+      // Add celebration effect when reaching the end
+      if (newLeft >= trackWidth) {
+        car.style.animation = "celebrate 0.5s";
+        setTimeout(() => car.style.animation = "", 500);
+      }
+    }
+
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          endGame();
+        }
+      }, 1000);
+    }
+
+    function endGame() {
+      clearInterval(timerInterval);
+      gameContainer.style.display = "none";
+      resultContainer.style.display = "block";
+      finalScoreDisplay.textContent = `Your final score: ${score}`;
+      saveGameCompletion();
+    }
+
+    function saveGameCompletion() {
+      const username = "guest";
+      const completeKey = "gameCompleted_" + username;
+      const unlockedKey = "gameUnlocked_" + username;
+      const starKey = "gameStars_" + username;
+
+      let completed = JSON.parse(localStorage.getItem(completeKey)) || {};
+      let unlocked = JSON.parse(localStorage.getItem(unlockedKey)) || {};
+      let stars = JSON.parse(localStorage.getItem(starKey)) || {};
+
+      completed["maths"] = true;
+      localStorage.setItem(completeKey, JSON.stringify(completed));
+
+      stars["maths"] = 1;
+      localStorage.setItem(starKey, JSON.stringify(stars));
+
+      unlocked["fraction"] = true;
+      localStorage.setItem(unlockedKey, JSON.stringify(unlocked));
+    }
+
+    function goToGamePage() {
+      window.location.href = "{{ url_for('game') }}";
+    }
+
+    // Add animation for celebration
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes celebrate {
+        0%, 100% { transform: translateY(0); }
+        25% { transform: translateY(-10px); }
+        50% { transform: translateY(0); }
+        75% { transform: translateY(-5px); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Start the game
+    generateQuestion();
+    startTimer();
+  </script>
+</body>
+</html>

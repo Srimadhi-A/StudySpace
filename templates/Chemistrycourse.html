@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Chemistry</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Explore the science of matter and its transformations</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Chemistry</h2>
+            <p class="lead">Fundamental concepts of matter and its interactions</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Atoms</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Elements</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Compounds</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Reactions</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Energy</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Concepts</h4>
+                <p>Chemistry is built on several fundamental principles:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Atomic Theory</strong>: Structure of atoms</li>
+                    <li><strong class="theory-highlight">Periodic Table</strong>: Organization of elements</li>
+                    <li><strong class="theory-highlight">Chemical Bonding</strong>: Ionic, covalent, metallic</li>
+                    <li><strong class="theory-highlight">States of Matter</strong>: Solids, liquids, gases</li>
+                    <li><strong class="theory-highlight">Conservation Laws</strong>: Mass and energy</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>Branches of Chemistry</h4>
+                <p>Major areas of chemical study:</p>
+                <ol>
+                    <li><strong>Organic Chemistry</strong>: Carbon compounds</li>
+                    <li><strong>Inorganic Chemistry</strong>: Non-carbon compounds</li>
+                    <li><strong>Physical Chemistry</strong>: Physics of chemical systems</li>
+                    <li><strong>Analytical Chemistry</strong>: Composition analysis</li>
+                    <li><strong>Biochemistry</strong>: Chemistry of living organisms</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Scientific Method</h4>
+                <p>Chemistry's approach to investigation:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Observation</strong>: Noticing phenomena</li>
+                    <li><strong class="theory-highlight">Hypothesis</strong>: Proposed explanation</li>
+                    <li><strong class="theory-highlight">Experiment</strong>: Controlled testing</li>
+                    <li><strong class="theory-highlight">Analysis</strong>: Data interpretation</li>
+                    <li><strong class="theory-highlight">Conclusion</strong>: Theory development</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Atomic Structure <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Atomic Structure</h2>
+            <p class="lead">The building blocks of matter</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Quantum Insight:</strong> Atoms are mostly empty space - if an atom were the size of a football stadium, the nucleus would be a marble at center field.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Subatomic Particles</h4>
+                        <p>Components of atoms:</p>
+                        <ul>
+                            <li><strong>Protons</strong>: Positive charge, nucleus</li>
+                            <li><strong>Neutrons</strong>: Neutral, nucleus</li>
+                            <li><strong>Electrons</strong>: Negative charge, orbitals</li>
+                            <li><strong>Quarks</strong>: Protons/neutrons components</li>
+                            <li><strong>Antimatter</strong>: Opposite counterparts</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Stylised_Lithium_Atom.svg/1200px-Stylised_Lithium_Atom.svg.png" alt="Atomic structure" style="max-width: 200px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Electron Configuration</h4>
+                        <p>Arrangement of electrons:</p>
+                        <ul>
+                            <li><strong>Quantum Numbers</strong>: n, l, m, s</li>
+                            <li><strong>Orbitals</strong>: s, p, d, f shapes</li>
+                            <li><strong>Pauli Exclusion</strong>: No two identical electrons</li>
+                            <li><strong>Hund's Rule</strong>: Maximize parallel spins</li>
+                            <li><strong>Valence Electrons</strong>: Outer shell chemistry</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹ # Potassium</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Periodic Trends</h4>
+                <p>Patterns in element properties:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Atomic Properties</h5>
+                        <ul>
+                            <li><strong>Atomic Radius</strong>: Size of atoms</li>
+                            <li><strong>Ionization Energy</strong>: Remove electron</li>
+                            <li><strong>Electronegativity</strong>: Attract electrons</li>
+                            <li><strong>Electron Affinity</strong>: Gain electron</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Group Characteristics</h5>
+                        <ul>
+                            <li><strong>Alkali Metals</strong>: Group 1</li>
+                            <li><strong>Halogens</strong>: Group 17</li>
+                            <li><strong>Noble Gases</strong>: Group 18</li>
+                            <li><strong>Transition Metals</strong>: d-block</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Nuclear Chemistry</h4>
+                <p>Changes in atomic nuclei:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Process</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Radioactive Decay</td>
+                            <td>Spontaneous nuclear breakdown</td>
+                            <td>Uranium-238 → Thorium-234</td>
+                        </tr>
+                        <tr>
+                            <td>Nuclear Fission</td>
+                            <td>Heavy nucleus splits</td>
+                            <td>Nuclear power plants</td>
+                        </tr>
+                        <tr>
+                            <td>Nuclear Fusion</td>
+                            <td>Light nuclei combine</td>
+                            <td>Sun's energy source</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Chemical Bonding <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Chemical Bonding</h2>
+            <p class="lead">How atoms combine to form molecules</p>
+            
+            <div class="concept-card">
+                <h4>Types of Bonds</h4>
+                <p>Forces holding atoms together:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Ionic</h5>
+                        <ul>
+                            <li>Metal + Nonmetal</li>
+                            <li>Electron transfer</li>
+                            <li>High melting points</li>
+                            <li>Example: NaCl</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Covalent</h5>
+                        <ul>
+                            <li>Nonmetal + Nonmetal</li>
+                            <li>Electron sharing</li>
+                            <li>Molecular compounds</li>
+                            <li>Example: H₂O</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Metallic</h5>
+                        <ul>
+                            <li>Metal + Metal</li>
+                            <li>Electron sea</li>
+                            <li>Conductive</li>
+                            <li>Example: Cu</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <img src="https://www.chem.fsu.edu/chemlab/chm1046course/bonding1.png" alt="Bond types" style="max-width: 300px;">
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Molecular Geometry</h4>
+                <p>VSEPR Theory predictions:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Shapes</h5>
+                        <ul>
+                            <li>Linear (180°)</li>
+                            <li>Trigonal Planar (120°)</li>
+                            <li>Tetrahedral (109.5°)</li>
+                            <li>Octahedral (90°)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Polarity</h5>
+                        <ul>
+                            <li>Dipole moments</li>
+                            <li>Electronegativity differences</li>
+                            <li>Intermolecular forces</li>
+                            <li>Solubility effects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Intermolecular Forces</h4>
+                <p>Between-molecule attractions:</p>
+                <ul>
+                    <li><strong>London Dispersion</strong>: Temporary dipoles</li>
+                    <li><strong>Dipole-Dipole</strong>: Polar molecules</li>
+                    <li><strong>Hydrogen Bonds</strong>: H with N,O,F</li>
+                    <li><strong>Ion-Dipole</strong>: Ions with polar molecules</li>
+                    <li>Effects on boiling points</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Chemical Formulas</h4>
+                <p>Representing compounds:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Types</h5>
+                        <ul>
+                            <li>Empirical: Simplest ratio</li>
+                            <li>Molecular: Actual atoms</li>
+                            <li>Structural: Atom arrangement</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Examples</h5>
+                        <ul>
+                            <li>H₂O (Water)</li>
+                            <li>C₆H₁₂O₆ (Glucose)</li>
+                            <li>CH₄ (Methane)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">C₂H₄O₂ # Acetic acid (empirical CH₂O)</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Chemical Reactions <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Chemical Reactions</h2>
+            <p class="lead">Transformation of substances</p>
+            
+            <div class="concept-card">
+                <h4>Reaction Types</h4>
+                <p>Classification of chemical changes:</p>
+                <ul>
+                    <li><strong>Combination</strong>: A + B → AB</li>
+                    <li><strong>Decomposition</strong>: AB → A + B</li>
+                    <li><strong>Single Replacement</strong>: A + BC → AC + B</li>
+                    <li><strong>Double Replacement</strong>: AB + CD → AD + CB</li>
+                    <li><strong>Combustion</strong>: Fuel + O₂ → CO₂ + H₂O</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">2H₂ + O₂ → 2H₂O # Combination</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Stoichiometry</h4>
+                <p>Quantitative relationships:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Concepts</h5>
+                        <ul>
+                            <li>Mole concept</li>
+                            <li>Avogadro's number</li>
+                            <li>Molar mass</li>
+                            <li>Balancing equations</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Calculations</h5>
+                        <ul>
+                            <li>Mass-mass problems</li>
+                            <li>Limiting reactants</li>
+                            <li>Percent yield</li>
+                            <li>Solution stoichiometry</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Thermochemistry</h4>
+                <p>Energy in reactions:</p>
+                <ul>
+                    <li><strong>Endothermic</strong>: Absorbs heat</li>
+                    <li><strong>Exothermic</strong>: Releases heat</li>
+                    <li><strong>Enthalpy</strong>: Heat content</li>
+                    <li><strong>Hess's Law</strong>: Heat summation</li>
+                    <li>Calorimetry</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Reaction Rates</h4>
+                <p>Kinetics of reactions:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Factor</th>
+                            <th>Effect on Rate</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temperature</td>
+                            <td>Increases</td>
+                            <td>More collisions, higher energy</td>
+                        </tr>
+                        <tr>
+                            <td>Concentration</td>
+                            <td>Increases</td>
+                            <td>More frequent collisions</td>
+                        </tr>
+                        <tr>
+                            <td>Catalyst</td>
+                            <td>Increases</td>
+                            <td>Lowers activation energy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Advanced Topics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Advanced Chemistry</h2>
+            <p class="lead">Specialized areas of chemical study</p>
+            
+            <div class="concept-card">
+                <h4>Organic Chemistry</h4>
+                <p>Carbon-based compounds:</p>
+                <ul>
+                    <li><strong>Hydrocarbons</strong>: Alkanes, alkenes, alkynes</li>
+                    <li><strong>Functional Groups</strong>: Alcohols, acids, esters</li>
+                    <li><strong>Isomerism</strong>: Structural, geometric, optical</li>
+                    <li><strong>Polymers</strong>: Macromolecules</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Methane-2D-square.png/1200px-Methane-2D-square.png" alt="Organic compound" style="max-width: 200px;">
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Biochemistry</h4>
+                <p>Chemistry of life:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Molecules</h5>
+                        <ul>
+                            <li>Carbohydrates</li>
+                            <li>Lipids</li>
+                            <li>Proteins</li>
+                            <li>Nucleic acids</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Processes</h5>
+                        <ul>
+                            <li>Enzyme catalysis</li>
+                            <li>Metabolism</li>
+                            <li>Photosynthesis</li>
+                            <li>DNA replication</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Analytical Chemistry</h4>
+                <p>Measuring chemical composition:</p>
+                <ul>
+                    <li><strong>Spectroscopy</strong>: UV-Vis, IR, NMR</li>
+                    <li><strong>Chromatography</strong>: GC, HPLC</li>
+                    <li><strong>Mass Spectrometry</strong>: Molecular weights</li>
+                    <li><strong>Titration</strong>: Quantitative analysis</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Environmental Chemistry</h4>
+                <p>Chemical processes in nature:</p>
+                <ul>
+                    <li><strong>Atmospheric Chemistry</strong>: Ozone, pollution</li>
+                    <li><strong>Water Chemistry</strong>: pH, hardness</li>
+                    <li><strong>Green Chemistry</strong>: Sustainable practices</li>
+                    <li><strong>Toxicology</strong>: Chemical hazards</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Chemistry Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Chemistry";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

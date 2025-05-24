@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Course | StudySpace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pycourse.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i>
+                            Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i
+                                class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i>
+                            Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i
+                                class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i>
+                            MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i>
+                            Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <header class="course-header py-5 text-center">
+        <div class="container">
+            <h1 class="display-4"><i class="fab fa-python"></i> Python Programming</h1>
+            <p class="lead">Master the fundamentals of Python programming from scratch</p>
+            <div class="progress mt-4" style="height: 10px;">
+                <div id="course-progress" class="progress-bar progress-maroon" role="progressbar" style="width: 0%">
+                </div>
+            </div>
+            <small id="progress-text" class="text-muted">0% Complete</small>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Course Sidebar -->
+                <div class="card sidebar-card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list-ul"></i> Course Modules</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#module1" class="list-group-item list-group-item-action active" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 1: Introduction
+                        </a>
+                        <a href="#module2" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 2: Data Types
+                        </a>
+                        <a href="#module3" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 3: Control Structures
+                        </a>
+                        <a href="#module4" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 4: Functions
+                        </a>
+                        <a href="#module5" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 5: OOP
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resources Card -->
+                <div class="card sidebar-card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-book-open"></i> Resources</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="https://docs.python.org/3/tutorial/" class="resource-link"><i
+                                        class="fas fa-file-pdf"></i> Python Tutorial</a></li>
+                            <li><a href="https://replit.com/" class="resource-link"><i class="fas fa-code"></i> Online
+                                    Editor</a></li>
+                            <li><a href="https://www.python.org/downloads/" class="resource-link"><i
+                                        class="fas fa-project-diagram"></i>Download Python</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Module Content -->
+                <div class="tab-content" id="moduleTabs">
+                    <!-- Module 1 -->
+                    <div id="module1" class="tab-pane fade show active">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Introduction to Python</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module1-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/BVIoAILnZ4Q" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module1" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module1')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module1')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module1" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module1')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module1-title">Unit 1: Getting Started with Python</h4>
+                                        <div class="module-description" id="module1-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Introduction to
+                                                    Python and its applications</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Installation and
+                                                    setup of Python on different OS</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Writing and running
+                                                    your first Python program</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Understanding the
+                                                    basic syntax and structure</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 15
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Beginner</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module1" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module1')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div id="module2" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Data Types and Variables</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module2-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/Rtmgt2Qfqr4" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module2" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module2')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module2')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module2" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module2')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module2-title">Unit 1: Understanding Variables</h4>
+                                        <div class="module-description" id="module2-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Python
+                                                    variables and naming conventions</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Basic
+                                                    data types: integers, floats, strings, booleans</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Type
+                                                    conversion and dynamic typing</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Working with numeric
+                                                    and string operations</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 18
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Beginner</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module2" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module2')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div id="module3" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Control Structures</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module3-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/eYtf9a8LoIg" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module3" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module3')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module3')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module3" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module3')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module3-title">Unit 1: Conditional Statements</h4>
+                                        <div class="module-description" id="module3-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>If-elif-else
+                                                    conditions</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Logical operators and
+                                                    comparisons</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>While
+                                                    and for loops</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Loop
+                                                    control statements (break, continue, pass)</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>List
+                                                    comprehensions</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 25
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Intermediate</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module3" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module3')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div id="module4" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Functions in Python</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module4-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/rqkkd-h087A" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module4" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module4')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module4')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module4" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module4')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module4-title">Unit 1: Functions & Scope</h4>
+                                        <div class="module-description" id="module4-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Function definitions
+                                                    and calls</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Parameters and
+                                                    arguments</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Return
+                                                    values and multiple returns</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Variable scope
+                                                    (global vs local)</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Lambda
+                                                    functions</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 20
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Intermediate</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module4" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module4')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div id="module5" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Object-Oriented Programming</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module5-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/K3HD0gJXJYQ" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module5" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module5')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module5')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module5" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module5')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                            <button id="finish-course" class="btn btn-success mt-2"
+                                                style="display: none; width: 100%;" onclick="goToQuiz()">
+                                                <i class="fas fa-trophy"></i> Finish Course & Take Quiz
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module5-title">Unit 1: OOP Concepts</h4>
+                                        <div class="module-description" id="module5-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Classes and objects
+                                                </li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Attributes and
+                                                    methods</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Inheritance and
+                                                    polymorphism</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Encapsulation and
+                                                    abstraction</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Special methods
+                                                    (__init__, __str__)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 30
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Advanced</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module5" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module5')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3" style="background-color: #831238;">
+        <p>&copy; 2025 Study Space. All Rights Reserved. | Privacy Policy</a></p>
+    </footer>
+    <script>
+        const videoData = {
+            "module1": [
+                {
+                    title: "Getting Started with Python",
+                    url: "https://www.youtube.com/embed/BVIoAILnZ4Q",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Introduction to Python and its applications</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Installation and setup of Python on different OS</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Writing and running your first Python program</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Understanding the basic syntax and structure</li></ul>",
+                    duration: "15 mins"
+                },
+                {
+                    title: "Python Installation",
+                    url: "https://www.youtube.com/embed/BVIoAILnZ4Q",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Downloading Python for Windows, Mac, and Linux</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Setting up PATH environment variables</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Verifying the installation</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Introduction to IDLE and other IDEs</li></ul>",
+                    duration: "12 mins"
+                },
+                {
+                    title: "Writing Your First Python Program",
+                    url: "https://www.youtube.com/embed/BVIoAILnZ4Q",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Hello World program</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Understanding print() function</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Running Python scripts from command line</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Basic syntax rules and indentation</li></ul>",
+                    duration: "10 mins"
+                }
+            ],
+            "module2": [
+                {
+                    title: "Variables & Data Types",
+                    url: "https://www.youtube.com/embed/Rtmgt2Qfqr4",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Python variables and naming conventions</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Basic data types: integers, floats, strings, booleans</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Type conversion and dynamic typing</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Working with numeric and string operations</li></ul>",
+                    duration: "18 mins"
+                },
+                {
+                    title: "Type Conversion",
+                    url: "https://www.youtube.com/embed/rqkkd-h087A",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Implicit vs explicit type conversion</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>int(), float(), str() functions</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Handling conversion errors</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Practical examples of type conversion</li></ul>",
+                    duration: "15 mins"
+                },
+                {
+                    title: "Operators in Python",
+                    url: "https://www.youtube.com/embed/rqkkd-h087A",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Arithmetic operators</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Comparison operators</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Logical operators</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Assignment operators</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Operator precedence</li></ul>",
+                    duration: "20 mins"
+                }
+            ],
+            "module3": [
+                {
+                    title: "If-Else Conditions",
+                    url: "https://www.youtube.com/embed/eYtf9a8LoIg",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>If-elif-else conditions</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Logical operators and comparisons</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Nested if statements</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Ternary operator</li></ul>",
+                    duration: "15 mins"
+                },
+                {
+                    title: "Loops in Python",
+                    url: "https://www.youtube.com/embed/zwM_9R37pyo",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>While and for loops</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Loop control statements (break, continue, pass)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Range function</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>List comprehensions</li></ul>",
+                    duration: "25 mins"
+                }
+            ],
+            "module4": [
+                {
+                    title: "Function Basics",
+                    url: "https://www.youtube.com/embed/rqkkd-h087A",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Function definitions and calls</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Parameters and arguments</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Return values and multiple returns</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Variable scope (global vs local)</li></ul>",
+                    duration: "20 mins"
+                },
+                {
+                    title: "Function Arguments",
+                    url: "https://www.youtube.com/embed/Gb1oZy6kAWA",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Positional vs keyword arguments</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Default arguments</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Variable-length arguments (*args, **kwargs)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Lambda functions</li></ul>",
+                    duration: "22 mins"
+                }
+            ],
+            "module5": [
+                {
+                    title: "OOP Basics",
+                    url: "https://www.youtube.com/embed/K3HD0gJXJYQ",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Classes and objects</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Attributes and methods</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>The self parameter</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Constructors (__init__ method)</li></ul>",
+                    duration: "25 mins"
+                },
+                {
+                    title: "Inheritance in Python",
+                    url: "https://www.youtube.com/embed/OFjHWCdCCcs",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Inheritance and polymorphism</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Encapsulation and abstraction</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Special methods (__init__, __str__)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Method overriding</li></ul>",
+                    duration: "30 mins"
+                }
+            ]
+        };
+
+        // Initialize state (no persistence)
+        const courseState = {
+            currentIndexes: { module1: 0, module2: 0, module3: 0, module4: 0, module5: 0 },
+            completedModules: { module1: false, module2: false, module3: false, module4: false, module5: false },
+            completedVideos: {
+                module1: Array(videoData.module1.length).fill(false),
+                module2: Array(videoData.module2.length).fill(false),
+                module3: Array(videoData.module3.length).fill(false),
+                module4: Array(videoData.module4.length).fill(false),
+                module5: Array(videoData.module5.length).fill(false)
+            }
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeVideoPlayers();
+            updateCourseProgress();
+        });
+
+        // Video navigation functions (unchanged)
+        function loadVideo(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const currentVideo = videoData[module][currentIndex];
+
+            const videoFrame = document.getElementById(`${module}-video`);
+            const title = document.getElementById(`${module}-title`);
+            const description = document.getElementById(`${module}-description`);
+
+            if (videoFrame && title && description) {
+                videoFrame.src = currentVideo.url;
+                title.innerText = `Unit ${currentIndex + 1}: ${currentVideo.title}`;
+                description.innerHTML = currentVideo.description;
+
+                // Update duration badge
+                const durationBadge = document.querySelector(`#${module} .badge.bg-info`);
+                if (durationBadge) {
+                    durationBadge.innerHTML = `<i class="fas fa-clock"></i> Duration: ${currentVideo.duration}`;
+                }
+            }
+
+            updateButtons(module);
+            updateMarkCompleteButton(module);
+        }
+
+        function nextVideo(module) {
+            if (courseState.currentIndexes[module] < videoData[module].length - 1) {
+                courseState.currentIndexes[module]++;
+                loadVideo(module);
+            }
+        }
+
+        function prevVideo(module) {
+            if (courseState.currentIndexes[module] > 0) {
+                courseState.currentIndexes[module]--;
+                loadVideo(module);
+            }
+        }
+
+        function updateButtons(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const prevButton = document.getElementById(`prev-${module}`);
+            const nextButton = document.getElementById(`next-${module}`);
+
+            if (prevButton) prevButton.disabled = currentIndex === 0;
+
+            if (nextButton) {
+                const isLastModule = module === "module5";
+                const isLastUnit = currentIndex >= videoData[module].length - 1;
+
+                if (isLastModule && isLastUnit) {
+                    nextButton.style.display = "none";
+                } else {
+                    nextButton.style.display = "inline-block";
+                    nextButton.disabled = isLastUnit;
+                }
+            }
+
+            const finishButton = document.getElementById('finish-course');
+            if (finishButton) {
+                finishButton.style.display = (module === "module5" && currentIndex === videoData[module].length - 1)
+                    ? "inline-block"
+                    : "none";
+            }
+        }
+
+        function updateMarkCompleteButton(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const button = document.querySelector(`#${module} .mark-complete-btn`);
+
+            if (button) {
+                const isCompleted = courseState.completedVideos[module][currentIndex];
+
+                if (isCompleted) {
+                    button.innerHTML = `<i class="fas fa-check-circle text-success"></i> Completed`;
+                    button.classList.add('completed');
+                    button.disabled = true;
+                } else {
+                    button.innerHTML = `<i class="fas fa-check"></i> Mark Complete`;
+                    button.classList.remove('completed');
+                    button.disabled = false;
+                }
+            }
+        }
+
+        // Progress tracking (no persistence)
+        function markAsComplete(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            courseState.completedVideos[module][currentIndex] = true;
+            updateMarkCompleteButton(module);
+
+            const allVideosCompleted = courseState.completedVideos[module].every(v => v);
+            if (allVideosCompleted) {
+                courseState.completedModules[module] = true;
+                updateSidebarModuleStatus(module);
+            }
+            updateCourseProgress();
+        }
+
+        function updateSidebarModuleStatus(module) {
+            const sidebarItem = document.querySelector(`.list-group-item[href="#${module}"]`);
+            if (sidebarItem) {
+                sidebarItem.innerHTML = `<i class="fas fa-check-circle text-success"></i> ${sidebarItem.textContent}`;
+            }
+        }
+
+        function updateCourseProgress() {
+            let totalVideos = 0;
+            let completedVideosCount = 0;
+            for (let module in videoData) {
+                totalVideos += videoData[module].length;
+                completedVideosCount += courseState.completedVideos[module].filter(v => v).length;
+            }
+            const progressPercentage = Math.round((completedVideosCount / totalVideos) * 100);
+            const progressBar = document.getElementById('course-progress');
+            const progressText = document.getElementById('progress-text');
+            if (progressBar) progressBar.style.width = `${progressPercentage}%`;
+            if (progressText) progressText.textContent = `${progressPercentage}% Complete`;
+        }
+
+        // Navigation functions
+        function goToQuiz() {
+            const courseName = "Python Basics";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+        function copyNotes(module) {
+            const textarea = document.getElementById(`notes-${module}`);
+            const button = textarea.nextElementSibling;
+            const message = button.nextElementSibling;
+
+            navigator.clipboard.writeText(textarea.value)
+                .then(() => {
+                    // Show confirmation
+                    button.innerHTML = `<i class="far fa-copy"></i> Copied!`;
+                    message.style.display = 'inline';
+
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        button.innerHTML = `<i class="far fa-copy"></i> Copy Notes`;
+                        message.style.display = 'none';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy notes: ', err);
+                    button.innerHTML = `<i class="fas fa-times"></i> Failed to copy`;
+                });
+        }
+
+        // Initialization
+        function initializeVideoPlayers() {
+            for (let module in videoData) {
+                loadVideo(module);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Data Analysis</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Master the techniques for extracting insights from raw data</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Data Analysis</h2>
+            <p class="lead">Explore the fundamental concepts of transforming data into insights</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Data Collection</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Cleaning</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Exploration</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Modeling</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Visualization</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Concepts</h4>
+                <p>Data analysis is defined by several key characteristics:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Data Types</strong>: Structured vs unstructured data</li>
+                    <li><strong class="theory-highlight">Analysis Levels</strong>: Descriptive, diagnostic, predictive, prescriptive</li>
+                    <li><strong class="theory-highlight">Data Quality</strong>: Accuracy, completeness, consistency</li>
+                    <li><strong class="theory-highlight">Statistical Thinking</strong>: Patterns, relationships, trends</li>
+                    <li><strong class="theory-highlight">Business Context</strong>: Decision-making framework</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>Basic Process</h4>
+                <p>Stages of data analysis:</p>
+                <ol>
+                    <li><strong>Define Problem</strong>: Understand business objectives</li>
+                    <li><strong>Collect Data</strong>: Identify relevant data sources</li>
+                    <li><strong>Clean Data</strong>: Handle missing values, outliers</li>
+                    <li><strong>Analyze Data</strong>: Apply statistical methods</li>
+                    <li><strong>Interpret Results</strong>: Draw meaningful conclusions</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Types of Analysis</h4>
+                <p>Main categories of data analysis:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Descriptive</strong>: What happened?</li>
+                    <li><strong class="theory-highlight">Diagnostic</strong>: Why did it happen?</li>
+                    <li><strong class="theory-highlight">Predictive</strong>: What will happen?</li>
+                    <li><strong class="theory-highlight">Prescriptive</strong>: What should we do?</li>
+                    <li><strong class="theory-highlight">Exploratory</strong>: Discovering patterns</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Data Preparation <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Data Preparation</h2>
+            <p class="lead">Master the techniques for cleaning and transforming raw data</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Data Insight:</strong> Data scientists spend 60-80% of their time cleaning and preparing data.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Data Cleaning</h4>
+                        <p>Handling imperfect data:</p>
+                        <ul>
+                            <li>Missing value treatment</li>
+                            <li>Outlier detection</li>
+                            <li>Inconsistent data</li>
+                            <li>Duplicate records</li>
+                            <li>Data validation</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">df.dropna() # Handle missing values</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Data Transformation</h4>
+                        <p>Preparing data for analysis:</p>
+                        <ul>
+                            <li>Normalization/scaling</li>
+                            <li>Encoding categorical variables</li>
+                            <li>Feature engineering</li>
+                            <li>Date/time conversion</li>
+                            <li>Text processing</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">from sklearn.preprocessing import StandardScaler</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Data Integration</h4>
+                <p>Combining multiple data sources:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Methods</h5>
+                        <ul>
+                            <li>Joins/merges</li>
+                            <li>Concatenation</li>
+                            <li>API integration</li>
+                            <li>Web scraping</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Challenges</h5>
+                        <ul>
+                            <li>Schema matching</li>
+                            <li>Data conflicts</li>
+                            <li>Temporal alignment</li>
+                            <li>Entity resolution</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Tools & Techniques</h4>
+                <p>Common data preparation approaches:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Python</th>
+                            <th>SQL</th>
+                            <th>Excel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cleaning</td>
+                            <td>Pandas</td>
+                            <td>WHERE clauses</td>
+                            <td>Filters</td>
+                        </tr>
+                        <tr>
+                            <td>Transformation</td>
+                            <td>Scikit-learn</td>
+                            <td>CASE statements</td>
+                            <td>Formulas</td>
+                        </tr>
+                        <tr>
+                            <td>Integration</td>
+                            <td>pd.merge()</td>
+                            <td>JOINs</td>
+                            <td>VLOOKUP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Exploratory Analysis <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Exploratory Data Analysis</h2>
+            <p class="lead">Discover patterns and relationships in your data</p>
+            
+            <div class="concept-card">
+                <h4>Descriptive Statistics</h4>
+                <p>Summarizing data characteristics:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Central Tendency</h5>
+                        <ul>
+                            <li>Mean, median, mode</li>
+                            <li>Weighted averages</li>
+                            <li>Geometric mean</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Dispersion</h5>
+                        <ul>
+                            <li>Variance, standard deviation</li>
+                            <li>Range, IQR</li>
+                            <li>Skewness, kurtosis</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Distribution</h5>
+                        <ul>
+                            <li>Normal distribution</li>
+                            <li>Binomial, Poisson</li>
+                            <li>Empirical distributions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">df.describe() # Summary statistics</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Data Visualization</h4>
+                <p>Graphical representation techniques:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Basic Charts</h5>
+                        <ul>
+                            <li>Histograms</li>
+                            <li>Box plots</li>
+                            <li>Scatter plots</li>
+                            <li>Bar/line charts</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Advanced Visuals</h5>
+                        <ul>
+                            <li>Heatmaps</li>
+                            <li>Violin plots</li>
+                            <li>Pair plots</li>
+                            <li>Interactive dashboards</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Correlation Analysis</h4>
+                <p>Measuring relationships between variables:</p>
+                <ul>
+                    <li>Pearson correlation</li>
+                    <li>Spearman rank correlation</li>
+                    <li>Partial correlation</li>
+                    <li>Autocorrelation</li>
+                    <li>Correlation vs causation</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">df.corr() # Correlation matrix</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Dimensionality Reduction</h4>
+                <p>Simplifying complex datasets:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Techniques</h5>
+                        <ul>
+                            <li>Principal Component Analysis</li>
+                            <li>t-SNE, UMAP</li>
+                            <li>Factor analysis</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Feature selection</li>
+                            <li>Visualization</li>
+                            <li>Noise reduction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Statistical Analysis <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Statistical Analysis</h2>
+            <p class="lead">Apply statistical methods to derive insights</p>
+            
+            <div class="concept-card">
+                <h4>Hypothesis Testing</h4>
+                <p>Making data-driven decisions:</p>
+                <ul>
+                    <li>Null vs alternative hypothesis</li>
+                    <li>p-values and significance</li>
+                    <li>Type I/II errors</li>
+                    <li>Power analysis</li>
+                    <li>Multiple testing correction</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">from scipy import stats
+stats.ttest_ind(group1, group2)</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Regression Analysis</h4>
+                <p>Modeling relationships:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Types</h5>
+                        <ul>
+                            <li>Linear regression</li>
+                            <li>Logistic regression</li>
+                            <li>Polynomial regression</li>
+                            <li>Regularized methods</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Evaluation</h5>
+                        <ul>
+                            <li>R-squared</li>
+                            <li>RMSE, MAE</li>
+                            <li>Confusion matrix</li>
+                            <li>ROC curves</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Time Series Analysis</h4>
+                <p>Analyzing temporal data:</p>
+                <ul>
+                    <li>Trend, seasonality, cycles</li>
+                    <li>Stationarity tests</li>
+                    <li>ARIMA models</li>
+                    <li>Exponential smoothing</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Experimental Design</h4>
+                <p>Structured data collection:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Design</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A/B Testing</td>
+                            <td>Web page optimization</td>
+                        </tr>
+                        <tr>
+                            <td>Factorial Design</td>
+                            <td>Multiple factor effects</td>
+                        </tr>
+                        <tr>
+                            <td>Randomized Control</td>
+                            <td>Clinical trials</td>
+                        </tr>
+                        <tr>
+                            <td>Bayesian Methods</td>
+                            <td>Adaptive experiments</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Advanced Topics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Advanced Data Analysis</h2>
+            <p class="lead">Cutting-edge techniques in data analysis</p>
+            
+            <div class="concept-card">
+                <h4>Machine Learning</h4>
+                <p>Predictive modeling approaches:</p>
+                <ul>
+                    <li>Supervised vs unsupervised</li>
+                    <li>Classification algorithms</li>
+                    <li>Clustering techniques</li>
+                    <li>Model evaluation</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Big Data Analysis</h4>
+                <p>Handling large datasets:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Technologies</h5>
+                        <ul>
+                            <li>Hadoop/Spark</li>
+                            <li>Distributed computing</li>
+                            <li>Stream processing</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Techniques</h5>
+                        <ul>
+                            <li>Sampling methods</li>
+                            <li>Approximate algorithms</li>
+                            <li>Dimensionality reduction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Text & NLP</h4>
+                <p>Analyzing unstructured text:</p>
+                <ul>
+                    <li>Text preprocessing</li>
+                    <li>Sentiment analysis</li>
+                    <li>Topic modeling</li>
+                    <li>Word embeddings</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">from sklearn.feature_extraction.text import TfidfVectorizer</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Ethical Considerations</h4>
+                <p>Responsible data analysis:</p>
+                <ul>
+                    <li>Data privacy</li>
+                    <li>Algorithmic bias</li>
+                    <li>Interpretability</li>
+                    <li>Reproducibility</li>
+                    <li>Data governance</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Data Analysis Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Data Analysis";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

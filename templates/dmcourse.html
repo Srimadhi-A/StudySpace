@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Manipulation | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Data Manipulation</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Master the fundamental concepts and techniques for effective data transformation and preparation</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Data Manipulation</h2>
+            <p class="lead">Explore the essential concepts and processes for transforming raw data into usable formats.</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Cleaning</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Transformation</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Aggregation</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Filtering</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Joining</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Concepts</h4>
+                <p>Data manipulation involves several fundamental operations:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Data Cleaning</strong>: Handling missing values and inconsistencies</li>
+                    <li><strong class="theory-highlight">Data Transformation</strong>: Converting data into appropriate formats</li>
+                    <li><strong class="theory-highlight">Data Aggregation</strong>: Combining multiple data points</li>
+                    <li><strong class="theory-highlight">Data Filtering</strong>: Selecting relevant subsets of data</li>
+                    <li><strong class="theory-highlight">Data Joining</strong>: Combining data from different sources</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>The Data Manipulation Process</h4>
+                <p>A systematic approach to preparing data:</p>
+                <ol>
+                    <li><strong>Data Assessment</strong>: Understanding data structure and quality</li>
+                    <li><strong>Data Cleaning</strong>: Addressing inconsistencies and errors</li>
+                    <li><strong>Data Transformation</strong>: Reshaping and reformatting data</li>
+                    <li><strong>Data Integration</strong>: Combining multiple data sources</li>
+                    <li><strong>Data Validation</strong>: Ensuring data quality and consistency</li>
+                    <li><strong>Data Output</strong>: Preparing data for analysis or storage</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Key Challenges</h4>
+                <p>Common issues in data manipulation:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Data Quality</strong>: Handling missing or inconsistent data</li>
+                    <li><strong class="theory-highlight">Data Volume</strong>: Managing large datasets efficiently</li>
+                    <li><strong class="theory-highlight">Data Complexity</strong>: Working with nested or hierarchical data</li>
+                    <li><strong class="theory-highlight">Performance</strong>: Optimizing manipulation operations</li>
+                    <li><strong class="theory-highlight">Reproducibility</strong>: Ensuring consistent transformations</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Data Structures <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Data Structures for Manipulation</h2>
+            <p class="lead">Understand the fundamental data structures used in efficient data manipulation.</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Key Insight:</strong> Choosing the right data structure can dramatically improve manipulation performance.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Tabular Data</h4>
+                        <p>The foundation of most data manipulation:</p>
+                        <ul>
+                            <li>DataFrames and Series</li>
+                            <li>Row vs column operations</li>
+                            <li>Indexing strategies</li>
+                            <li>Memory optimization</li>
+                            <li>Handling sparse data</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">df = pd.DataFrame(data)</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Relational Data</h4>
+                        <p>Working with connected datasets:</p>
+                        <ul>
+                            <li>Primary and foreign keys</li>
+                            <li>Normalization concepts</li>
+                            <li>Join operations</li>
+                            <li>Set operations</li>
+                            <li>Transaction management</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">SELECT * FROM table1 JOIN table2</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Specialized Data Structures</h4>
+                <p>Optimized structures for specific operations:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Time Series</h5>
+                        <ul>
+                            <li>DateTime indexing</li>
+                            <li>Resampling</li>
+                            <li>Window functions</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Hierarchical</h5>
+                        <ul>
+                            <li>Tree structures</li>
+                            <li>JSON/XML data</li>
+                            <li>Graph data</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Multidimensional</h5>
+                        <ul>
+                            <li>Arrays/tensors</li>
+                            <li>OLAP cubes</li>
+                            <li>Spatial data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Performance Considerations</h4>
+                <p>Optimizing data manipulation operations:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Memory Management</h5>
+                        <ul>
+                            <li>Data types optimization</li>
+                            <li>Chunk processing</li>
+                            <li>Memory mapping</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Computational Efficiency</h5>
+                        <ul>
+                            <li>Vectorized operations</li>
+                            <li>Parallel processing</li>
+                            <li>Lazy evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">df.apply(func, axis=1)  # Row-wise</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Transformation Techniques <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Data Transformation Techniques</h2>
+            <p class="lead">Master the essential techniques for reshaping and transforming your data.</p>
+            
+            <div class="concept-card">
+                <h4>Cleaning Operations</h4>
+                <p>Preparing data for analysis:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Handling Missing Data</h5>
+                        <ul>
+                            <li>Detection methods</li>
+                            <li>Imputation strategies</li>
+                            <li>Deletion approaches</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Outlier Treatment</h5>
+                        <ul>
+                            <li>Detection methods</li>
+                            <li>Capping/winsorizing</li>
+                            <li>Transformation</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Data Standardization</h5>
+                        <ul>
+                            <li>Normalization</li>
+                            <li>Scaling</li>
+                            <li>Encoding</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">df.fillna(method='ffill')</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Reshaping Operations</h4>
+                <p>Changing data structure and organization:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Pivoting/Melting</h5>
+                        <ul>
+                            <li>Wide to long format</li>
+                            <li>Long to wide format</li>
+                            <li>Multi-index handling</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Grouping Operations</h5>
+                        <ul>
+                            <li>Split-apply-combine</li>
+                            <li>Aggregation functions</li>
+                            <li>Window functions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Advanced Transformations</h4>
+                <p>Complex data manipulation techniques:</p>
+                <ul>
+                    <li>User-defined functions</li>
+                    <li>Recursive transformations</li>
+                    <li>Fuzzy matching</li>
+                    <li>Text processing</li>
+                    <li>Geospatial operations</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">df.groupby('category').transform('mean')</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Joining and Combining</h4>
+                <p>Merging data from multiple sources:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Join Types</h5>
+                        <ul>
+                            <li>Inner/outer joins</li>
+                            <li>Left/right joins</li>
+                            <li>Cross joins</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Combining Strategies</h5>
+                        <ul>
+                            <li>Concatenation</li>
+                            <li>Appending</li>
+                            <li>Merge conflicts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Performance Optimization <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Performance Optimization</h2>
+            <p class="lead">Techniques for efficient and scalable data manipulation.</p>
+            
+            <div class="concept-card">
+                <h4>Vectorized Operations</h4>
+                <p>Leveraging optimized low-level operations:</p>
+                <ul>
+                    <li>NumPy array operations</li>
+                    <li>Pandas vectorized methods</li>
+                    <li>Broadcasting</li>
+                    <li>Universal functions</li>
+                    <li>Performance benchmarks</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">np.where(condition, x, y)</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Parallel Processing</h4>
+                <p>Scaling data manipulation operations:</p>
+                <ul>
+                    <li>Multiprocessing</li>
+                    <li>Dask DataFrames</li>
+                    <li>Spark operations</li>
+                    <li>Partitioning strategies</li>
+                    <li>Load balancing</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Memory Optimization</h4>
+                <p>Reducing memory footprint:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Techniques</h5>
+                        <ul>
+                            <li>Type conversion</li>
+                            <li>Sparse data structures</li>
+                            <li>Chunk processing</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Tools</h5>
+                        <ul>
+                            <li>Memory profiling</li>
+                            <li>Garbage collection</li>
+                            <li>Memory mapping</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">df.astype('category')</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Query Optimization</h4>
+                <p>Efficient data retrieval patterns:</p>
+                <ul>
+                    <li>Indexing strategies</li>
+                    <li>Query planning</li>
+                    <li>Predicate pushdown</li>
+                    <li>Partition pruning</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">CREATE INDEX idx ON table(column)</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Final Module <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Applied Data Manipulation</h2>
+            <p class="lead">Real-world applications and best practices.</p>
+            
+            <div class="concept-card">
+                <h4>Workflow Automation</h4>
+                <p>Creating reproducible manipulation pipelines:</p>
+                <ul>
+                    <li>ETL patterns</li>
+                    <li>Data pipeline design</li>
+                    <li>Error handling</li>
+                    <li>Logging and monitoring</li>
+                    <li>Version control for data</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Case Studies</h4>
+                <p>Real-world data manipulation challenges:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Financial Data</h5>
+                        <ul>
+                            <li>Time series alignment</li>
+                            <li>Rolling calculations</li>
+                            <li>Missing data imputation</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Customer Data</h5>
+                        <ul>
+                            <li>Entity resolution</li>
+                            <li>Data deduplication</li>
+                            <li>Profile enrichment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Best Practices</h4>
+                <p>Professional data manipulation approaches:</p>
+                <ul>
+                    <li>Code organization</li>
+                    <li>Documentation standards</li>
+                    <li>Testing strategies</li>
+                    <li>Performance monitoring</li>
+                    <li>Collaboration techniques</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Emerging Trends</h4>
+                <p>Future directions in data manipulation:</p>
+                <ul>
+                    <li>In-memory databases</li>
+                    <li>Stream processing</li>
+                    <li>AutoML for data prep</li>
+                    <li>Data virtualization</li>
+                    <li>Low-code tools</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Data Manipulation Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Data Manipulation";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

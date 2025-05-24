@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Programming Course | StudySpace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pycourse.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i>
+                            Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i
+                                class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i>
+                            Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i
+                                class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i>
+                            MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i>
+                            Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Course Header -->
+    <header class="course-header py-5 text-center">
+        <div class="container">
+            <h1 class="display-4"><i class="fas fa-code"></i> C++ Programming Masterclass</h1>
+            <p class="lead">From beginner to advanced C++ programming concepts</p>
+            <div class="progress mt-4" style="height: 10px;">
+                <div id="course-progress" class="progress-bar progress-maroon" role="progressbar" style="width: 0%">
+                </div>
+            </div>
+            <small id="progress-text" class="text-muted">0% Complete</small>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Course Sidebar -->
+                <div class="card sidebar-card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list-ul"></i> Course Modules</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#module1" class="list-group-item list-group-item-action active" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 1: C++ Basics
+                        </a>
+                        <a href="#module2" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 2: OOP in C++
+                        </a>
+                        <a href="#module3" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 3: STL
+                        </a>
+                        <a href="#module4" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 4: Advanced C++
+                        </a>
+                        <a href="#module5" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 5: Projects
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resources Card -->
+                <div class="card sidebar-card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-book-open"></i> Resources</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="https://en.cppreference.com/w/" class="resource-link"><i
+                                        class="fas fa-file-pdf"></i> C++ Reference</a></li>
+                            <li><a href="https://www.learncpp.com/" class="resource-link"><i class="fas fa-code"></i>
+                                    C++ Tutorials</a></li>
+                            <li><a href="https://godbolt.org/" class="resource-link"><i
+                                        class="fas fa-project-diagram"></i> Compiler Explorer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Module Content -->
+                <div class="tab-content" id="moduleTabs">
+                    <!-- Module 1 -->
+                    <div id="module1" class="tab-pane fade show active">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> C++ Fundamentals</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module1-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/vLnPwxZdW4Y" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module1" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module1')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module1')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module1" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module1')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module1-title">Unit 1: Getting Started</h4>
+                                        <div class="module-description" id="module1-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Setting up C++
+                                                    development environment</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Basic
+                                                    syntax and structure</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Variables and data
+                                                    types</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Input
+                                                    and output operations</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 15
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Beginner</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module1" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module1')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div id="module2" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Object-Oriented Programming</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module2-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/wN0x9eZLix4" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module2" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module2')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module2')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module2" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module2')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module2-title">Unit 1: Classes and Objects</h4>
+                                        <div class="module-description" id="module2-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Classes and objects
+                                                    fundamentals</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Constructors and
+                                                    destructors</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Encapsulation and
+                                                    abstraction</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Member
+                                                    functions and variables</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 18
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Intermediate</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module2" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module2')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div id="module3" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Standard Template Library</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module3-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/NaL6XJQqJNo" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module3" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module3')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module3')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module3" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module3')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module3-title">Unit 1: Containers</h4>
+                                        <div class="module-description" id="module3-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Vectors and arrays
+                                                </li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Lists
+                                                    and forward lists</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Maps
+                                                    and unordered maps</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Sets
+                                                    and multisets</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>STL
+                                                    algorithms overview</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 22
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Intermediate</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module3" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module3')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div id="module4" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Advanced C++ Concepts</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module4-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/Rub-JsjMhWY" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module4" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module4')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module4')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module4" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module4')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module4-title">Unit 1: Memory Management</h4>
+                                        <div class="module-description" id="module4-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Pointers and
+                                                    references</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Dynamic memory
+                                                    allocation</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Smart
+                                                    pointers</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Move
+                                                    semantics</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>RAII
+                                                    principle</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 25
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Advanced</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module4" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module4')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div id="module5" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> C++ Projects</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module5-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/uhFpPlMsLzY" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module5" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module5')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module5')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module5" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module5')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                            <button id="finish-course" class="btn btn-success mt-2"
+                                                style="display: none; width: 100%;" onclick="goToQuiz()">
+                                                <i class="fas fa-trophy"></i> Finish Course & Take Quiz
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module5-title">Unit 1: Game Development</h4>
+                                        <div class="module-description" id="module5-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Building a console
+                                                    game</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Using
+                                                    SFML for graphics</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Game
+                                                    loop implementation</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Object-oriented game
+                                                    design</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Performance
+                                                    considerations</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 30
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Advanced</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module5" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module5')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3" style="background-color: #831238;">
+        <p>&copy; 2025 Study Space. All Rights Reserved. | Privacy Policy</a></p>
+    </footer>
+    <script>
+        const videoData = {
+            "module1": [
+                {
+                    title: "Getting Started with C++",
+                    url: "https://www.youtube.com/embed/vLnPwxZdW4Y",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Setting up C++ development environment</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Basic syntax and structure</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Variables and data types</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Input and output operations</li></ul>",
+                    duration: "15 mins"
+                },
+                {
+                    title: "Control Flow and Functions",
+                    url: "https://www.youtube.com/embed/GQp1zzTwrIg",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Conditional statements (if, switch)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Loops (for, while, do-while)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Functions and parameters</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Function overloading</li></ul>",
+                    duration: "18 mins"
+                },
+                {
+                    title: "Arrays and Strings",
+                    url: "https://www.youtube.com/embed/PwfM8Q3jNLU",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Working with arrays</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Multidimensional arrays</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>C-style strings</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>String manipulation</li></ul>",
+                    duration: "20 mins"
+                }
+            ],
+            "module2": [
+                {
+                    title: "Classes and Objects",
+                    url: "https://www.youtube.com/embed/wN0x9eZLix4",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Classes and objects fundamentals</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Constructors and destructors</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Encapsulation and abstraction</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Member functions and variables</li></ul>",
+                    duration: "18 mins"
+                },
+                {
+                    title: "Inheritance and Polymorphism",
+                    url: "https://www.youtube.com/embed/gq2Igdc-OSI",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Base and derived classes</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Access specifiers</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Virtual functions</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Abstract classes</li></ul>",
+                    duration: "22 mins"
+                },
+                {
+                    title: "Operator Overloading",
+                    url: "https://www.youtube.com/embed/BnMnozsSPmw",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Overloading arithmetic operators</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Overloading I/O operators</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Friend functions</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Type conversion</li></ul>",
+                    duration: "20 mins"
+                }
+            ],
+            "module3": [
+                {
+                    title: "STL Containers",
+                    url: "https://www.youtube.com/embed/RRVYpIET_RU",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Vectors and arrays</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Lists and forward lists</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Maps and unordered maps</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Sets and multisets</li></ul>",
+                    duration: "22 mins"
+                },
+                {
+                    title: "STL Algorithms",
+                    url: "https://www.youtube.com/embed/2olsGf6JIkU",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Sorting and searching</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Transform and accumulate</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Lambda expressions</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Functional programming</li></ul>",
+                    duration: "25 mins"
+                }
+            ],
+            "module4": [
+                {
+                    title: "Memory Management",
+                    url: "https://www.youtube.com/embed/Rub-JsjMhWY",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Pointers and references</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Dynamic memory allocation</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Smart pointers</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Move semantics</li></ul>",
+                    duration: "25 mins"
+                },
+                {
+                    title: "Templates and Exceptions",
+                    url: "https://www.youtube.com/embed/I-hZkUa9mIs",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Function templates</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Class templates</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Exception handling</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Custom exceptions</li></ul>",
+                    duration: "28 mins"
+                }
+            ],
+            "module5": [
+                {
+                    title: "Game Development",
+                    url: "https://www.youtube.com/embed/PwuIEMUFUnQ",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Building a console game</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Using SFML for graphics</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Game loop implementation</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Object-oriented game design</li></ul>",
+                    duration: "30 mins"
+                },
+                {
+                    title: "Data Structures Project",
+                    url: "https://www.youtube.com/embed/B31LgI4Y4DQ",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Implementing custom data structures</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Templates in practice</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Algorithm optimization</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Performance testing</li></ul>",
+                    duration: "35 mins"
+                }
+            ]
+        };
+
+        // Initialize state (no persistence)
+        const courseState = {
+            currentIndexes: { module1: 0, module2: 0, module3: 0, module4: 0, module5: 0 },
+            completedModules: { module1: false, module2: false, module3: false, module4: false, module5: false },
+            completedVideos: {
+                module1: Array(videoData.module1.length).fill(false),
+                module2: Array(videoData.module2.length).fill(false),
+                module3: Array(videoData.module3.length).fill(false),
+                module4: Array(videoData.module4.length).fill(false),
+                module5: Array(videoData.module5.length).fill(false)
+            }
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeVideoPlayers();
+            updateCourseProgress();
+        });
+
+        // Video navigation functions (unchanged)
+        function loadVideo(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const currentVideo = videoData[module][currentIndex];
+
+            const videoFrame = document.getElementById(`${module}-video`);
+            const title = document.getElementById(`${module}-title`);
+            const description = document.getElementById(`${module}-description`);
+
+            if (videoFrame && title && description) {
+                videoFrame.src = currentVideo.url;
+                title.innerText = `Unit ${currentIndex + 1}: ${currentVideo.title}`;
+                description.innerHTML = currentVideo.description;
+
+                // Update duration badge
+                const durationBadge = document.querySelector(`#${module} .badge.bg-info`);
+                if (durationBadge) {
+                    durationBadge.innerHTML = `<i class="fas fa-clock"></i> Duration: ${currentVideo.duration}`;
+                }
+            }
+
+            updateButtons(module);
+            updateMarkCompleteButton(module);
+        }
+
+        function nextVideo(module) {
+            if (courseState.currentIndexes[module] < videoData[module].length - 1) {
+                courseState.currentIndexes[module]++;
+                loadVideo(module);
+            }
+        }
+
+        function prevVideo(module) {
+            if (courseState.currentIndexes[module] > 0) {
+                courseState.currentIndexes[module]--;
+                loadVideo(module);
+            }
+        }
+
+        function updateButtons(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const prevButton = document.getElementById(`prev-${module}`);
+            const nextButton = document.getElementById(`next-${module}`);
+
+            if (prevButton) prevButton.disabled = currentIndex === 0;
+
+            if (nextButton) {
+                const isLastModule = module === "module5";
+                const isLastUnit = currentIndex >= videoData[module].length - 1;
+
+                if (isLastModule && isLastUnit) {
+                    nextButton.style.display = "none";
+                } else {
+                    nextButton.style.display = "inline-block";
+                    nextButton.disabled = isLastUnit;
+                }
+            }
+
+            const finishButton = document.getElementById('finish-course');
+            if (finishButton) {
+                finishButton.style.display = (module === "module5" && currentIndex === videoData[module].length - 1)
+                    ? "inline-block"
+                    : "none";
+            }
+        }
+
+        function updateMarkCompleteButton(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const button = document.querySelector(`#${module} .mark-complete-btn`);
+
+            if (button) {
+                const isCompleted = courseState.completedVideos[module][currentIndex];
+
+                if (isCompleted) {
+                    button.innerHTML = `<i class="fas fa-check-circle text-success"></i> Completed`;
+                    button.classList.add('completed');
+                    button.disabled = true;
+                } else {
+                    button.innerHTML = `<i class="fas fa-check"></i> Mark Complete`;
+                    button.classList.remove('completed');
+                    button.disabled = false;
+                }
+            }
+        }
+
+        // Progress tracking (no persistence)
+        function markAsComplete(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            courseState.completedVideos[module][currentIndex] = true;
+            updateMarkCompleteButton(module);
+
+            const allVideosCompleted = courseState.completedVideos[module].every(v => v);
+            if (allVideosCompleted) {
+                courseState.completedModules[module] = true;
+                updateSidebarModuleStatus(module);
+            }
+            updateCourseProgress();
+        }
+
+        function updateSidebarModuleStatus(module) {
+            const sidebarItem = document.querySelector(`.list-group-item[href="#${module}"]`);
+            if (sidebarItem) {
+                sidebarItem.innerHTML = `<i class="fas fa-check-circle text-success"></i> ${sidebarItem.textContent}`;
+            }
+        }
+
+        function updateCourseProgress() {
+            let totalVideos = 0;
+            let completedVideosCount = 0;
+            for (let module in videoData) {
+                totalVideos += videoData[module].length;
+                completedVideosCount += courseState.completedVideos[module].filter(v => v).length;
+            }
+            const progressPercentage = Math.round((completedVideosCount / totalVideos) * 100);
+            const progressBar = document.getElementById('course-progress');
+            const progressText = document.getElementById('progress-text');
+            if (progressBar) progressBar.style.width = `${progressPercentage}%`;
+            if (progressText) progressText.textContent = `${progressPercentage}% Complete`;
+        }
+
+        // Navigation functions (unchanged)
+        function goToQuiz() {
+            const courseName = "C++ Programming";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function copyNotes(module) {
+            const textarea = document.getElementById(`notes-${module}`);
+            const button = textarea.nextElementSibling;
+            const message = button.nextElementSibling;
+            navigator.clipboard.writeText(textarea.value)
+                .then(() => {
+                    button.innerHTML = `<i class="far fa-copy"></i> Copied!`;
+                    message.style.display = 'inline';
+                    setTimeout(() => {
+                        button.innerHTML = `<i class="far fa-copy"></i> Copy Notes`;
+                        message.style.display = 'none';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy notes: ', err);
+                    button.innerHTML = `<i class="fas fa-times"></i> Failed to copy`;
+                });
+        }
+
+        // Initialize video players
+        function initializeVideoPlayers() {
+            for (let module in videoData) {
+                loadVideo(module);
+            }
+        }
+    </script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

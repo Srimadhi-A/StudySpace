@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Frenzy Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+     /* General Styling */
+     body {
+            font-family: "Philosopher", sans-serif;
+            background-color: #fff9fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-image: radial-gradient(circle at 10% 20%, rgba(248, 231, 238, 0.8) 0%, rgba(255, 255, 255, 0.9) 90%);
+        }
+
+        #game-container {
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 10px 25px rgba(131, 18, 56, 0.15);
+            border-radius: 15px;
+            text-align: center;
+            border-top: 8px solid #831238;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #game-container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(131, 18, 56, 0.05);
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #831238;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #831238, #a31846);
+            border-radius: 2px;
+        }
+
+        /* Problem Display */
+        #fraction-problem {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #831238, #a31846);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(131, 18, 56, 0.3);
+        }
+
+        /* Input Field */
+        input[type="text"] {
+            padding: 15px;
+            width: 80%;
+            font-size: 1.2rem;
+            margin: 25px auto;
+            border: 2px solid #831238;
+            border-radius: 8px;
+            text-align: center;
+            outline: none;
+            color: #831238;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #a31846;
+            box-shadow: 0 0 0 3px rgba(131, 18, 56, 0.2);
+        }
+
+        /* Buttons */
+        button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            margin: 15px 5px;
+            background: linear-gradient(135deg, #831238, #a31846);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: bold;
+            box-shadow: 0 5px 10px rgba(131, 18, 56, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0));
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #9a1a45, #831238);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(131, 18, 56, 0.4);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        /* Result Messages */
+        #result {
+            font-size: 1.3rem;
+            margin: 25px 0;
+            min-height: 40px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.4s ease-out;
+            opacity: 0;
+        }
+
+        .correct {
+            color: #2e7d32;
+            background-color: rgba(46, 125, 50, 0.1);
+            opacity: 1;
+            animation: pulse 0.5s;
+        }
+
+        .incorrect {
+            color: #c62828;
+            background-color: rgba(198, 40, 40, 0.1);
+            opacity: 1;
+            animation: shake 0.5s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        /* Score Container */
+        .score-container {
+            font-size: 1.4rem;
+            color: #831238;
+            font-weight: bold;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .progress {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 3px rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #831238;
+    font-family: "Philosopher", sans-serif;
+    font-weight: bold;
+    color: #831238;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+.progress::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc((var(--current-question, 1) / 5 * 100%));
+    height: 100%;
+    background: linear-gradient(90deg, rgba(131, 18, 56, 0.2), rgba(163, 24, 70, 0.3));
+    transition: width 0.5s ease-out;
+    z-index: 0;
+}
+
+.progress span {
+    position: relative;
+    z-index: 1;
+    padding: 0 5px;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.progress span#progress {
+    color: #a31846;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+        /* Result Container */
+        #result-container {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(131, 18, 56, 0.1);
+            border: 1px solid #e8c8d2;
+            text-align: center;
+        }
+
+        #result-container h2 {
+            color: #831238;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        #final-score {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            #game-container {
+                padding: 25px;
+                width: 95%;
+            }
+            
+            #fraction-problem {
+                font-size: 1.8rem;
+                padding: 15px;
+            }
+            
+            input[type="text"] {
+                width: 90%;
+                font-size: 1.1rem;
+            }
+            
+            .score-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        
+        #result {
+            font-size: 1.3rem;
+            margin: 25px 0;
+            min-height: 40px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.4s ease-out;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+        }
+
+        #result.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .correct {
+            color: #2e7d32;
+            background-color: rgba(46, 125, 50, 0.1);
+            border: 2px solid #2e7d32;
+        }
+
+        .incorrect {
+            color: #c62828;
+            background-color: rgba(198, 40, 40, 0.1);
+            border: 2px solid #c62828;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Fraction Frenzy Game</h1>
+        
+        <div class="score-container">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="progress">Question: <span id="progress">1</span>/5</div>
+        </div>
+        
+        <div id="problem-container">
+            <p>Solve the following fraction problem:</p>
+            <h2 id="fraction-problem"></h2>
+        </div>
+        
+        <input type="text" id="user-answer" placeholder="Enter your answer (e.g., 3/4)" autocomplete="off" />
+        <button id="submit-btn">Submit</button>
+        <div id="result"></div>
+        <button id="next-btn" style="display:none;">Next Problem</button>
+        
+        <div id="result-container">
+            <h2>Game Completed!</h2>
+            <p id="final-score">Your final score: 0</p>
+            <button id="gameButton">Go to Game Page</button>
+        </div>
+    </div>
+
+    <script>
+        // Game state variables
+        let currentProblem = {};
+        let score = 0;
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+
+        // DOM elements
+        const fractionProblemEl = document.getElementById('fraction-problem');
+        const userAnswerEl = document.getElementById('user-answer');
+        const resultEl = document.getElementById('result');
+        const scoreEl = document.getElementById('score');
+        const progressEl = document.getElementById('progress');
+        const submitBtn = document.getElementById('submit-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const problemContainerEl = document.getElementById('problem-container');
+        const resultContainerEl = document.getElementById('result-container');
+        const finalScoreEl = document.getElementById('final-score');
+
+        // Generate a new fraction problem
+        function generateProblem() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const num3 = Math.floor(Math.random() * 10) + 1;
+            const num4 = Math.floor(Math.random() * 10) + 1;
+            const operator = ['+', '-', '*', '/'][Math.floor(Math.random() * 4)];
+            
+            let problem, solution;
+            let numerator, denominator;
+
+            switch(operator) {
+                case '+':
+                    numerator = (num1 * num4) + (num2 * num3);
+                    denominator = num2 * num4;
+                    problem = `${num1}/${num2} + ${num3}/${num4}`;
+                    break;
+                case '-':
+                    numerator = (num1 * num4) - (num2 * num3);
+                    denominator = num2 * num4;
+                    problem = `${num1}/${num2} - ${num3}/${num4}`;
+                    break;
+                case '*':
+                    numerator = num1 * num3;
+                    denominator = num2 * num4;
+                    problem = `${num1}/${num2} × ${num3}/${num4}`;
+                    break;
+                case '/':
+                    numerator = num1 * num4;
+                    denominator = num2 * num3;
+                    problem = `${num1}/${num2} ÷ ${num3}/${num4}`;
+                    break;
+            }
+
+            solution = simplifyFraction(numerator, denominator);
+            currentProblem = { problem, solution };
+            
+            fractionProblemEl.textContent = problem;
+            userAnswerEl.value = '';
+            resultEl.textContent = '';
+            resultEl.className = '';
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'inline-block';
+            progressEl.textContent = currentQuestion;
+            userAnswerEl.focus();
+        }
+
+        // Simplify a fraction to its lowest terms
+        function simplifyFraction(numerator, denominator) {
+            const gcd = (a, b) => b ? gcd(b, a % b) : a;
+            const divisor = gcd(numerator, denominator);
+            return `${numerator/divisor}/${denominator/divisor}`;
+        }
+
+        // Check the user's answer
+        function checkAnswer() {
+            const userAnswer = userAnswerEl.value.trim();
+            
+            if (!userAnswer) {
+                showResult("Please enter an answer!", false);
+                return;
+            }
+            
+            if (userAnswer === currentProblem.solution) {
+                score += 10;
+                scoreEl.textContent = score;
+                showResult("✓ Correct! Great job!", true);
+            } else {
+                showResult(`✗ Incorrect. The correct answer is: ${currentProblem.solution}`, false);
+            }
+            
+            submitBtn.style.display = 'none';
+            nextBtn.style.display = 'inline-block';
+        }
+
+        // Display result with animation
+        function showResult(message, isCorrect) {
+            resultEl.textContent = message;
+            resultEl.className = isCorrect ? 'correct show' : 'incorrect show';
+        }
+
+        // Move to next question or end game
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion > totalQuestions) {
+                endGame();
+            } else {
+                generateProblem();
+            }
+
+document.querySelector('.progress').style.setProperty('--current-question', currentQuestion);
+        }
+
+        // End the game and show final results
+        function endGame() {
+            problemContainerEl.style.display = 'none';
+            userAnswerEl.style.display = 'none';
+            submitBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            resultEl.style.display = 'none';
+            
+            resultContainerEl.style.display = 'block';
+            finalScoreEl.textContent = `Your final score: ${score}`;
+            
+            saveGameCompletion();
+        }
+
+        // Save game completion to localStorage
+        function saveGameCompletion() {
+            const username = "guest";
+            const completeKey = "gameCompleted_" + username;
+            const unlockedKey = "gameUnlocked_" + username;
+            const starKey = "gameStars_" + username;
+
+            let completed = JSON.parse(localStorage.getItem(completeKey)) || {};
+            let unlocked = JSON.parse(localStorage.getItem(unlockedKey)) || {};
+            let stars = JSON.parse(localStorage.getItem(starKey)) || {};
+
+            completed["fraction"] = true;
+            localStorage.setItem(completeKey, JSON.stringify(completed));
+
+            stars["fraction"] = 1;
+            localStorage.setItem(starKey, JSON.stringify(stars));
+
+            unlocked["chemistry"] = true;
+            localStorage.setItem(unlockedKey, JSON.stringify(unlocked));
+        }
+
+        // Initialize the game
+        function initGame() {
+            // Event listeners
+            nextBtn.addEventListener('click', nextQuestion);
+            document.getElementById('gameButton').addEventListener('click', () => {
+                window.location.href = "{{ url_for('game') }}";
+            });
+            submitBtn.addEventListener('click', checkAnswer);
+            userAnswerEl.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            
+            // Start the game
+            generateProblem();
+        }
+
+        // Start the game when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initGame);
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Result</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <div class="result-container">
+    <h2>Quiz Result</h2>
+    <p>Your Score: {{ score }} / {{ total_questions }}</p>
+    <p>{{ 'Congratulations! You passed the quiz.' if score == total_questions else 'Try again to improve your knowledge.' }}</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page | StudySpace</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #831238; /* Burgundy */
+            --primary-light: #9a2d52;
+            --secondary: #621616; /* Muted green */
+            --light: #f8f5f6; /* Very light pink */
+            --dark: #2a0a15; /* Dark burgundy */
+            --glass: rgba(255, 248, 250, 0.95); /* Semi-transparent light pink */
+            --shadow: 0 10px 30px rgba(131, 18, 56, 0.15);
+        }
+        
+        body {
+            font-family: 'Philosopher', sans-serif;
+            background: linear-gradient(-45deg, #f8f5f6, #f0e6ea, #f8f0f3, #f2e8eb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            padding: 2rem 0;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(131, 18, 56, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-1000px) rotate(720deg); }
+        }
+        
+        .container {
+            max-width: 800px;
+            perspective: 1000px;
+        }
+        
+        h2 {
+            font-family: 'Jersey 15', sans-serif;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInDown 0.8s 0.3s forwards;
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+        }
+
+        h2::before, h2::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            transform: translateY(-50%);
+            opacity: 0;
+            animation: lineExpand 0.8s 0.8s forwards;
+        }
+
+        h2::before {
+            left: -60px;
+        }
+
+        h2::after {
+            right: -60px;
+        }
+
+        @keyframes lineExpand {
+            from { width: 0; opacity: 0; }
+            to { width: 50px; opacity: 1; }
+        }
+        
+        .card {
+            background: var(--glass);
+            border-radius: 20px;
+            border: none;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            transform-style: preserve-3d;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.5s forwards;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            animation: borderGrow 1s 0.7s forwards;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        @keyframes borderGrow {
+            to { transform: scaleX(1); }
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) rotateX(2deg);
+            box-shadow: 0 20px 50px rgba(131, 18, 56, 0.25);
+        }
+        
+        .card-body {
+            padding: 2.5rem;
+        }
+        
+        h4 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-weight: 700;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.7s forwards;
+        }
+        
+        h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            animation: underlineExpand 0.8s 1s forwards;
+            border-radius: 3px;
+        }
+        
+        @keyframes underlineExpand {
+            from { width: 0; }
+            to { width: 50px; }
+        }
+        
+        strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .form-control {
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(131, 18, 56, 0.2);
+            transition: all 0.4s;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(131, 18, 56, 0.15), inset 0 2px 4px rgba(0,0,0,0.05);
+            background: white;
+            transform: translateZ(10px);
+        }
+
+        .input-group-text {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px 0 0 12px !important;
+        }
+        
+        .btn {
+            border-radius: 12px;
+            padding: 1rem;
+            font-weight: 600;
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            box-shadow: 0 8px 20px rgba(131, 18, 56, 0.3);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            box-shadow: 0 8px 20px rgba(90, 143, 61, 0.3);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(131, 18, 56, 0.4);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn i {
+            margin-right: 10px;
+        }
+        
+        /* Payment card animation */
+        .payment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(131, 18, 56, 0.08);
+            transform-style: preserve-3d;
+            transition: all 0.5s;
+            opacity: 0;
+            animation: fadeIn 0.8s 0.7s forwards;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px) rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(131, 18, 56, 0.15);
+        }
+
+        .payment-card p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .payment-card p::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        /* Floating credit card icon */
+        .card-icon {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            color: var(--primary);
+            font-size: 2.5rem;
+            animation: float 3s ease-in-out infinite, pulse 2s infinite alternate;
+            z-index: 0;
+            opacity: 0.2;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.2; }
+            to { opacity: 0.4; }
+        }
+
+        /* Price badge */
+        .price-badge {
+            position: absolute;
+            right: 2rem;
+            top: -1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(131, 18, 56, 0.3);
+            transform: rotate(5deg);
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2.2rem;
+                padding: 0;
+            }
+
+            h2::before, h2::after {
+                display: none;
+            }
+            
+            .card-body {
+                padding: 1.8rem;
+            }
+            
+            .card-icon {
+                position: static;
+                margin-bottom: 1rem;
+                display: block;
+                text-align: center;
+                opacity: 0.5;
+                font-size: 3rem;
+            }
+
+            .price-badge {
+                position: static;
+                display: inline-block;
+                margin-bottom: 1rem;
+                transform: rotate(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles background -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container mt-5">
+        <div class="text-center">
+            <h2 class="animate__animated">Payment</h2>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <i class="fas fa-credit-card card-icon"></i>
+                <div class="price-badge">₹{{ course_cost }}</div>
+                
+                <h4>Course Details</h4>
+                <div class="payment-card">
+                    <p><strong>Course Name:</strong> {{ course_name }}</p>
+                    <p><strong>Course Duration:</strong> {{ course_duration }}</p>
+                    <p><strong>Access:</strong> Lifetime access with updates</p>
+                    <p><strong>Support:</strong> 24/7 instructor support</p>
+                </div>
+                
+                <h4>Payment Information</h4>
+                <form action="{{ url_for('process_payment') }}" method="POST">
+                    <!-- Hidden fields to pass course details -->
+                    <input type="hidden" name="course_name" value="{{ course_name }}">
+                    <input type="hidden" name="course_cost" value="{{ course_cost }}">
+                    <input type="hidden" name="course_duration" value="{{ course_duration }}">
+                    <input type="hidden" name="course_id" value="{{ course_id }}">
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Card Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="far fa-credit-card"></i></span>
+                            <input type="text" name="card_number" required class="form-control" placeholder="Enter Card Number">
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label fw-bold">Expiry Date</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                <input type="text" name="expiry_date" required class="form-control" placeholder="MM/YY">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label fw-bold">Security Code</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="text" name="cvv" required class="form-control" placeholder="CVV">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 py-3 mt-2">
+                        <i class="fas fa-lock"></i> Pay Securely ₹{{ course_cost }}
+                    </button>
+                    
+                    <div class="text-center mt-3">
+                        <small class="text-muted">
+                            <i class="fas fa-shield-alt me-2"></i> Your payment is secured with 256-bit SSL encryption
+                        </small>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4 animate__animated animate__fadeIn">
+            <a href="{{ url_for('courses') }}" class="btn btn-secondary px-4 py-2">
+                <i class="fas fa-arrow-left me-2"></i> Back to Courses
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 20 + 5;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const opacity = Math.random() * 0.3 + 0.1;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 15 + 10;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.opacity = opacity;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add animation to form elements
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            const inputs = document.querySelectorAll('.form-control');
+            inputs.forEach((input, index) => {
+                input.style.opacity = '0';
+                input.style.transform = 'translateY(20px)';
+                input.style.animation = `fadeInUp 0.5s ${index * 0.1 + 0.8}s forwards`;
+            });
+        });
+    </script>
+</body>
+</html>

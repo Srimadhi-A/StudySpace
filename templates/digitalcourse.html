@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Digital Marketing</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Master the strategic foundations of modern digital marketing and customer engagement</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Digital Marketing</h2>
+            <p class="lead">Explore the fundamental concepts and strategic frameworks of digital marketing.</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">SEO</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Social</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Content</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Email</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">PPC</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Concepts</h4>
+                <p>Digital marketing encompasses several key disciplines:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Search Engine Optimization (SEO)</strong>: Organic visibility strategies</li>
+                    <li><strong class="theory-highlight">Pay-Per-Click (PPC)</strong>: Paid advertising models</li>
+                    <li><strong class="theory-highlight">Content Marketing</strong>: Value-driven content creation</li>
+                    <li><strong class="theory-highlight">Social Media Marketing</strong>: Platform-specific engagement</li>
+                    <li><strong class="theory-highlight">Email Marketing</strong>: Direct customer communication</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>The Digital Marketing Funnel</h4>
+                <p>Customer journey from awareness to conversion:</p>
+                <ol>
+                    <li><strong>Awareness</strong>: Top-of-funnel content and ads</li>
+                    <li><strong>Consideration</strong>: Middle-funnel engagement</li>
+                    <li><strong>Conversion</strong>: Bottom-funnel actions</li>
+                    <li><strong>Retention</strong>: Post-purchase engagement</li>
+                    <li><strong>Advocacy</strong>: Customer referrals</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Key Strategic Challenges</h4>
+                <p>Critical issues in digital marketing:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Attention Economy</strong>: Capturing user focus</li>
+                    <li><strong class="theory-highlight">Data Privacy</strong>: GDPR and regulations</li>
+                    <li><strong class="theory-highlight">Platform Algorithms</strong>: Changing visibility rules</li>
+                    <li><strong class="theory-highlight">ROI Measurement</strong>: Proving campaign effectiveness</li>
+                    <li><strong class="theory-highlight">Omnichannel Integration</strong>: Consistent cross-platform experiences</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Digital Strategy <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Digital Marketing Strategy</h2>
+            <p class="lead">Develop comprehensive digital marketing strategies for business growth.</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Strategic Insight:</strong> Effective digital marketing requires alignment with business objectives.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Strategic Frameworks</h4>
+                        <p>Foundational approaches to digital marketing:</p>
+                        <ul>
+                            <li>SWOT analysis</li>
+                            <li>PESTLE analysis</li>
+                            <li>Customer journey mapping</li>
+                            <li>Competitive analysis</li>
+                            <li>Marketing mix (7Ps)</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">S.M.A.R.T. Goals</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Digital Transformation</h4>
+                        <p>Integrating digital across organizations:</p>
+                        <ul>
+                            <li>Technology adoption</li>
+                            <li>Data-driven culture</li>
+                            <li>Customer-centric approaches</li>
+                            <li>Agile marketing</li>
+                            <li>Change management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Audience Segmentation</h4>
+                <p>Targeting specific customer groups:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Demographic</h5>
+                        <ul>
+                            <li>Age, gender, income</li>
+                            <li>Education, occupation</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Psychographic</h5>
+                        <ul>
+                            <li>Interests, values</li>
+                            <li>Lifestyle, personality</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Behavioral</h5>
+                        <ul>
+                            <li>Purchase history</li>
+                            <li>Engagement patterns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Content Strategy</h4>
+                <p>Planning and creating effective content:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Content Types</h5>
+                        <ul>
+                            <li>Blogs/articles</li>
+                            <li>Videos/podcasts</li>
+                            <li>Infographics</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Distribution Channels</h5>
+                        <ul>
+                            <li>Owned media</li>
+                            <li>Earned media</li>
+                            <li>Paid media</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">Content Calendar</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Digital Channels <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Digital Marketing Channels</h2>
+            <p class="lead">Master the key digital platforms and their strategic applications.</p>
+            
+            <div class="concept-card">
+                <h4>Search Engine Marketing</h4>
+                <p>Visibility in search results:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>SEO Strategies</h5>
+                        <ul>
+                            <li>Keyword research</li>
+                            <li>On-page optimization</li>
+                            <li>Technical SEO</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>PPC Advertising</h5>
+                        <ul>
+                            <li>Google Ads</li>
+                            <li>Bing Ads</li>
+                            <li>Display networks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">CTR = (Clicks ÷ Impressions) × 100</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Social Media Marketing</h4>
+                <p>Platform-specific strategies:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Platforms</h5>
+                        <ul>
+                            <li>Facebook/Instagram</li>
+                            <li>LinkedIn</li>
+                            <li>TikTok</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Content Types</h5>
+                        <ul>
+                            <li>Organic posts</li>
+                            <li>Paid ads</li>
+                            <li>Stories/Reels</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Metrics</h5>
+                        <ul>
+                            <li>Engagement rate</li>
+                            <li>Reach/impressions</li>
+                            <li>Conversions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Email Marketing</h4>
+                <p>Direct customer communication:</p>
+                <ul>
+                    <li>List building strategies</li>
+                    <li>Segmentation tactics</li>
+                    <li>Automation workflows</li>
+                    <li>A/B testing</li>
+                    <li>Performance metrics</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">Open Rate = (Opens ÷ Delivered) × 100</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Emerging Channels</h4>
+                <p>New digital opportunities:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Technologies</h5>
+                        <ul>
+                            <li>Chatbots</li>
+                            <li>Voice search</li>
+                            <li>AR/VR marketing</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Platforms</h5>
+                        <ul>
+                            <li>Influencer marketing</li>
+                            <li>Podcast advertising</li>
+                            <li>Programmatic ads</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Analytics & Optimization <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Analytics & Optimization</h2>
+            <p class="lead">Measure, analyze, and improve digital marketing performance.</p>
+            
+            <div class="concept-card">
+                <h4>Digital Analytics</h4>
+                <p>Measuring marketing effectiveness:</p>
+                <ul>
+                    <li>Google Analytics</li>
+                    <li>UTM parameters</li>
+                    <li>Conversion tracking</li>
+                    <li>Attribution models</li>
+                    <li>Customer lifetime value</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">ROAS = (Revenue ÷ Ad Spend) × 100</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Conversion Rate Optimization</h4>
+                <p>Improving website performance:</p>
+                <ul>
+                    <li>Landing page best practices</li>
+                    <li>A/B testing methodology</li>
+                    <li>User experience principles</li>
+                    <li>Heatmap analysis</li>
+                    <li>Multivariate testing</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Marketing Automation</h4>
+                <p>Scaling personalized marketing:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Tools</h5>
+                        <ul>
+                            <li>Email automation</li>
+                            <li>CRM integration</li>
+                            <li>Lead scoring</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Strategies</h5>
+                        <ul>
+                            <li>Drip campaigns</li>
+                            <li>Behavioral triggers</li>
+                            <li>Personalization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">Lead Nurturing Workflow</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Performance Metrics</h4>
+                <p>Key digital marketing KPIs:</p>
+                <ul>
+                    <li>CTR (Click-Through Rate)</li>
+                    <li>CPC (Cost Per Click)</li>
+                    <li>CAC (Customer Acquisition Cost)</li>
+                    <li>LTV (Lifetime Value)</li>
+                    <li>ROI (Return on Investment)</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Advanced Strategies <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Advanced Digital Marketing</h2>
+            <p class="lead">Cutting-edge strategies and future trends in digital marketing.</p>
+            
+            <div class="concept-card">
+                <h4>Growth Marketing</h4>
+                <p>Data-driven scaling strategies:</p>
+                <ul>
+                    <li>Viral marketing techniques</li>
+                    <li>Referral programs</li>
+                    <li>Product-led growth</li>
+                    <li>Community building</li>
+                    <li>Experimentation culture</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Personalization at Scale</h4>
+                <p>Individualized customer experiences:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Techniques</h5>
+                        <ul>
+                            <li>Dynamic content</li>
+                            <li>Predictive analytics</li>
+                            <li>AI-driven recommendations</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Technologies</h5>
+                        <ul>
+                            <li>CDPs (Customer Data Platforms)</li>
+                            <li>Machine learning models</li>
+                            <li>Real-time personalization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Future Trends</h4>
+                <p>Emerging digital marketing directions:</p>
+                <ul>
+                    <li>Voice search optimization</li>
+                    <li>AI-generated content</li>
+                    <li>Metaverse marketing</li>
+                    <li>Privacy-first marketing</li>
+                    <li>Contextual targeting</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Ethical Digital Marketing</h4>
+                <p>Responsible marketing practices:</p>
+                <ul>
+                    <li>Data privacy compliance</li>
+                    <li>Transparent advertising</li>
+                    <li>Accessibility standards</li>
+                    <li>Sustainable marketing</li>
+                    <li>Consumer protection</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Digital Marketing Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Digital Marketing";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

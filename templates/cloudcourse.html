@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cloud Computing Basics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- study space in navbar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <!--full font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pycourse.css') }}">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i>
+                            Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i
+                                class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i>
+                            Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i
+                                class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i>
+                            MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i>
+                            Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Course Header -->
+    <header class="course-header py-5 text-center">
+        <div class="container">
+            <h1 class="display-4"><i class="fas fa-cloud"></i> Cloud Computing Fundamentals</h1>
+            <p class="lead">Master cloud technologies and services from scratch</p>
+            <div class="progress mt-4" style="height: 10px;">
+                <div id="course-progress" class="progress-bar progress-maroon" role="progressbar" style="width: 0%">
+                </div>
+            </div>
+            <small id="progress-text" class="text-muted">0% Complete</small>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Course Sidebar -->
+                <div class="card sidebar-card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list-ul"></i> Course Modules</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#module1" class="list-group-item list-group-item-action active" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 1: Cloud Basics
+                        </a>
+                        <a href="#module2" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 2: AWS Fundamentals
+                        </a>
+                        <a href="#module3" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 3: Azure Services
+                        </a>
+                        <a href="#module4" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 4: Google Cloud
+                        </a>
+                        <a href="#module5" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                            <i class="fas fa-play-circle"></i> Module 5: Cloud Security
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resources Card -->
+                <div class="card sidebar-card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-book-open"></i> Resources</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><a href="https://aws.amazon.com/getting-started/" class="resource-link"><i
+                                        class="fas fa-file-pdf"></i> AWS Getting Started</a></li>
+                            <li><a href="https://learn.microsoft.com/en-us/training/azure/" class="resource-link"><i
+                                        class="fas fa-code"></i> Microsoft Learn</a></li>
+                            <li><a href="https://cloud.google.com/training" class="resource-link"><i
+                                        class="fas fa-project-diagram"></i> Google Cloud Training</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Module Content -->
+                <div class="tab-content" id="moduleTabs">
+                    <!-- Module 1 -->
+                    <div id="module1" class="tab-pane fade show active">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Introduction to Cloud Computing</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module1-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/mxT233EdY5c" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module1" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module1')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module1')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module1" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module1')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module1-title">Unit 1: Cloud Concepts</h4>
+                                        <div class="module-description" id="module1-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>What
+                                                    is cloud computing?</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Cloud
+                                                    service models (IaaS, PaaS, SaaS)</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Cloud
+                                                    deployment models</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Benefits of cloud
+                                                    computing</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 10
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Beginner</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module1" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module1')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div id="module2" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> AWS Fundamentals</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module2-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/ulprqHHWlng" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module2" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module2')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module2')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module2" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module2')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module2-title">Unit 1: AWS Core Services</h4>
+                                        <div class="module-description" id="module2-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>AWS
+                                                    global infrastructure</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>EC2
+                                                    and compute services</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>S3
+                                                    storage services</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>VPC
+                                                    networking</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 15
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Beginner</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module2" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module2')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div id="module3" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Microsoft Azure Services</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module3-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/NKEFWyqJ5XA" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module3" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module3')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module3')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module3" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module3')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module3-title">Unit 1: Azure Core Services</h4>
+                                        <div class="module-description" id="module3-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Azure
+                                                    regions and availability</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Virtual Machines and
+                                                    App Services</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Azure
+                                                    Storage options</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Azure
+                                                    networking fundamentals</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 18
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Intermediate</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module3" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module3')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div id="module4" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Google Cloud Platform</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module4-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/jpno8FSqpc8" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module4" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module4')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module4')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module4" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module4')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module4-title">Unit 1: GCP Core Services</h4>
+                                        <div class="module-description" id="module4-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Google
+                                                    Cloud infrastructure</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Compute Engine and
+                                                    App Engine</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Cloud
+                                                    Storage options</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>VPC
+                                                    networking in GCP</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 16
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Intermediate</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module4" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module4')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div id="module5" class="tab-pane fade">
+                        <div class="card module-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-play"></i> Cloud Security & Best Practices</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-7 text-center">
+                                        <div class="video-container">
+                                            <iframe id="module5-video" width="100%" height="400"
+                                                src="https://www.youtube.com/embed/2N0eQmBQvyM" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button id="prev-module5" class="btn btn-outline-primary"
+                                                onclick="prevVideo('module5')">
+                                                <i class="fas fa-arrow-left"></i> Previous
+                                            </button>
+                                            <button class="btn btn-outline-success mx-2 mark-complete-btn"
+                                                onclick="markAsComplete('module5')">
+                                                <i class="fas fa-check"></i> Mark Complete
+                                            </button>
+                                            <button id="next-module5" class="btn btn-outline-primary"
+                                                onclick="nextVideo('module5')">
+                                                Next <i class="fas fa-arrow-right"></i>
+                                            </button>
+                                            <button id="finish-course" class="btn btn-success mt-2"
+                                                style="display: none; width: 100%;" onclick="goToQuiz()">
+                                                <i class="fas fa-trophy"></i> Finish Course & Take Quiz
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4 id="module5-title">Unit 1: Cloud Security Fundamentals</h4>
+                                        <div class="module-description" id="module5-description">
+                                            <ul class="fa-ul">
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Shared
+                                                    responsibility model</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Identity and Access
+                                                    Management (IAM)</li>
+                                                <li><span class="fa-li"><i class="fas fa-check-circle"></i></span>Data
+                                                    encryption in the cloud</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Compliance and
+                                                    governance</li>
+                                                <li><span class="fa-li"><i
+                                                            class="fas fa-check-circle"></i></span>Security best
+                                                    practices</li>
+                                            </ul>
+                                        </div>
+                                        <div class="module-meta mt-3">
+                                            <span class="badge bg-info"><i class="fas fa-clock"></i> Duration: 22
+                                                mins</span>
+                                            <span class="badge bg-secondary ms-2"><i class="fas fa-star"></i>
+                                                Advanced</span>
+                                        </div>
+                                        <div class="notes-section mt-3">
+                                            <h5><i class="fas fa-pencil-alt"></i> Notes</h5>
+                                            <textarea id="notes-module5" class="form-control notes-textarea" rows="3"
+                                                placeholder="Take notes here..."></textarea>
+                                            <button class="btn btn-sm btn-primary mt-2 copy-notes-btn"
+                                                onclick="copyNotes('module5')">
+                                                <i class="far fa-copy"></i> Copy Notes
+                                            </button>
+                                            <span class="copied-message ms-2" style="display: none; color: green;">
+                                                <i class="fas fa-check"></i> Copied!
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3" style="background-color: #831238;">
+        <p>&copy; 2025 Study Space. All Rights Reserved. | Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        const videoData = {
+            "module1": [
+                {
+                    title: "Cloud Concepts",
+                    url: "https://www.youtube.com/embed/mxT233EdY5c",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>What is cloud computing?</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Cloud service models (IaaS, PaaS, SaaS)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Cloud deployment models</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Benefits of cloud computing</li></ul>",
+                    duration: "10 mins"
+                },
+                {
+                    title: "Cloud Economics",
+                    url: "https://www.youtube.com/embed/7Wzm8erwHKQ",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Total Cost of Ownership (TCO)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Pay-as-you-go pricing</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Cost optimization strategies</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Cloud pricing models</li></ul>",
+                    duration: "12 mins"
+                },
+                {
+                    title: "Cloud Migration",
+                    url: "https://www.youtube.com/embed/yWByEVB0VJE",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Migration strategies</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>6 R's of migration</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Migration tools and services</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Common challenges</li></ul>",
+                    duration: "15 mins"
+                }
+            ],
+            "module2": [
+                {
+                    title: "AWS Core Services",
+                    url: "https://www.youtube.com/embed/B08iQQhXG1Y",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>AWS global infrastructure</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>EC2 and compute services</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>S3 storage services</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>VPC networking</li></ul>",
+                    duration: "15 mins"
+                },
+                {
+                    title: "AWS Database Services",
+                    url: "https://www.youtube.com/embed/jkkmvR5NHmk",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Relational Database Service (RDS)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>DynamoDB NoSQL</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Database migration tools</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Database best practices</li></ul>",
+                    duration: "18 mins"
+                },
+                {
+                    title: "AWS Serverless",
+                    url: "https://www.youtube.com/embed/EBSdyoO3goc",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Lambda functions</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>API Gateway</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Event-driven architectures</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Serverless best practices</li></ul>",
+                    duration: "20 mins"
+                }
+            ],
+            "module3": [
+                {
+                    title: "Azure Core Services",
+                    url: "https://www.youtube.com/embed/NKEFWyqJ5XA",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Azure regions and availability</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Virtual Machines and App Services</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Azure Storage options</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Azure networking fundamentals</li></ul>",
+                    duration: "18 mins"
+                },
+                {
+                    title: "Azure AI Services",
+                    url: "https://www.youtube.com/embed/8aMzR8iaB9s",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Cognitive Services</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Machine Learning Studio</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Bot Services</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>AI implementation patterns</li></ul>",
+                    duration: "22 mins"
+                }
+            ],
+            "module4": [
+                {
+                    title: "GCP Core Services",
+                    url: "https://www.youtube.com/embed/jpno8FSqpc8",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Google Cloud infrastructure</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Compute Engine and App Engine</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Cloud Storage options</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>VPC networking in GCP</li></ul>",
+                    duration: "16 mins"
+                },
+                {
+                    title: "GCP Big Data",
+                    url: "https://www.youtube.com/embed/B8UBi0K76pI",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>BigQuery analytics</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Dataflow processing</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Pub/Sub messaging</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Dataproc Hadoop/Spark</li></ul>",
+                    duration: "20 mins"
+                }
+            ],
+            "module5": [
+                {
+                    title: "Cloud Security Fundamentals",
+                    url: "https://www.youtube.com/embed/Qt9lhzFhW_c",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Shared responsibility model</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Identity and Access Management (IAM)</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Data encryption in the cloud</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Compliance and governance</li></ul>",
+                    duration: "22 mins"
+                },
+                {
+                    title: "Multi-Cloud Security",
+                    url: "https://www.youtube.com/embed/BcV5wHyMhfs",
+                    description: "<ul class='fa-ul'><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Security across AWS, Azure, GCP</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Cloud Security Posture Management</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Zero Trust architectures</li><li><span class='fa-li'><i class='fas fa-check-circle'></i></span>Security automation</li></ul>",
+                    duration: "25 mins"
+                }
+            ]
+        };
+
+        // Initialize state (no persistence)
+        const courseState = {
+            currentIndexes: { module1: 0, module2: 0, module3: 0, module4: 0, module5: 0 },
+            completedModules: { module1: false, module2: false, module3: false, module4: false, module5: false },
+            completedVideos: {
+                module1: Array(videoData.module1.length).fill(false),
+                module2: Array(videoData.module2.length).fill(false),
+                module3: Array(videoData.module3.length).fill(false),
+                module4: Array(videoData.module4.length).fill(false),
+                module5: Array(videoData.module5.length).fill(false)
+            }
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeVideoPlayers();
+            updateCourseProgress();
+        });
+
+        // Video navigation functions (unchanged)
+        function loadVideo(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const currentVideo = videoData[module][currentIndex];
+
+            const videoFrame = document.getElementById(`${module}-video`);
+            const title = document.getElementById(`${module}-title`);
+            const description = document.getElementById(`${module}-description`);
+
+            if (videoFrame && title && description) {
+                videoFrame.src = currentVideo.url;
+                title.innerText = `Unit ${currentIndex + 1}: ${currentVideo.title}`;
+                description.innerHTML = currentVideo.description;
+
+                // Update duration badge
+                const durationBadge = document.querySelector(`#${module} .badge.bg-info`);
+                if (durationBadge) {
+                    durationBadge.innerHTML = `<i class="fas fa-clock"></i> Duration: ${currentVideo.duration}`;
+                }
+            }
+
+            updateButtons(module);
+            updateMarkCompleteButton(module);
+        }
+
+        function nextVideo(module) {
+            if (courseState.currentIndexes[module] < videoData[module].length - 1) {
+                courseState.currentIndexes[module]++;
+                loadVideo(module);
+            }
+        }
+
+        function prevVideo(module) {
+            if (courseState.currentIndexes[module] > 0) {
+                courseState.currentIndexes[module]--;
+                loadVideo(module);
+            }
+        }
+
+        function updateButtons(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const prevButton = document.getElementById(`prev-${module}`);
+            const nextButton = document.getElementById(`next-${module}`);
+
+            if (prevButton) prevButton.disabled = currentIndex === 0;
+
+            if (nextButton) {
+                const isLastModule = module === "module5";
+                const isLastUnit = currentIndex >= videoData[module].length - 1;
+
+                if (isLastModule && isLastUnit) {
+                    nextButton.style.display = "none";
+                } else {
+                    nextButton.style.display = "inline-block";
+                    nextButton.disabled = isLastUnit;
+                }
+            }
+
+            const finishButton = document.getElementById('finish-course');
+            if (finishButton) {
+                finishButton.style.display = (module === "module5" && currentIndex === videoData[module].length - 1)
+                    ? "inline-block"
+                    : "none";
+            }
+        }
+
+        function updateMarkCompleteButton(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            const button = document.querySelector(`#${module} .mark-complete-btn`);
+
+            if (button) {
+                const isCompleted = courseState.completedVideos[module][currentIndex];
+
+                if (isCompleted) {
+                    button.innerHTML = `<i class="fas fa-check-circle text-success"></i> Completed`;
+                    button.classList.add('completed');
+                    button.disabled = true;
+                } else {
+                    button.innerHTML = `<i class="fas fa-check"></i> Mark Complete`;
+                    button.classList.remove('completed');
+                    button.disabled = false;
+                }
+            }
+        }
+
+        // Progress tracking (no persistence)
+        function markAsComplete(module) {
+            const currentIndex = courseState.currentIndexes[module];
+            courseState.completedVideos[module][currentIndex] = true;
+            updateMarkCompleteButton(module);
+
+            const allVideosCompleted = courseState.completedVideos[module].every(v => v);
+            if (allVideosCompleted) {
+                courseState.completedModules[module] = true;
+                updateSidebarModuleStatus(module);
+            }
+            updateCourseProgress();
+        }
+
+        function updateSidebarModuleStatus(module) {
+            const sidebarItem = document.querySelector(`.list-group-item[href="#${module}"]`);
+            if (sidebarItem) {
+                sidebarItem.innerHTML = `<i class="fas fa-check-circle text-success"></i> ${sidebarItem.textContent}`;
+            }
+        }
+
+        function updateCourseProgress() {
+            let totalVideos = 0;
+            let completedVideosCount = 0;
+            for (let module in videoData) {
+                totalVideos += videoData[module].length;
+                completedVideosCount += courseState.completedVideos[module].filter(v => v).length;
+            }
+            const progressPercentage = Math.round((completedVideosCount / totalVideos) * 100);
+            const progressBar = document.getElementById('course-progress');
+            const progressText = document.getElementById('progress-text');
+            if (progressBar) progressBar.style.width = `${progressPercentage}%`;
+            if (progressText) progressText.textContent = `${progressPercentage}% Complete`;
+        }
+
+        // Navigation functions (unchanged)
+        function goToQuiz() {
+            const courseName = "Cloud Computing";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function copyNotes(module) {
+            const textarea = document.getElementById(`notes-${module}`);
+            const button = textarea.nextElementSibling;
+            const message = button.nextElementSibling;
+            navigator.clipboard.writeText(textarea.value)
+                .then(() => {
+                    button.innerHTML = `<i class="far fa-copy"></i> Copied!`;
+                    message.style.display = 'inline';
+                    setTimeout(() => {
+                        button.innerHTML = `<i class="far fa-copy"></i> Copy Notes`;
+                        message.style.display = 'none';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy notes: ', err);
+                    button.innerHTML = `<i class="fas fa-times"></i> Failed to copy`;
+                });
+        }
+
+        // Initialize video players
+        function initializeVideoPlayers() {
+            for (let module in videoData) {
+                loadVideo(module);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

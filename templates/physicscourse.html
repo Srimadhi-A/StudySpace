@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Physics</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Explore the fundamental laws governing matter, energy, and the universe</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Physics</h2>
+            <p class="lead">Fundamental concepts and principles of the physical world</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Mechanics</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Thermodynamics</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Electromagnetism</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Relativity</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Quantum</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Principles</h4>
+                <p>Physics is built on several fundamental concepts:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Conservation Laws</strong>: Energy, momentum, charge</li>
+                    <li><strong class="theory-highlight">Newton's Laws</strong>: Motion and gravitation</li>
+                    <li><strong class="theory-highlight">Wave-Particle Duality</strong>: Quantum behavior</li>
+                    <li><strong class="theory-highlight">Field Theory</strong>: Forces at a distance</li>
+                    <li><strong class="theory-highlight">Relativity</strong>: Space-time relationships</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>Branches of Physics</h4>
+                <p>Major areas of physical study:</p>
+                <ol>
+                    <li><strong>Classical Mechanics</strong>: Motion of macroscopic objects</li>
+                    <li><strong>Thermodynamics</strong>: Heat and energy transfer</li>
+                    <li><strong>Electromagnetism</strong>: Electric and magnetic phenomena</li>
+                    <li><strong>Quantum Mechanics</strong>: Subatomic particles</li>
+                    <li><strong>Astrophysics</strong>: Celestial objects and cosmology</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Scientific Method</h4>
+                <p>Physics approach to investigation:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Observation</strong>: Natural phenomena</li>
+                    <li><strong class="theory-highlight">Hypothesis</strong>: Testable explanation</li>
+                    <li><strong class="theory-highlight">Experimentation</strong>: Controlled testing</li>
+                    <li><strong class="theory-highlight">Mathematical Modeling</strong>: Quantitative predictions</li>
+                    <li><strong class="theory-highlight">Theory Development</strong>: Comprehensive frameworks</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Classical Mechanics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Classical Mechanics</h2>
+            <p class="lead">The study of motion and forces</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Newtonian Insight:</strong> An object in motion stays in motion unless acted upon by an external force.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Newton's Laws</h4>
+                        <p>Foundations of motion:</p>
+                        <ul>
+                            <li><strong>1st Law</strong>: Inertia</li>
+                            <li><strong>2nd Law</strong>: F=ma</li>
+                            <li><strong>3rd Law</strong>: Action-reaction</li>
+                            <li><strong>Universal Gravitation</strong>: F=G(m₁m₂)/r²</li>
+                            <li>Applications in engineering</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">F = m × a # Newton's second law</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Kinematics</h4>
+                        <p>Description of motion:</p>
+                        <ul>
+                            <li>Position, velocity, acceleration</li>
+                            <li>Projectile motion</li>
+                            <li>Circular motion</li>
+                            <li>Relative motion</li>
+                            <li>Free-body diagrams</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">v = u + at # Kinematic equation</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Energy and Momentum</h4>
+                <p>Conservation principles:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Energy</h5>
+                        <ul>
+                            <li>Kinetic: ½mv²</li>
+                            <li>Potential: mgh</li>
+                            <li>Work-energy theorem</li>
+                            <li>Power</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Momentum</h5>
+                        <ul>
+                            <li>Linear: p=mv</li>
+                            <li>Impulse</li>
+                            <li>Collisions</li>
+                            <li>Rocket propulsion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Rotational Dynamics</h4>
+                <p>Motion of rigid bodies:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Concept</th>
+                            <th>Linear Analog</th>
+                            <th>Rotational Form</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Displacement</td>
+                            <td>x</td>
+                            <td>θ</td>
+                        </tr>
+                        <tr>
+                            <td>Velocity</td>
+                            <td>v</td>
+                            <td>ω</td>
+                        </tr>
+                        <tr>
+                            <td>Acceleration</td>
+                            <td>a</td>
+                            <td>α</td>
+                        </tr>
+                        <tr>
+                            <td>Force</td>
+                            <td>F</td>
+                            <td>τ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Electromagnetism <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Electromagnetism</h2>
+            <p class="lead">The study of electric and magnetic phenomena</p>
+            
+            <div class="concept-card">
+                <h4>Electrostatics</h4>
+                <p>Stationary electric charges:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Concepts</h5>
+                        <ul>
+                            <li>Coulomb's Law</li>
+                            <li>Electric fields</li>
+                            <li>Gauss's Law</li>
+                            <li>Electric potential</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Capacitors</li>
+                            <li>Van de Graaff generator</li>
+                            <li>Electrostatic precipitators</li>
+                            <li>Lightning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">F = k(q₁q₂)/r² # Coulomb's Law</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Magnetism</h4>
+                <p>Magnetic fields and forces:</p>
+                <ul>
+                    <li>Magnetic poles</li>
+                    <li>Lorentz force</li>
+                    <li>Biot-Savart Law</li>
+                    <li>Ampère's Law</li>
+                    <li>Ferromagnetism</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Electrodynamics</h4>
+                <p>Time-varying fields:</p>
+                <ul>
+                    <li>Faraday's Law</li>
+                    <li>Lenz's Law</li>
+                    <li>Maxwell's Equations</li>
+                    <li>Electromagnetic waves</li>
+                    <li>Applications in communications</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">∇×E = -∂B/∂t # Faraday's Law</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Circuits</h4>
+                <p>Electrical networks:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Components</h5>
+                        <ul>
+                            <li>Resistors</li>
+                            <li>Capacitors</li>
+                            <li>Inductors</li>
+                            <li>Diodes</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Laws</h5>
+                        <ul>
+                            <li>Ohm's Law</li>
+                            <li>Kirchhoff's Laws</li>
+                            <li>RC/RL circuits</li>
+                            <li>AC circuits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Thermodynamics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Thermodynamics</h2>
+            <p class="lead">The study of heat and energy transfer</p>
+            
+            <div class="concept-card">
+                <h4>Laws of Thermodynamics</h4>
+                <p>Fundamental principles:</p>
+                <ul>
+                    <li><strong>0th Law</strong>: Thermal equilibrium</li>
+                    <li><strong>1st Law</strong>: Energy conservation</li>
+                    <li><strong>2nd Law</strong>: Entropy</li>
+                    <li><strong>3rd Law</strong>: Absolute zero</li>
+                    <li>Applications in engines</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">ΔU = Q - W # First Law</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Heat Transfer</h4>
+                <p>Energy movement mechanisms:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Conduction</h5>
+                        <ul>
+                            <li>Fourier's Law</li>
+                            <li>Thermal conductivity</li>
+                            <li>Insulation</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Convection</h5>
+                        <ul>
+                            <li>Natural vs forced</li>
+                            <li>Heat transfer coefficient</li>
+                            <li>Applications in HVAC</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Radiation</h5>
+                        <ul>
+                            <li>Stefan-Boltzmann Law</li>
+                            <li>Blackbody radiation</li>
+                            <li>Greenhouse effect</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Statistical Mechanics</h4>
+                <p>Microscopic basis of thermodynamics:</p>
+                <ul>
+                    <li>Kinetic theory of gases</li>
+                    <li>Maxwell-Boltzmann distribution</li>
+                    <li>Partition functions</li>
+                    <li>Quantum statistics</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Phase Transitions</h4>
+                <p>Changes between states of matter:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Transition</th>
+                            <th>Example</th>
+                            <th>Latent Heat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Melting</td>
+                            <td>Ice → Water</td>
+                            <td>334 kJ/kg</td>
+                        </tr>
+                        <tr>
+                            <td>Vaporization</td>
+                            <td>Water → Steam</td>
+                            <td>2260 kJ/kg</td>
+                        </tr>
+                        <tr>
+                            <td>Sublimation</td>
+                            <td>Dry ice → CO₂ gas</td>
+                            <td>571 kJ/kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Modern Physics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Modern Physics</h2>
+            <p class="lead">Cutting-edge developments in physical theory</p>
+            
+            <div class="concept-card">
+                <h4>Quantum Mechanics</h4>
+                <p>Behavior of subatomic particles:</p>
+                <ul>
+                    <li>Wave-particle duality</li>
+                    <li>Schrödinger equation</li>
+                    <li>Uncertainty principle</li>
+                    <li>Quantum tunneling</li>
+                    <li>Applications in computing</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">iħ∂ψ/∂t = Ĥψ # Schrödinger equation</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Relativity</h4>
+                <p>High-velocity and gravitational physics:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Special Relativity</h5>
+                        <ul>
+                            <li>Time dilation</li>
+                            <li>Length contraction</li>
+                            <li>Mass-energy equivalence</li>
+                            <li>Lorentz transformations</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>General Relativity</h5>
+                        <ul>
+                            <li>Curved spacetime</li>
+                            <li>Gravitational waves</li>
+                            <li>Black holes</li>
+                            <li>Cosmological models</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Particle Physics</h4>
+                <p>Fundamental constituents of matter:</p>
+                <ul>
+                    <li>Standard Model</li>
+                    <li>Quarks and leptons</li>
+                    <li>Fundamental forces</li>
+                    <li>Higgs mechanism</li>
+                    <li>Particle accelerators</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Cosmology</h4>
+                <p>Origin and evolution of the universe:</p>
+                <ul>
+                    <li>Big Bang theory</li>
+                    <li>Cosmic microwave background</li>
+                    <li>Dark matter and dark energy</li>
+                    <li>Inflation theory</li>
+                    <li>Multiverse hypotheses</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Physics Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Physics";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Course | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Code:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3776ab;
+            --secondary-color: #ffd43b;
+            --dark-color: #1e1e1e;
+            --light-color: #f8f9fa;
+            --accent-color: #306998;
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--dark-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Jersey 15', sans-serif;
+            font-size: 2rem;
+            color: var(--secondary-color) !important;
+            letter-spacing: 1px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--light-color) !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+        }
+        
+        .nav-tabs {
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--dark-color) !important;
+            border: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            background-color: #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background-color: var(--primary-color);
+            color: white !important;
+            border: none;
+        }
+        
+        .nav-tabs .nav-link:hover:not(.active) {
+            background-color: #d1d7e0;
+        }
+        
+        .tab-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-height: 500px;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        h4 {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        iframe {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: none;
+        }
+        
+        .btn {
+            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            transform: translateY(-2px);
+        }
+        
+        .alert-info {
+            background-color: #e7f6fd;
+            color: var(--accent-color);
+            border-color: #b8e2f5;
+            font-weight: 500;
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            height: 10px;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+        
+        .module-content {
+            margin-top: 20px;
+        }
+        
+        .resources-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .resources-card h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .resource-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-item:hover {
+            background-color: #f0f7ff;
+            transform: translateX(5px);
+        }
+        
+        .resource-item a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .resource-item a:hover {
+            color: var(--primary-color);
+        }
+        
+        .resource-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .code-example {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Fira Code', monospace;
+            margin: 15px 0;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .quiz-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 15px 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quiz-btn i {
+            margin-left: 8px;
+        }
+        
+        .completion-badge {
+            background-color: var(--success-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .tab-pane {
+            position: relative;
+        }
+        
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .video-controls .btn {
+            margin: 0 10px;
+        }
+        
+        .module-description {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .module-description li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .tab-content {
+                padding: 20px 15px;
+            }
+            
+            .quiz-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Python Programming Course</h2>
+            <span class="badge bg-primary">Beginner Level</span>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <small class="text-muted">Progress: <span id="progress-percent">20</span>%</small>
+            <small class="text-muted">Estimated time: 8 hours</small>
+        </div>
+
+        <ul class="nav nav-tabs" id="moduleTabs">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#module1"><i class="fas fa-play-circle me-2"></i>Module 1</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#module2"><i class="fas fa-code me-2"></i>Module 2</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#module3"><i class="fas fa-project-diagram me-2"></i>Module 3</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#module4"><i class="fas fa-cogs me-2"></i>Module 4</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#module5"><i class="fas fa-object-group me-2"></i>Module 5</a></li>
+        </ul>
+
+        <div class="tab-content mt-3">
+            <!-- Module 1 -->
+            <div id="module1" class="tab-pane fade show active">
+                <h3><i class="fas fa-play-circle me-2"></i>Introduction to Python</h3>
+                
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="module1-video" src="https://www.youtube.com/embed/BVIoAILnZ4Q" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-controls mt-3">
+                            <button id="prev-module1" class="btn btn-outline-primary" onclick="prevVideo('module1')">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button id="next-module1" class="btn btn-primary" onclick="nextVideo('module1')">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 id="module1-title"><i class="fas fa-bookmark me-2"></i>Unit 1: Getting Started with Python</h4>
+                        <div class="module-description">
+                            <ul id="module1-description">
+                                <li>Introduction to Python and its applications in various fields</li>
+                                <li>Installation and setup of Python on different operating systems</li>
+                                <li>Writing and running your first Python program using IDLE and command line</li>
+                                <li>Understanding the basic syntax and structure of Python code</li>
+                                <li>Python interpreter and how it works</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="alert alert-info">
+                                <strong><i class="fas fa-clock me-2"></i>DURATION:</strong> 15 mins
+                            </div>
+                            <button class="btn btn-sm btn-success" onclick="markAsComplete('module1')">
+                                <i class="fas fa-check-circle me-1"></i> Mark as Complete
+                            </button>
+                        </div>
+                        
+                        <!-- Code Example -->
+                        <div class="code-example">
+                            <h5><i class="fas fa-code me-2"></i>Example Code:</h5>
+                            <pre><code># Your first Python program
+print("Hello, World!")
+
+# Variables and basic operations
+x = 5
+y = 10
+sum = x + y
+print(f"The sum is: {sum}")</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resources Section -->
+                <div class="resources-card">
+                    <h5><i class="fas fa-link me-2"></i>Additional Resources</h5>
+                    <div class="resource-item">
+                        <a href="https://docs.python.org/3/tutorial/" target="_blank"><i class="fas fa-book"></i> Official Python Tutorial</a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://www.python.org/downloads/" target="_blank"><i class="fas fa-download"></i> Python Downloads</a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://replit.com/" target="_blank"><i class="fas fa-laptop-code"></i> Online Python Editor</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Module 2 -->
+            <div id="module2" class="tab-pane fade">
+                <h3><i class="fas fa-code me-2"></i>Data Types and Variables</h3>
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="module2-video" src="https://www.youtube.com/embed/Rtmgt2Qfqr4" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-controls mt-3">
+                            <button id="prev-module2" class="btn btn-outline-primary" onclick="prevVideo('module2')">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button id="next-module2" class="btn btn-primary" onclick="nextVideo('module2')">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 id="module2-title"><i class="fas fa-bookmark me-2"></i>Unit 1: Understanding Variables</h4>
+                        <div class="module-description">
+                            <ul id="module2-description">
+                                <li>Python variables and naming conventions</li>
+                                <li>Basic data types: integers, floats, strings, booleans</li>
+                                <li>Type conversion and type checking</li>
+                                <li>Working with strings: formatting, methods, and operations</li>
+                                <li>Basic input/output operations</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="alert alert-info">
+                                <strong><i class="fas fa-clock me-2"></i>DURATION:</strong> 20 mins
+                            </div>
+                            <button class="btn btn-sm btn-success" onclick="markAsComplete('module2')">
+                                <i class="fas fa-check-circle me-1"></i> Mark as Complete
+                            </button>
+                        </div>
+                        
+                        <div class="code-example">
+                            <h5><i class="fas fa-code me-2"></i>Example Code:</h5>
+                            <pre><code># Variables and data types
+name = "Alice"
+age = 25
+height = 5.7
+is_student = True
+
+# String formatting
+print(f"{name} is {age} years old and {height} feet tall")
+
+# Type conversion
+num_str = "123"
+num_int = int(num_str)
+print(num_int * 2)</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resources-card">
+                    <h5><i class="fas fa-link me-2"></i>Additional Resources</h5>
+                    <div class="resource-item">
+                        <a href="https://realpython.com/python-data-types/" target="_blank"><i class="fas fa-book"></i> Python Data Types Guide</a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://www.w3schools.com/python/python_datatypes.asp" target="_blank"><i class="fas fa-graduation-cap"></i> W3Schools Data Types</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Module 3 -->
+            <div id="module3" class="tab-pane fade">
+                <h3><i class="fas fa-project-diagram me-2"></i>Control Structures</h3>
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="module3-video" src="https://www.youtube.com/embed/eYtf9a8LoIg" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-controls mt-3">
+                            <button id="prev-module3" class="btn btn-outline-primary" onclick="prevVideo('module3')">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button id="next-module3" class="btn btn-primary" onclick="nextVideo('module3')">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 id="module3-title"><i class="fas fa-bookmark me-2"></i>Unit 1: Conditional Statements</h4>
+                        <div class="module-description">
+                            <ul id="module3-description">
+                                <li>If-else conditions and boolean expressions</li>
+                                <li>Comparison and logical operators</li>
+                                <li>Loops: for and while loops with examples</li>
+                                <li>Control statements: break, continue, pass</li>
+                                <li>Nested control structures and best practices</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="alert alert-info">
+                                <strong><i class="fas fa-clock me-2"></i>DURATION:</strong> 25 mins
+                            </div>
+                            <button class="btn btn-sm btn-success" onclick="markAsComplete('module3')">
+                                <i class="fas fa-check-circle me-1"></i> Mark as Complete
+                            </button>
+                        </div>
+                        
+                        <div class="code-example">
+                            <h5><i class="fas fa-code me-2"></i>Example Code:</h5>
+                            <pre><code># If-else example
+age = 18
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a minor")
+
+# For loop with range
+for i in range(5):
+    print(f"Number: {i}")
+
+# While loop
+count = 0
+while count < 5:
+    print(count)
+    count += 1</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resources-card">
+                    <h5><i class="fas fa-link me-2"></i>Additional Resources</h5>
+                    <div class="resource-item">
+                        <a href="https://realpython.com/python-conditional-statements/" target="_blank"><i class="fas fa-book"></i> Conditional Statements Guide</a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://www.programiz.com/python-programming/if-elif-else" target="_blank"><i class="fas fa-graduation-cap"></i> Control Flow Tutorial</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div id="module4" class="tab-pane fade">
+                <h3><i class="fas fa-cogs me-2"></i>Functions in Python</h3>
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="module4-video" src="https://www.youtube.com/embed/rqkkd-h087A" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-controls mt-3">
+                            <button id="prev-module4" class="btn btn-outline-primary" onclick="prevVideo('module4')">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button id="next-module4" class="btn btn-primary" onclick="nextVideo('module4')">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 id="module4-title"><i class="fas fa-bookmark me-2"></i>Unit 1: Functions & Scope</h4>
+                        <div class="module-description">
+                            <ul id="module4-description">
+                                <li>Function definitions and calling functions</li>
+                                <li>Parameters and arguments (positional, keyword, default)</li>
+                                <li>Return values and multiple returns</li>
+                                <li>Variable scope: local vs global variables</li>
+                                <li>Lambda functions and their use cases</li>
+                                <li>Docstrings and function documentation</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="alert alert-info">
+                                <strong><i class="fas fa-clock me-2"></i>DURATION:</strong> 30 mins
+                            </div>
+                            <button class="btn btn-sm btn-success" onclick="markAsComplete('module4')">
+                                <i class="fas fa-check-circle me-1"></i> Mark as Complete
+                            </button>
+                        </div>
+                        
+                        <div class="code-example">
+                            <h5><i class="fas fa-code me-2"></i>Example Code:</h5>
+                            <pre><code># Function definition
+def greet(name, message="Hello"):
+    """This function greets the person with the given message"""
+    print(f"{message}, {name}!")
+
+# Function call
+greet("Alice")
+greet("Bob", "Hi")
+
+# Lambda function
+square = lambda x: x * x
+print(square(5))</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resources-card">
+                    <h5><i class="fas fa-link me-2"></i>Additional Resources</h5>
+                    <div class="resource-item">
+                        <a href="https://realpython.com/defining-your-own-python-function/" target="_blank"><i class="fas fa-book"></i> Python Functions Guide</a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://www.w3schools.com/python/python_functions.asp" target="_blank"><i class="fas fa-graduation-cap"></i> Functions Tutorial</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div id="module5" class="tab-pane fade">
+                <h3><i class="fas fa-object-group me-2"></i>Object-Oriented Programming</h3>
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="module5-video" src="https://www.youtube.com/embed/K3HD0gJXJYQ" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-controls mt-3">
+                            <button id="prev-module5" class="btn btn-outline-primary" onclick="prevVideo('module5')">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button id="next-module5" class="btn btn-primary" onclick="nextVideo('module5')">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button id="finish-course" class="btn btn-success" style="display: none;" onclick="goToQuiz()">
+                                Finish Course <i class="fas fa-trophy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 id="module5-title"><i class="fas fa-bookmark me-2"></i>Unit 1: OOP Concepts</h4>
+                        <div class="module-description">
+                            <ul id="module5-description">
+                                <li>Classes and objects: definitions and examples</li>
+                                <li>Attributes and methods: instance vs class</li>
+                                <li>Inheritance and method overriding</li>
+                                <li>Encapsulation and property decorators</li>
+                                <li>Polymorphism and duck typing</li>
+                                <li>Special methods (__init__, __str__, etc.)</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="alert alert-info">
+                                <strong><i class="fas fa-clock me-2"></i>DURATION:</strong> 40 mins
+                            </div>
+                            <button class="btn btn-sm btn-success" onclick="markAsComplete('module5')">
+                                <i class="fas fa-check-circle me-1"></i> Mark as Complete
+                            </button>
+                        </div>
+                        
+                        <div class="code-example">
+                            <h5><i class="fas fa-code me-2"></i>Example Code:</h5>
+                            <pre><code># Class definition
+class Dog:
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+    
+    def bark(self):
+        print(f"{self.name} says Woof!")
+
+# Object creation
+my_dog = Dog("Buddy", "Golden Retriever")
+my_dog.bark()
+
+# Inheritance
+class Puppy(Dog):
+    def bark(self):
+        print(f"{self.name} says Yip!")</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resources-card">
+                    <h5><i class="fas fa-link me-2"></i>Additional Resources</h5>
+                    <div class="resource-item">
+                        <a href="https://realpython.com/python3-object-oriented-programming/" target="_blank"><i class="fas fa-book"></i> OOP in Python</a>
+                    </div>
+                    <div class="resource-item">
+                        <a href="https://www.programiz.com/python-programming/object-oriented-programming" target="_blank"><i class="fas fa-graduation-cap"></i> OOP Tutorial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Quiz Button -->
+    <button id="quiz-btn" class="btn btn-primary quiz-btn" onclick="goToQuiz()" style="display: none;">
+        Take Quiz <i class="fas fa-question-circle"></i>
+    </button>

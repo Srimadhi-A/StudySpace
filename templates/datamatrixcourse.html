@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Matrix | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Data Matrix</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Master the mathematical framework for organizing and analyzing multidimensional data</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Data Matrix</h2>
+            <p class="lead">Explore the fundamental concepts of matrix representations for data</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Vectors</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Matrices</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Tensors</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Operations</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Applications</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Concepts</h4>
+                <p>Data matrices are defined by several key characteristics:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Dimensionality</strong>: Rows and columns representation</li>
+                    <li><strong class="theory-highlight">Linear Algebra</strong>: Mathematical foundation</li>
+                    <li><strong class="theory-highlight">Sparsity</strong>: Density of non-zero elements</li>
+                    <li><strong class="theory-highlight">Rank</strong>: Dimension of vector space</li>
+                    <li><strong class="theory-highlight">Decomposition</strong>: Factorization methods</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>Basic Operations</h4>
+                <p>Common operations with data matrices:</p>
+                <ol>
+                    <li><strong>Addition/Subtraction</strong>: Element-wise operations</li>
+                    <li><strong>Multiplication</strong>: Dot product and Hadamard product</li>
+                    <li><strong>Transposition</strong>: Flipping rows and columns</li>
+                    <li><strong>Inversion</strong>: Finding inverse matrices</li>
+                    <li><strong>Trace/Determinant</strong>: Matrix properties</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Classification</h4>
+                <p>Main categories of matrices:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Square</strong>: Equal rows and columns</li>
+                    <li><strong class="theory-highlight">Diagonal</strong>: Non-zero only on main diagonal</li>
+                    <li><strong class="theory-highlight">Symmetric</strong>: Equal to its transpose</li>
+                    <li><strong class="theory-highlight">Orthogonal</strong>: Columns form orthonormal set</li>
+                    <li><strong class="theory-highlight">Special</strong>: Identity, zero, triangular</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Matrix Operations <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Matrix Operations</h2>
+            <p class="lead">Study fundamental computations and their applications</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Performance Insight:</strong> Different matrix operations have varying computational complexities.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Basic Computations</h4>
+                        <p>Elementary matrix operations:</p>
+                        <ul>
+                            <li>Scalar multiplication</li>
+                            <li>Matrix addition/subtraction</li>
+                            <li>Matrix multiplication</li>
+                            <li>Transposition</li>
+                            <li>Power of a matrix</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">C = A × B // Matrix multiplication</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Advanced Operations</h4>
+                        <p>Complex matrix computations:</p>
+                        <ul>
+                            <li>Kronecker product</li>
+                            <li>Hadamard product</li>
+                            <li>Vectorization</li>
+                            <li>Matrix exponential</li>
+                            <li>Tensor operations</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">A ⊗ B // Kronecker product</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Matrix Properties</h4>
+                <p>Key characteristics of matrices:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Numerical Properties</h5>
+                        <ul>
+                            <li>Trace</li>
+                            <li>Determinant</li>
+                            <li>Rank</li>
+                            <li>Condition number</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Structural Properties</h5>
+                        <ul>
+                            <li>Sparsity</li>
+                            <li>Bandwidth</li>
+                            <li>Diagonal dominance</li>
+                            <li>Positive definiteness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Performance Analysis</h4>
+                <p>Operation complexities for matrices:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Operation</th>
+                            <th>Naive</th>
+                            <th>Optimized</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Multiplication</td>
+                            <td>O(n³)</td>
+                            <td>O(n^2.807) (Strassen)</td>
+                        </tr>
+                        <tr>
+                            <td>Inversion</td>
+                            <td>O(n³)</td>
+                            <td>Same as multiplication</td>
+                        </tr>
+                        <tr>
+                            <td>Determinant</td>
+                            <td>O(n!)</td>
+                            <td>O(n³)</td>
+                        </tr>
+                        <tr>
+                            <td>Eigenvalues</td>
+                            <td>O(n³)</td>
+                            <td>O(n³) typically</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Matrix Decomposition <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Matrix Decomposition</h2>
+            <p class="lead">Explore factorization methods for data analysis</p>
+            
+            <div class="concept-card">
+                <h4>Eigen Decomposition</h4>
+                <p>Breaking down square matrices:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Concepts</h5>
+                        <ul>
+                            <li>Eigenvalues and eigenvectors</li>
+                            <li>Characteristic polynomial</li>
+                            <li>Diagonalizability</li>
+                            <li>Spectral theorem</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Principal Component Analysis</li>
+                            <li>Vibration analysis</li>
+                            <li>Google's PageRank</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">A = QΛQ⁻¹ // Eigendecomposition</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Singular Value Decomposition</h4>
+                <p>General matrix factorization:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Properties</h5>
+                        <ul>
+                            <li>Works for any matrix</li>
+                            <li>Singular values/vectors</li>
+                            <li>Low-rank approximation</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Dimensionality reduction</li>
+                            <li>Image compression</li>
+                            <li>Recommendation systems</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">A = UΣV* // SVD</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Other Decompositions</h4>
+                <p>Specialized factorization methods:</p>
+                <ul>
+                    <li><strong>LU decomposition</strong>: Gaussian elimination</li>
+                    <li><strong>QR decomposition</strong>: Orthogonal-triangular</li>
+                    <li><strong>Cholesky</strong>: For positive definite</li>
+                    <li><strong>Jordan form</strong>: For defective matrices</li>
+                    <li><strong>Polar decomposition</strong>: Unitary and positive</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Numerical Stability</h4>
+                <p>Considerations for computation:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Issues</h5>
+                        <ul>
+                            <li>Condition number</li>
+                            <li>Round-off errors</li>
+                            <li>Ill-conditioned matrices</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Solutions</h5>
+                        <ul>
+                            <li>Pivoting strategies</li>
+                            <li>Iterative refinement</li>
+                            <li>Regularization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Applications <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Matrix Applications</h2>
+            <p class="lead">Practical uses of matrices in data science</p>
+            
+            <div class="concept-card">
+                <h4>Linear Systems</h4>
+                <p>Solving Ax = b problems:</p>
+                <ul>
+                    <li>Gaussian elimination</li>
+                    <li>Cramer's rule</li>
+                    <li>Iterative methods</li>
+                    <li>Over/under-determined systems</li>
+                    <li>Applications in physics</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">x = A\b // Matrix division</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Computer Graphics</h4>
+                <p>Matrix transformations:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Operations</h5>
+                        <ul>
+                            <li>Translation</li>
+                            <li>Rotation</li>
+                            <li>Scaling</li>
+                            <li>Shearing</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>3D rendering</li>
+                            <li>Image processing</li>
+                            <li>Computer vision</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Machine Learning</h4>
+                <p>Matrix representations:</p>
+                <ul>
+                    <li>Feature matrices</li>
+                    <li>Weight matrices in neural networks</li>
+                    <li>Principal Component Analysis</li>
+                    <li>Linear regression</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Other Applications</h4>
+                <p>Diverse fields using matrices:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Application</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Quantum Mechanics</td>
+                            <td>State vectors, operators</td>
+                        </tr>
+                        <tr>
+                            <td>Economics</td>
+                            <td>Input-output models</td>
+                        </tr>
+                        <tr>
+                            <td>Graph Theory</td>
+                            <td>Adjacency matrices</td>
+                        </tr>
+                        <tr>
+                            <td>Statistics</td>
+                            <td>Covariance matrices</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Advanced Topics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Advanced Matrix Topics</h2>
+            <p class="lead">Cutting-edge developments in matrix theory</p>
+            
+            <div class="concept-card">
+                <h4>Sparse Matrices</h4>
+                <p>Efficient storage and computation:</p>
+                <ul>
+                    <li>Storage formats (CSR, CSC)</li>
+                    <li>Graph representations</li>
+                    <li>Iterative solvers</li>
+                    <li>Applications in networks</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Random Matrices</h4>
+                <p>Probabilistic approaches:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Theories</h5>
+                        <ul>
+                            <li>Wigner's semicircle law</li>
+                            <li>Marchenko-Pastur law</li>
+                            <li>Tracy-Widom distribution</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Wireless communications</li>
+                            <li>Statistical physics</li>
+                            <li>Neural networks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Tensor Extensions</h4>
+                <p>Higher-dimensional generalizations:</p>
+                <ul>
+                    <li>Tensor decomposition</li>
+                    <li>Multilinear algebra</li>
+                    <li>Applications in deep learning</li>
+                    <li>Tensor networks</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">T[i,j,k] // 3D tensor</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Computational Advances</h4>
+                <p>Modern developments:</p>
+                <ul>
+                    <li>Fast matrix multiplication</li>
+                    <li>Parallel algorithms</li>
+                    <li>Quantum matrix operations</li>
+                    <li>Approximate computations</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Data Matrix Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Data Matrix";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpace | Log In</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="split-container">
+        <!-- Left Side - Login Form -->
+        <div class="left-side">
+            <div class="login-container">
+                <div class="container">
+                    <div class="heading">Welcome Back</div>
+                    <p class="subheading">Login to access your study resources</p>
+                    <!-- Flash Messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- Login Form -->
+                    <form action="/login" method="POST" class="form">
+                        <div class="input-group">
+                            <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                            <input required class="input" type="email" name="email" id="email" placeholder="E-mail">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-icon"><i class="fas fa-lock"></i></span>
+                            <input required class="input" type="password" name="password" id="password" placeholder="Password">
+                        </div>
+                        <div class="form-footer">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="{{ url_for('forgot_password') }}" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Login As</label>
+                            <select name="user_type" class="form-select custom-dropdown">
+                                <option value="student">Student</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <input class="login-button" type="submit" value="Log In">
+                    </form>
+                    <div class="social-account-container">
+                        <p class="signup-link">Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Background Image -->
+        <div class="right-side">
+            <div class="image-overlay"></div>
+            <div class="image-content">
+                <h2>Elevate Your Learning Experience</h2>
+                <p>Join thousands of students achieving their academic goals</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Personalized study plans</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Interactive learning tools</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>24/7 expert support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

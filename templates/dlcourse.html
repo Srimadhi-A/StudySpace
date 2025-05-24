@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning | Study Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dmcourse.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand">Study Space</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('courses') }}"><i class="fas fa-book"></i> Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('game') }}"><i class="fas fa-gamepad"></i> MindZone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Header -->
+    <div class="course-header text-center">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Deep Learning</h1>
+            <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Master the theoretical foundations of neural networks and modern AI architectures</p>
+        </div>
+    </div>
+
+    <!-- Floating Navigation Dots -->
+    <div class="floating-nav">
+        <span class="nav-dot active" data-unit="unit1"></span>
+        <span class="nav-dot" data-unit="unit2"></span>
+        <span class="nav-dot" data-unit="unit3"></span>
+        <span class="nav-dot" data-unit="unit4"></span>
+        <span class="nav-dot" data-unit="unit5"></span>
+    </div>
+
+    <div class="container py-4 unit-container">
+        <!-- unit1 -->
+        <div id="unit1" class="unit active">
+            <h2>Introduction to Deep Learning</h2>
+            <p class="lead">Explore the fundamental concepts and mathematical foundations of neural networks.</p>
+            
+            <div class="animated-diagram">
+                <div class="diagram-element" style="top: 30px; left: 20px; animation-delay: 0s;">Neurons</div>
+                <div class="diagram-element" style="top: 40px; left: 150px; animation-delay: 0.5s;">Layers</div>
+                <div class="diagram-element" style="top: 100px; left: 280px; animation-delay: 1s;">Activations</div>
+                <div class="diagram-element" style="top: 80px; left: 410px; animation-delay: 1.5s;">Weights</div>
+                <div class="diagram-element" style="top: 30px; left: 540px; animation-delay: 2s;">Loss</div>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn">
+                <h4>Core Concepts</h4>
+                <p>Deep learning is built upon several foundational principles:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Artificial Neurons</strong>: Mathematical models of biological neurons</li>
+                    <li><strong class="theory-highlight">Activation Functions</strong>: Non-linear transformations (ReLU, Sigmoid, Tanh)</li>
+                    <li><strong class="theory-highlight">Feedforward Networks</strong>: Information flow from input to output</li>
+                    <li><strong class="theory-highlight">Backpropagation</strong>: Algorithm for learning weights</li>
+                    <li><strong class="theory-highlight">Gradient Descent</strong>: Optimization of network parameters</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-1s">
+                <h4>The Deep Learning Pipeline</h4>
+                <p>Key stages in developing neural networks:</p>
+                <ol>
+                    <li><strong>Problem Formulation</strong>: Defining inputs and outputs</li>
+                    <li><strong>Architecture Design</strong>: Selecting network structure</li>
+                    <li><strong>Loss Function</strong>: Defining what to optimize</li>
+                    <li><strong>Training</strong>: Adjusting weights via backpropagation</li>
+                    <li><strong>Evaluation</strong>: Measuring model performance</li>
+                    <li><strong>Deployment</strong>: Applying the trained model</li>
+                </ol>
+            </div>
+            
+            <div class="concept-card animate__animated animate__fadeIn animate__delay-2s">
+                <h4>Key Theoretical Challenges</h4>
+                <p>Fundamental issues in deep learning:</p>
+                <ul>
+                    <li><strong class="theory-highlight">Vanishing Gradients</strong>: Difficulty training deep networks</li>
+                    <li><strong class="theory-highlight">Overfitting</strong>: Models memorizing training data</li>
+                    <li><strong class="theory-highlight">Computational Complexity</strong>: Resource requirements</li>
+                    <li><strong class="theory-highlight">Interpretability</strong>: Understanding model decisions</li>
+                    <li><strong class="theory-highlight">Generalization</strong>: Performance on unseen data</li>
+                </ul>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn animate__animated animate__pulse animate__infinite" onclick="showNext('unit1', 'unit2')">
+                    Continue to Neural Network Fundamentals <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit2 -->
+        <div id="unit2" class="unit">
+            <h2>Neural Network Fundamentals</h2>
+            <p class="lead">Dive into the mathematical foundations of neural networks and learning algorithms.</p>
+            
+            <div class="alert alert-primary" role="alert">
+                <strong>Theoretical Insight:</strong> Understanding these foundations enables proper architecture design and troubleshooting.
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Mathematical Foundations</h4>
+                        <p>Essential concepts for deep learning:</p>
+                        <ul>
+                            <li>Linear algebra for neural networks</li>
+                            <li>Calculus of backpropagation</li>
+                            <li>Probability for uncertainty</li>
+                            <li>Information theory</li>
+                            <li>Optimization theory</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">z = Wx + b</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card h-100">
+                        <h4>Backpropagation</h4>
+                        <p>The core learning algorithm:</p>
+                        <ul>
+                            <li>Chain rule application</li>
+                            <li>Computational graphs</li>
+                            <li>Gradient computation</li>
+                            <li>Efficiency considerations</li>
+                            <li>Automatic differentiation</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <pre class="bg-light p-2">∂L/∂W = ∂L/∂y * ∂y/∂W</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card mt-4">
+                <h4>Activation Functions</h4>
+                <p>Non-linear transformations enabling deep learning:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Common Functions</h5>
+                        <ul>
+                            <li>Sigmoid (σ)</li>
+                            <li>Hyperbolic tangent (tanh)</li>
+                            <li>Rectified Linear Unit (ReLU)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Advanced Variants</h5>
+                        <ul>
+                            <li>Leaky ReLU</li>
+                            <li>ELU</li>
+                            <li>Swish</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Properties</h5>
+                        <ul>
+                            <li>Differentiability</li>
+                            <li>Gradient behavior</li>
+                            <li>Saturation issues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Optimization in Deep Learning</h4>
+                <p>Algorithms for training neural networks:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Basic Algorithms</h5>
+                        <ul>
+                            <li>Stochastic Gradient Descent</li>
+                            <li>Momentum</li>
+                            <li>Nesterov Momentum</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Adaptive Methods</h5>
+                        <ul>
+                            <li>AdaGrad</li>
+                            <li>RMSProp</li>
+                            <li>Adam</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">θ = θ - η∇J(θ)</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit2', 'unit3')">
+                    Continue to Deep Architectures <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit3 -->
+        <div id="unit3" class="unit">
+            <h2>Deep Architectures</h2>
+            <p class="lead">Explore specialized neural network architectures for different tasks.</p>
+            
+            <div class="concept-card">
+                <h4>Convolutional Neural Networks</h4>
+                <p>For processing grid-like data (images, videos):</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Core Concepts</h5>
+                        <ul>
+                            <li>Convolution operation</li>
+                            <li>Pooling layers</li>
+                            <li>Feature hierarchies</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Architectures</h5>
+                        <ul>
+                            <li>LeNet</li>
+                            <li>AlexNet</li>
+                            <li>ResNet</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Image classification</li>
+                            <li>Object detection</li>
+                            <li>Semantic segmentation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">output = conv2d(input, kernel)</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Recurrent Neural Networks</h4>
+                <p>For sequential data processing:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Basic Architectures</h5>
+                        <ul>
+                            <li>Simple RNN</li>
+                            <li>Long Short-Term Memory (LSTM)</li>
+                            <li>Gated Recurrent Unit (GRU)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Time series prediction</li>
+                            <li>Natural language processing</li>
+                            <li>Speech recognition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Transformer Architectures</h4>
+                <p>Attention-based models:</p>
+                <ul>
+                    <li>Self-attention mechanism</li>
+                    <li>Multi-head attention</li>
+                    <li>Positional encoding</li>
+                    <li>Encoder-decoder structure</li>
+                    <li>Applications in NLP and beyond</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">Attention(Q,K,V) = softmax(QKᵀ/√d)V</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Generative Models</h4>
+                <p>Creating new data samples:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Approaches</h5>
+                        <ul>
+                            <li>Generative Adversarial Networks</li>
+                            <li>Variational Autoencoders</li>
+                            <li>Diffusion Models</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Applications</h5>
+                        <ul>
+                            <li>Image generation</li>
+                            <li>Data augmentation</li>
+                            <li>Style transfer</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit3', 'unit4')">
+                    Continue to Training Deep Networks <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit4 -->
+        <div id="unit4" class="unit">
+            <h2>Training Deep Networks</h2>
+            <p class="lead">Advanced techniques for effectively training neural networks.</p>
+            
+            <div class="concept-card">
+                <h4>Regularization Techniques</h4>
+                <p>Preventing overfitting in deep models:</p>
+                <ul>
+                    <li>L1/L2 regularization</li>
+                    <li>Dropout</li>
+                    <li>Batch normalization</li>
+                    <li>Early stopping</li>
+                    <li>Data augmentation</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">h = dropout(h, p=0.5)</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Initialization Strategies</h4>
+                <p>Setting initial weights effectively:</p>
+                <ul>
+                    <li>Xavier/Glorot initialization</li>
+                    <li>He initialization</li>
+                    <li>Orthogonal initialization</li>
+                    <li>Transfer learning</li>
+                    <li>Pretrained models</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Loss Functions</h4>
+                <p>Defining what to optimize:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Common Losses</h5>
+                        <ul>
+                            <li>Mean Squared Error</li>
+                            <li>Cross-Entropy</li>
+                            <li>Huber Loss</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Specialized Losses</h5>
+                        <ul>
+                            <li>Triplet Loss</li>
+                            <li>Contrastive Loss</li>
+                            <li>Perceptual Loss</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">L = -Σy log(p)</pre>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Training Challenges</h4>
+                <p>Addressing common issues:</p>
+                <ul>
+                    <li>Vanishing/exploding gradients</li>
+                    <li>Mode collapse in GANs</li>
+                    <li>Training instability</li>
+                    <li>Hyperparameter tuning</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <pre class="bg-light p-2">grad = clip(grad, max_norm)</pre>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn" onclick="showNext('unit4', 'unit5')">
+                    Continue to Advanced Topics <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- unit5 -->
+        <div id="unit5" class="unit">
+            <h2>Advanced Topics in Deep Learning</h2>
+            <p class="lead">Cutting-edge developments and future directions.</p>
+            
+            <div class="concept-card">
+                <h4>Interpretability</h4>
+                <p>Understanding model decisions:</p>
+                <ul>
+                    <li>Saliency maps</li>
+                    <li>Attention visualization</li>
+                    <li>Concept activation vectors</li>
+                    <li>SHAP values</li>
+                    <li>Model distillation</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Efficient Deep Learning</h4>
+                <p>Techniques for resource-constrained scenarios:</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Model Compression</h5>
+                        <ul>
+                            <li>Pruning</li>
+                            <li>Quantization</li>
+                            <li>Knowledge distillation</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Efficient Architectures</h5>
+                        <ul>
+                            <li>MobileNet</li>
+                            <li>EfficientNet</li>
+                            <li>Transformer variants</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Current Research Frontiers</h4>
+                <p>Emerging areas in deep learning:</p>
+                <ul>
+                    <li>Self-supervised learning</li>
+                    <li>Neural ODEs</li>
+                    <li>Graph neural networks</li>
+                    <li>Meta-learning</li>
+                    <li>Neurosymbolic AI</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <h4>Ethical Considerations</h4>
+                <p>Responsible development of deep learning:</p>
+                <ul>
+                    <li>Bias and fairness</li>
+                    <li>Privacy concerns</li>
+                    <li>Robustness to attacks</li>
+                    <li>Environmental impact</li>
+                    <li>Regulatory landscape</li>
+                </ul>
+            </div>
+            
+            <div class="text-center py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#831238" class="bi bi-check-circle-fill mb-3 animate__animated animate__bounceIn" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg>
+                <h1 class="text animate__animated animate__fadeIn" style="color: #831238;">Congratulations!</h1>
+                <p class="lead animate__animated animate__fadeIn animate__delay-1s">You've completed the Deep Learning Course</p>
+                <p class="animate__animated animate__fadeIn animate__delay-2s">You're now ready to test your knowledge with the course quiz.</p>
+                <button id="finish-course" class="btn btn-lg mt-3 animate__animated animate__pulse animate__infinite" onclick="goToQuiz()">
+                    Start Final Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container animate__animated animate__fadeInUp">
+        <div class="progress-bar" id="course-progress" style="width: 20%"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current unit tracking
+        let currentUnit = 1;
+        const totalUnits = 5;
+        
+        function updateProgress() {
+            const progress = (currentUnit / totalUnits) * 100;
+            document.getElementById('course-progress').style.width = `${progress}%`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index < currentUnit) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToQuiz() {
+            const courseName = "Deep Learning";
+            const encodedCourse = encodeURIComponent(courseName);
+            window.location.href = `/quiz?course=${encodedCourse}`;
+        }
+
+        function showNext(currentId, nextId) {
+            const currentUnitElem = document.getElementById(currentId);
+            const nextUnitElem = document.getElementById(nextId);
+            
+            // Animation for transition
+            currentUnitElem.classList.remove('active');
+            currentUnitElem.classList.add('animate__animated', 'animate__fadeOut');
+            
+            setTimeout(() => {
+                currentUnitElem.classList.remove('animate__animated', 'animate__fadeOut');
+                nextUnitElem.classList.add('active', 'animate__animated', 'animate__fadeIn');
+                
+                // Update current unit
+                currentUnit = parseInt(nextId.replace('unit', ''));
+                updateProgress();
+                
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Remove animation class after it completes
+                setTimeout(() => {
+                    nextUnitElem.classList.remove('animate__animated', 'animate__fadeIn');
+                }, 1000);
+            }, 500);
+        }
+        
+        // Navigation dot click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetUnit = this.getAttribute('data-unit');
+                const targetUnitNum = parseInt(targetUnit.replace('unit', ''));
+                
+                if (targetUnitNum < currentUnit) {
+                    // Going backward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                } else if (targetUnitNum > currentUnit) {
+                    // Going forward
+                    showNext(`unit${currentUnit}`, targetUnit);
+                }
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>
